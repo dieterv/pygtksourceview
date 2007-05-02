@@ -274,9 +274,9 @@ _wrap_gtk_source_style_manager_get_search_path(PyGObject *self)
     while (*tmp)
         tmp++, i++;
     
-    py_ret = PyTuple_New(i);
+    py_ret = PyList_New(i);
     for (j = 0; j < i; j++)
-        PyTuple_SetItem(py_ret, j, PyString_FromString(ret[j]));
+        PyList_SetItem(py_ret, j, PyString_FromString(ret[j]));
 
     return py_ret;
 }

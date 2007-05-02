@@ -1,3 +1,8 @@
 2007-05-02  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* gtksourceview2.override: (gtk_source_style_manager_get_search_path)
+	use PyList instead of a PyTuple.
+
+2007-05-02  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* initial import
