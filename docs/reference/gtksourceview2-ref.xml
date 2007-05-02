@@ -1,0 +1,36 @@
+<?xml version='1.0'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" 
+[
+<!ENTITY % entities SYSTEM "entities.docbook">
+%entities;
+<!ENTITY builddate SYSTEM "builddate.xml">
+]>
+<book id="pygtksourceview2-reference" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <bookinfo>
+    <pubdate>&builddate;</pubdate>
+    <title>PyGtksourceview2 2.0.0 Reference Manual</title>
+    <edition>PyGtksourceview2 Reference Manual for PyGtksourceview2 &version;</edition>
+    <releaseinfo>For PyGtksourceview2 version &version;</releaseinfo>
+    <authorgroup>
+      <author>
+        <firstname>Gian Mario</firstname>
+        <surname>Tagliaretti</surname>
+      </author>
+    </authorgroup>
+    <abstract>
+      <para>This reference describes the classes of the Python PyGtksourceview2 module.</para>
+    </abstract>
+  </bookinfo>
+  <toc>
+  </toc>
+
+<!-- the reference page chapters for the PyGtksourceview2 classes -->
+
+    <xi:include href="gtksourceview2-gtksourceview.xml"/>
+    <xi:include href="gtksourceview2-gtksourcebuffer.xml"/>
+    <xi:include href="gtksourceview2-gtksourcelanguage.xml"/>
+    <xi:include href="gtksourceview2-gtksourcelanguagesmanager.xml"/>
+    <xi:include href="gtksourceview2-gtksourcemarker.xml"/>
+    <xi:include href="gtksourceview2-gtksourcestylescheme.xml"/>
+
+</book>

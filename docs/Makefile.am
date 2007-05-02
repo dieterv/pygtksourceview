@@ -1,0 +1,73 @@
+BUILDDIR = $(top_builddir)/docs
+
+REF_VERSION = $(PYGTKSOURCEVIEW2_MAJOR_VERSION).$(PYGTKSOURCEVIEW2_MINOR_VERSION)
+FULL_VERSION = $(REF_VERSION).$(PYGTKSOURCEVIEW2_MICRO_VERSION)
+
+HTML_STYLE = $(PYGOBJECT_DATADIR)/pygobject/xsl/ref-html-style.xsl
+PDF_STYLE = $(PYGOBJECT_DATADIR)/pygobject/xsl/pdf-style.xsl
+
+XMLFILES = 														\
+	reference/gtksourceview2-ref.xml							\
+	reference/gtksourceview2-gtksourceview.xml					\
+    reference/gtksourceview2-gtksourcebuffer.xml				\
+    reference/gtksourceview2-gtksourcelanguage.xml				\
+    reference/gtksourceview2-gtksourcelanguagesmanager.xml		\
+    reference/gtksourceview2-gtksourcemarker.xml				\
+    reference/gtksourceview2-gtksourcestylescheme.xml
+
+
+HTMLdir = $(datadir)/gtk-doc/html/pygtksourceview2
+HTML_DATA =										\
+	html/index.html								\
+	html/index.sgml								\
+	html/class-gtksourcebuffer.html				\
+	html/class-gtksourcelanguage.html			\
+	html/class-gtksourcelanguagesmanager.html	\
+	html/class-gtksourcemarker.html				\
+	html/class-gtksourcestylescheme.html		\
+	html/class-gtksourceview.html				\
+	html/pygtksourceview2.devhelp
+
+CSS_FILES = $(PYGOBJECT_PYGDOCS)/style.css
+CSSdir = $(HTMLdir)
+CSS_DATA = $(CSS_FILES)
+
+BUILT_SOURCES = 			\
+	build_stamp 			\
+	reference/builddate.xml	\
+	$(HTML_DATA)
+
+CLEANFILES = 				\
+	build_stamp 			\
+	gtksourceview2-ref.*	\
+	reference/builddate.xml	\
+	$(HTML_DATA)
+
+EXTRA_DIST = 		\
+	$(XMLFILES) 	\
+	$(XSLFILES)		\
+	$(FIX_XREF)
+
+REFERENCE_DEPS = 	\
+	reference 		\
+	$(XMLFILES)		\
+	$(XSLFILES)
+
+$(HTML_DATA): build_stamp
+
+reference/builddate.xml: $(REFERENCE_DEPS)
+	$(PYTHON) -c 'import datetime; print datetime.date.today()' > $@
+
+build_stamp: $(REFERENCE_DEPS)reference/builddate.xml
+	xsltproc --nonet --xinclude -o $(BUILDDIR)/html/ \
+		 --path $(BUILDDIR)/reference:$(srcdir)/reference \
+                 --stringparam gtkdoc.bookname "pygtksourceview2" \
+                 --stringparam gtkdoc.version ${REF_VERSION} \
+                 $(HTML_STYLE) $(srcdir)/reference/gtksourceview2-ref.xml
+	$(PYGOBJECT_FIXXREF) -i /usr/share/gtk-doc/html/pygtk/ $(BUILDDIR)/html 
+	touch $@
+
+pdf: $(REFERENCE_DEPS) reference/builddate.xml
+	xsltproc --nonet --xinclude -o gtksourceview2-ref.fo \
+	         $(PDF_STYLE) reference/gtksourceview2-ref.xml
+	pdfxmltex gtksourceview2-ref.fo >output </dev/null

@@ -1,0 +1,314 @@
+/* -*- C -*- */
+%%
+headers
+#define NO_IMPORT_PYGOBJECT
+#include "pygobject.h"
+
+#include <gtksourceview/gtksourceview.h>
+#include <gtksourceview/gtksourceview-typebuiltins.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksourcestylemanager.h>
+#include <gtksourceview/gtksourcestyle.h>
+#include <gtksourceview/gtksourcestylescheme.h>
+#include <gtksourceview/gtksourcemarker.h>
+#include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksourceiter.h>
+#include <gtksourceview/gtksourcebuffer.h>
+
+static PyObject *
+_gslist_to_pylist_objs (const GSList *source)
+{
+    const GSList *iter;
+    PyObject *dest = PyList_New (0);
+    for (iter = source; iter != NULL; iter = iter->next)
+    {
+        PyObject *item = pygobject_new ((GObject *)iter->data);
+        PyList_Append (dest, item);
+        Py_DECREF (item);
+    }
+    return dest;
+}
+
+#if 0
+static PyObject *
+_gslist_to_pylist_strs (const GSList *source)
+{
+    const GSList *iter;
+    PyObject *dest = PyList_New (0);
+    for (iter = source; iter != NULL; iter = iter->next)
+    {
+        PyObject *item = PyString_FromString ((char *)iter->data);
+        PyList_Append (dest, item);
+        Py_DECREF (item);
+    }
+    return dest;
+}
+#endif
+
+%%
+modulename gtksourceview2
+
+%%
+import gobject.GObject as PyGObject_Type
+import gtk.gdk.Pixbuf as PyGdkPixbuf_Type
+import gtk.TextTagTable as PyGtkTextTagTable_Type
+import gtk.TextView as PyGtkTextView_Type
+import gtk.TextBuffer as PyGtkTextBuffer_Type
+import gtk.TextMark as PyGtkTextMark_Type
+
+%%
+ignore
+gtk_source_buffer_new_with_language
+gtk_source_view_new_with_buffer
+
+%%
+ignore-glob	
+    *_get_type
+    _*
+    *_ref
+    *_unref
+
+%%
+override gtk_source_view_new
+static int
+_wrap_gtk_source_view_new (PyGObject *self, PyObject *args, PyObject *kwargs)
+{
+    static char *kwlist[] = { "buffer", NULL };
+    PyGObject *buffer = NULL;
+    if (!PyArg_ParseTupleAndKeywords (args, kwargs, "|O!:GtkSourceView.__init__", kwlist,
+            &PyGtkSourceBuffer_Type, &buffer))
+        return -1;
+    
+    if (buffer)
+        pygobject_construct(self, "buffer", buffer->obj, NULL);
+    else
+        pygobject_construct(self, NULL);
+    
+    if (!self->obj) {
+        PyErr_SetString (PyExc_RuntimeError, "could not create GtkSourceView object");
+        return -1;
+    }
+    return 0;
+}
+%%
+new-constructor GTK_TYPE_SOURCE_VIEW
+
+%%
+override gtk_source_buffer_new
+static int
+_wrap_gtk_source_buffer_new (PyGObject *self, PyObject *args, PyObject *kwargs)
+{
+    static char *kwlist[] = { "table", "lang", NULL };
+    PyGObject *table = NULL, *lang = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords (args, kwargs, "|O!O!:GtkSourceBuffer.__init__", kwlist,
+            &PyGtkTextTagTable_Type, &table, &PyGtkSourceLanguage_Type, &lang))
+        return -1;
+
+    if (lang && !table)
+        pygobject_construct(self, "language", lang->obj, NULL);
+    else if (!lang && table)
+        pygobject_construct(self, "tag_table", table->obj, NULL);
+    else if (lang && table)
+        pygobject_construct(self, "language", lang->obj, "tag_table", table->obj, NULL);
+    else
+        pygobject_construct(self, NULL);
+    if (!self->obj) {
+        PyErr_SetString (PyExc_RuntimeError, "could not create GtkSourceBuffer object");
+        return -1;
+    }
+    return 0;
+}
+%%
+new-constructor GTK_TYPE_SOURCE_BUFFER
+
+%%
+override gtk_source_language_get_globs noargs
+static PyObject *
+_wrap_gtk_source_language_get_globs(PyGObject *self)
+{
+    gchar       **ret, **tmp;
+    PyObject    *py_ret;
+    int         i = 0, j;
+
+    ret = gtk_source_language_get_globs(GTK_SOURCE_LANGUAGE(self->obj));
+    
+    tmp = ret;
+    while (*tmp)
+        tmp++, i++;
+    
+    py_ret = PyTuple_New(i);
+    for (j = 0; j < i; j++)
+        PyTuple_SetItem(py_ret, j, PyString_FromString(ret[j]));
+
+    return py_ret;
+}
+
+%%
+override gtk_source_buffer_get_markers_in_region kwargs
+static PyObject *
+_wrap_gtk_source_buffer_get_markers_in_region(PyGObject *self,
+                                              PyObject *args,
+                                              PyObject *kwargs)
+{
+    static char *kwlist[] = { "begin", "end", NULL };
+    PyObject    *py_begin, *py_end, *py_ret;
+    GtkTextIter *begin = NULL, *end = NULL;
+    GSList      *ret;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs,
+                                     "OO:GtkSourceBuffer.get_markers_in_region",
+                                     kwlist, &py_begin, &py_end))
+        return NULL;
+
+    if (pyg_boxed_check(py_begin, GTK_TYPE_TEXT_ITER))
+        begin = pyg_boxed_get(py_begin, GtkTextIter);
+    else {
+        PyErr_SetString(PyExc_TypeError, "begin should be a GtkTextIter");
+        return NULL;
+    }
+    
+    if (pyg_boxed_check(py_end, GTK_TYPE_TEXT_ITER))
+        end = pyg_boxed_get(py_end, GtkTextIter);
+    else {
+        PyErr_SetString(PyExc_TypeError, "end should be a GtkTextIter");
+        return NULL;
+    }
+    
+    ret = gtk_source_buffer_get_markers_in_region(GTK_SOURCE_BUFFER(self->obj),
+                                                  begin, end);
+    
+    py_ret = _gslist_to_pylist_objs (ret);
+    
+    return py_ret;    
+}
+
+%%
+override gtk_source_language_get_mime_types noargs
+static PyObject *
+_wrap_gtk_source_language_get_mime_types(PyGObject *self)
+{
+    gchar       **ret, **tmp;
+    PyObject    *py_ret;
+    int         i = 0, j;
+
+    ret = gtk_source_language_get_mime_types(GTK_SOURCE_LANGUAGE(self->obj));
+    
+    tmp = ret;
+    while (*tmp)
+        tmp++, i++;
+    
+    py_ret = PyTuple_New(i);
+    for (j = 0; j < i; j++)
+        PyTuple_SetItem(py_ret, j, PyString_FromString(ret[j]));
+
+    return py_ret;
+}
+
+%%
+override gtk_source_language_manager_get_available_languages noargs
+static PyObject *
+_wrap_gtk_source_language_manager_get_available_languages(PyGObject *self)
+{
+    PyObject        *py_ret;
+    const GSList    *ret;
+    
+    ret = gtk_source_language_manager_get_available_languages(GTK_SOURCE_LANGUAGE_MANAGER(self->obj));
+    
+    py_ret = _gslist_to_pylist_objs(ret);
+    
+    return py_ret;
+}
+
+%%
+override gtk_source_language_manager_get_search_path noargs
+static PyObject *
+_wrap_gtk_source_language_manager_get_search_path(PyGObject *self)
+{
+    gchar       **ret, **tmp;
+    PyObject    *py_ret;
+    int         i = 0, j;
+
+    ret = gtk_source_language_manager_get_search_path(GTK_SOURCE_LANGUAGE_MANAGER(self->obj));
+    
+    tmp = ret;
+    while (*tmp)
+        tmp++, i++;
+    
+    py_ret = PyTuple_New(i);
+    for (j = 0; j < i; j++)
+        PyTuple_SetItem(py_ret, j, PyString_FromString(ret[j]));
+
+    return py_ret;
+}
+
+%%
+override gtk_source_language_manager_set_search_path kwargs
+static PyObject *
+_wrap_gtk_source_language_manager_set_search_path(PyGObject *self, PyObject *args, PyObject *kwargs)
+{
+    static char *kwlist[] = { "dirs", NULL };
+    char *dirs;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs,"s:GtkSourceLanguageManager.set_search_path", kwlist, &dirs))
+        return NULL;
+    
+    gtk_source_language_manager_set_search_path(GTK_SOURCE_LANGUAGE_MANAGER(self->obj), &dirs);
+    
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+
+%%
+override gtk_source_style_manager_get_search_path noargs
+static PyObject *
+_wrap_gtk_source_style_manager_get_search_path(PyGObject *self)
+{
+    gchar       **ret, **tmp;
+    PyObject    *py_ret;
+    int         i = 0, j;
+
+    ret = gtk_source_style_manager_get_search_path(GTK_SOURCE_STYLE_MANAGER(self->obj));
+    
+    tmp = ret;
+    while (*tmp)
+        tmp++, i++;
+    
+    py_ret = PyTuple_New(i);
+    for (j = 0; j < i; j++)
+        PyTuple_SetItem(py_ret, j, PyString_FromString(ret[j]));
+
+    return py_ret;
+}
+
+%%
+override gtk_source_style_manager_set_search_path kwargs
+static PyObject *
+_wrap_gtk_source_style_manager_set_search_path(PyGObject *self, PyObject *args, PyObject *kwargs)
+{
+    static char *kwlist[] = { "path", NULL };
+    char *path;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs,"s:GtkSourceStyleManager.set_search_path", kwlist, &path))
+        return NULL;
+    
+    gtk_source_style_manager_set_search_path(GTK_SOURCE_STYLE_MANAGER(self->obj), &path);
+    
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+
+%%
+override gtk_source_style_manager_list_schemes noargs
+static PyObject *
+_wrap_gtk_source_style_manager_list_schemes(PyGObject *self)
+{
+    PyObject        *py_ret;
+    GSList    *ret;
+    
+    ret = gtk_source_style_manager_list_schemes(GTK_SOURCE_STYLE_MANAGER(self->obj));
+    
+    py_ret = _gslist_to_pylist_objs(ret);
+    
+    return py_ret;
+}
