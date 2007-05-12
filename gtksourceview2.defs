@@ -97,6 +97,18 @@
   )
 )
 
+(define-enum SourceViewSmartHomeEndType
+  (in-module "Gtk")
+  (c-name "GtkSourceViewSmartHomeEndType")
+  (gtype-id "GTK_TYPE_SOURCE_VIEW_SMART_HOME_END_TYPE")
+  (values
+    '("disabled" "GTKSOURCEVIEW_SMART_HOME_END_DISABLED")
+    '("before" "GTKSOURCEVIEW_SMART_HOME_END_BEFORE")
+    '("after" "GTKSOURCEVIEW_SMART_HOME_END_AFTER")
+    '("always" "GTKSOURCEVIEW_SMART_HOME_END_ALWAYS")
+  )
+)
+
 
 ;; From gtksourcebuffer.h
 
@@ -811,14 +823,14 @@
   (c-name "gtk_source_view_set_smart_home_end")
   (return-type "none")
   (parameters
-    '("gboolean" "enable")
+    '("GtkSourceViewSmartHomeEndType" "smart_he")
   )
 )
 
 (define-method get_smart_home_end
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_get_smart_home_end")
-  (return-type "gboolean")
+  (return-type "GtkSourceViewSmartHomeEndType")
 )
 
 

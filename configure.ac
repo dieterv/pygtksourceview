@@ -11,7 +11,7 @@ m4_define(pygobject_required_version, 2.10.0)
 m4_define(pygtk_required_version, 2.8.0)
 m4_define(gtksourceview_required_version, 2.0.0)
 
-AC_INIT(pygtksourceview2, pygtksourceview2_version, [http://developer.berlios.de/projects/pygtksourceview2/])
+AC_INIT(pygtksourceview2, pygtksourceview2_version, [http://bugzilla.gnome.org/browse.cgi?product=gtksourceview/])
 
 AC_DEFINE(PYGTKSOURCEVIEW2_MAJOR_VERSION, pygtksourceview2_major_version, [PyGtksourceview2 major version])
 AC_DEFINE(PYGTKSOURCEVIEW2_MINOR_VERSION, pygtksourceview2_minor_version, [PyGtksourceview2 minor version])

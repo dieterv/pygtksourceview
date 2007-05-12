@@ -1,3 +1,9 @@
+2007-05-12  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* gtksourceview2.defs: added new enum type GtkSourceViewSmartHomeEndType
+	
+	* configure.ac: fix project link
+
 2007-05-02  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* gtksourceview2.override: (gtk_source_style_manager_get_search_path)
