@@ -11,6 +11,9 @@ INCLUDES = $(PYTHON_INCLUDES)
 
 EXTRA_DIST = gtksourceview2.defs gtksourceview2.override
 
+defsdir = $(datadir)/pygtk/2.0/defs
+defs_DATA = gtksourceview2.defs
+
 # pygtksourceview2 module
 pyexec_LTLIBRARIES = gtksourceview2module.la
 gtksourceview2module_la_LDFLAGS = -module -avoid-version -export-symbols-regex initgtksourceview2
