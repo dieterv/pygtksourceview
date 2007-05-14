@@ -130,6 +130,7 @@ JH_ADD_CFLAG([-fno-strict-aliasing])
 dnl output
 AC_CONFIG_FILES(
   Makefile
+  pygtksourceview-2.0.pc
   test/Makefile
   docs/Makefile
   docs/reference/entities.docbook

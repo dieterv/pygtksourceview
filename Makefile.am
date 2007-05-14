@@ -9,10 +9,16 @@ endif
 
 INCLUDES = $(PYTHON_INCLUDES)
 
-EXTRA_DIST = gtksourceview2.defs gtksourceview2.override
+EXTRA_DIST = \
+  gtksourceview2.defs \
+  gtksourceview2.override \
+  pygtksourceview-2.0.pc.in
 
 defsdir = $(datadir)/pygtk/2.0/defs
 defs_DATA = gtksourceview2.defs
+
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = pygtksourceview-2.0.pc
 
 # pygtksourceview2 module
 pyexec_LTLIBRARIES = gtksourceview2module.la
