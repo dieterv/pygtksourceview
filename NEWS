@@ -1,0 +1,4 @@
+News in 1.90.0
+==============
+
+* First public release, it binds most of the GtkSourceView 2 API.

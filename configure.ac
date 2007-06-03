@@ -1,21 +1,21 @@
 AC_PREREQ(2.52)
 
-dnl the pygtksourceview2 version number
-m4_define(pygtksourceview2_major_version, 1)
-m4_define(pygtksourceview2_minor_version, 90)
-m4_define(pygtksourceview2_micro_version, 0)
-m4_define(pygtksourceview2_version, pygtksourceview2_major_version.pygtksourceview2_minor_version.pygtksourceview2_micro_version)
+dnl the pygtksourceview version number
+m4_define(pygtksourceview_major_version, 1)
+m4_define(pygtksourceview_minor_version, 90)
+m4_define(pygtksourceview_micro_version, 0)
+m4_define(pygtksourceview_version, pygtksourceview_major_version.pygtksourceview_minor_version.pygtksourceview_micro_version)
 
 dnl versions of packages we require ...
 m4_define(pygobject_required_version, 2.10.0)
 m4_define(pygtk_required_version, 2.8.0)
 m4_define(gtksourceview_required_version, 1.90.0)
 
-AC_INIT(pygtksourceview2, pygtksourceview2_version, [http://bugzilla.gnome.org/browse.cgi?product=gtksourceview/])
+AC_INIT(pygtksourceview, pygtksourceview_version, [http://bugzilla.gnome.org/browse.cgi?product=gtksourceview/])
 
-AC_DEFINE(PYGTKSOURCEVIEW2_MAJOR_VERSION, pygtksourceview2_major_version, [PyGtksourceview2 major version])
-AC_DEFINE(PYGTKSOURCEVIEW2_MINOR_VERSION, pygtksourceview2_minor_version, [PyGtksourceview2 minor version])
-AC_DEFINE(PYGTKSOURCEVIEW2_MICRO_VERSION, pygtksourceview2_micro_version, [PyGtksourceview2 macro version])
+AC_DEFINE(PYGTKSOURCEVIEW_MAJOR_VERSION, pygtksourceview_major_version, [PyGtksourceview major version])
+AC_DEFINE(PYGTKSOURCEVIEW_MINOR_VERSION, pygtksourceview_minor_version, [PyGtksourceview minor version])
+AC_DEFINE(PYGTKSOURCEVIEW_MICRO_VERSION, pygtksourceview_micro_version, [PyGtksourceview macro version])
 
 AC_CONFIG_SRCDIR([./gtksourceview2module.c])
 AM_CONFIG_HEADER(config.h)
@@ -99,11 +99,11 @@ dnl get rid of the -export-dynamic stuff from the configure flags ...
 export_dynamic=`(./libtool --config; echo eval echo \\$export_dynamic_flag_spec) | sh`
 
 dnl pygtk
-PKG_CHECK_MODULES(PYGTKSOURCEVIEW2, [ dnl
-                         pygtk-2.0 >= pygtk_required_version,
-                         gtksourceview-2.0 >= gtksourceview_required_version
-                         ])
-PYGTKSOURCEVIEW2_LIBS=`echo $PYGTKSOURCEVIEW2_LIBS | sed -e "s/$export_dynamic//"`
+PKG_CHECK_MODULES(PYGTKSOURCEVIEW, [
+                  pygtk-2.0 >= pygtk_required_version,
+                  gtksourceview-2.0 >= gtksourceview_required_version
+                  ])
+PYGTKSOURCEVIEW_LIBS=`echo $PYGTKSOURCEVIEW2_LIBS | sed -e "s/$export_dynamic//"`
 PYGTK_DATADIR=`pkg-config --variable=datadir pygtk-2.0`
 
 AC_SUBST(PYGTK_CFLAGS)

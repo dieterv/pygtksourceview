@@ -1,3 +1,14 @@
+
+=== pygtksourceview 1.90.0 ===
+
+2007-06-03  Paolo Borelli  <pborelli@katamail.com>
+
+	* configure.ac:
+	* README:
+	* NEWS:
+
+	pygtksourceview 2.18.1 released
+
 2007-06-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
 	
 	* configure.ac: bump version to 1.90.0

@@ -1,14 +1,14 @@
 BUILDDIR = $(top_builddir)/docs
 
-REF_VERSION = $(PYGTKSOURCEVIEW2_MAJOR_VERSION).$(PYGTKSOURCEVIEW2_MINOR_VERSION)
-FULL_VERSION = $(REF_VERSION).$(PYGTKSOURCEVIEW2_MICRO_VERSION)
+REF_VERSION = $(PYGTKSOURCEVIEW_MAJOR_VERSION).$(PYGTKSOURCEVIEW_MINOR_VERSION)
+FULL_VERSION = $(REF_VERSION).$(PYGTKSOURCEVIEW_MICRO_VERSION)
 
 HTML_STYLE = $(PYGOBJECT_DATADIR)/pygobject/xsl/ref-html-style.xsl
 PDF_STYLE = $(PYGOBJECT_DATADIR)/pygobject/xsl/pdf-style.xsl
 
 XMLFILES = 														\
-	reference/gtksourceview2-ref.xml							\
-	reference/gtksourceview2-gtksourceview.xml					\
+    reference/gtksourceview2-ref.xml							\
+    reference/gtksourceview2-gtksourceview.xml					\
     reference/gtksourceview2-gtksourcebuffer.xml				\
     reference/gtksourceview2-gtksourcelanguage.xml				\
     reference/gtksourceview2-gtksourcelanguagesmanager.xml		\
@@ -45,12 +45,12 @@ CLEANFILES = 				\
 
 EXTRA_DIST = 		\
 	$(XMLFILES) 	\
-	$(XSLFILES)		\
+	$(XSLFILES)	\
 	$(FIX_XREF)
 
 REFERENCE_DEPS = 	\
-	reference 		\
-	$(XMLFILES)		\
+	reference 	\
+	$(XMLFILES)	\
 	$(XSLFILES)
 
 $(HTML_DATA): build_stamp
