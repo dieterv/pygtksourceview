@@ -1,3 +1,16 @@
+2007-06-03  Yevgen Muntyan  <muntyan@tamu.edu>
+
+	Made the bindings work, more or less.
+
+	* test/test-widget.py: made it work, removed printing stuff.
+	* gtksourceview2.override: do not segfault here, do not leak
+	there, wrapped *set_search_path().
+	* gtksourceview2.defs: renamed all SourceSomeThing to SomeThing;
+	corrected GtkSourceBuffer and GtkSourceView constructors to make
+	codegen do right thing; corrected SourceStyle.
+	* configure.ac: require pygobject-2.8 instead of 2.10; do not
+	run sed scripts on PYGTKSOURCEVIEW_LIBS (it doesn't do anything,
+	and breaks things here).
 
 === pygtksourceview 1.90.0 ===
 

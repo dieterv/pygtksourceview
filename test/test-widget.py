@@ -11,7 +11,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -24,18 +24,10 @@
 
 import os, os.path
 import sys
-import pygtk
-pygtk.require ('2.0')
-
 import gtk
-if gtk.pygtk_version < (2,3,93):
-    print "PyGtk 2.3.93 or later required for this example"
-    raise SystemExit
-
 import gtksourceview2
 import gnomevfs
 import pango
-import gnomeprint.ui
 
 
 ######################################################################
@@ -56,7 +48,7 @@ def error_dialog(parent, msg):
 			       msg)
     dialog.run()
     dialog.destroy()
-    
+
 
 ######################################################################
 ##### remove all markers
@@ -85,6 +77,17 @@ def load_file(buffer, uri):
 
 
 ######################################################################
+##### Note this function is silly and wrong, because it ignores mime
+##### parent types and subtypes.
+def get_language_for_mime_type(lang_manager, mime):
+    langs = lang_manager.get_available_languages()
+    for lang in langs:
+        for m in lang.get_mime_types():
+            if m == mime:
+                return lang
+    return None
+
+######################################################################
 ##### buffer creation
 def open_file(buffer, filename):
     # get the new language for the file mimetype
@@ -97,87 +100,51 @@ def open_file(buffer, filename):
     uri = gnomevfs.URI(path)
 
     mime_type = gnomevfs.get_mime_type(path) # needs ASCII filename, not URI
+    language = None
     if mime_type:
-        language = manager.get_language_from_mime_type(mime_type)
-        if language:
-            buffer.set_highlight(True)
-            buffer.set_language(language)
-        else:
+        language = get_language_for_mime_type(manager, mime_type)
+        if not language:
             print 'No language found for mime type "%s"' % mime_type
-            buffer.set_highlight(False)
     else:
         print 'Couldn\'t get mime type for file "%s"' % filename
-        buffer.set_highlight(False)
 
+    buffer.set_language(language)
+    buffer.set_highlight(True)
     remove_all_markers(buffer)
     load_file(buffer, uri) # TODO: check return
     return True
 
 
 ######################################################################
-##### Printing callbacks
-def page_cb(job, *args):
-    percent = 100 * job.get_page() / job.get_page_count()
-    print 'Printing %.2f%%    \r' % percent,
-
-
-def finished_cb(job, *args):
-    print
-    gjob = job.get_print_job()
-    preview = gnomeprint.ui.JobPreview(gjob, 'PyGtkSourceView Demo Print Preview')
-    preview.show()
-
-
-######################################################################
 ##### Action callbacks
 def numbers_toggled_cb(action, sourceview):
     sourceview.set_show_line_numbers(action.get_active())
-    
+
 
 def markers_toggled_cb(action, sourceview):
     sourceview.set_show_line_markers(action.get_active())
-    
+
 
 def margin_toggled_cb(action, sourceview):
     sourceview.set_show_margin(action.get_active())
-    
+
 
 def auto_indent_toggled_cb(action, sourceview):
     sourceview.set_auto_indent(action.get_active())
-    
+
 
 def insert_spaces_toggled_cb(action, sourceview):
     sourceview.set_insert_spaces_instead_of_tabs(action.get_active())
-    
+
 
 def tabs_toggled_cb(action, action2, sourceview):
     sourceview.set_tabs_width(action.get_current_value())
-    
+
 
 def new_view_cb(action, sourceview):
     window = create_view_window(sourceview.get_buffer(), sourceview)
     window.set_default_size(400, 400)
     window.show()
-    
-
-def print_preview_cb(action, sourceview):
-    buffer = sourceview.get_buffer()
-    job = gtksourceview2.SourcePrintJob()
-    job.setup_from_view(sourceview)
-    job.set_wrap_mode(gtk.WRAP_CHAR)
-    job.set_highlight(True)
-    job.set_print_numbers(5)
-    job.set_header_format('Printed on %A', None, '%F', False)
-    filename = buffer.get_data('filename')
-    job.set_footer_format('%T', filename, 'Page %N/%Q', True)
-    job.set_print_header(True)
-    job.set_print_footer(True)
-    start, end = buffer.get_bounds()
-    if job.print_range_async(start, end):
-        job.connect('begin_page', page_cb)
-        job.connect('finished', finished_cb)
-    else:
-        print 'Async print failed'
 
 
 ######################################################################
@@ -211,7 +178,7 @@ def update_cursor_position(buffer, view):
             col += 1
             start = start.forward_char()
     pos_label.set_text('char: %d, line: %d, column: %d' % (nchars, row, col))
-    
+
 
 def move_cursor_cb (buffer, cursoriter, mark, view):
     update_cursor_position(buffer, view)
@@ -262,7 +229,7 @@ def button_press_cb(view, ev):
             # no marker found, create one
             marker = buffer.create_marker(None, marker_type, line_start)
     return False
-        
+
 
 ######################################################################
 ##### Actions & UI definition
@@ -274,7 +241,6 @@ buffer_actions = [
 view_actions = [
     ('FileMenu', None, '_File'),
     ('ViewMenu', None, '_View'),
-    ('PrintPreview', gtk.STOCK_PRINT, '_Print Preview', '<control>P', 'Preview printing of the file', print_preview_cb),
     ('NewView', gtk.STOCK_NEW, '_New View', None, 'Create a new view of the file', new_view_cb),
     ('TabsWidth', None, '_Tabs Width')
 ]
@@ -298,9 +264,6 @@ radio_actions = [
 view_ui_description = """
 <ui>
   <menubar name='MainMenu'>
-    <menu action='FileMenu'>
-      <menuitem action='PrintPreview'/>
-    </menu>
     <menu action='ViewMenu'>
       <menuitem action='NewView'/>
       <separator/>
@@ -337,7 +300,7 @@ buffer_ui_description = """
 </ui>
 """
 
-    
+
 ######################################################################
 ##### create view window
 def create_view_window(buffer, sourceview = None):
@@ -348,7 +311,7 @@ def create_view_window(buffer, sourceview = None):
     windows.append(window) # this list contains all view windows
 
     # view
-    view = gtksourceview2.SourceView(buffer)
+    view = gtksourceview2.View(buffer)
     buffer.connect('mark_set', move_cursor_cb, view)
     buffer.connect('changed', update_cursor_position, view)
     view.connect('button-press-event', button_press_cb)
@@ -421,14 +384,14 @@ def create_view_window(buffer, sourceview = None):
     vbox.show_all()
 
     return window
-    
-    
+
+
 ######################################################################
 ##### create main window
 def create_main_window(buffer):
     window = create_view_window(buffer)
     ui_manager = window.get_data('ui_manager')
-    
+
     # buffer action group
     action_group = gtk.ActionGroup('BufferActions')
     action_group.add_actions(buffer_actions, buffer)
@@ -460,16 +423,18 @@ def create_main_window(buffer):
 ##### main
 def main(args = []):
     # create buffer
-    lm = gtksourceview2.SourceLanguageManager()
-    buffer = gtksourceview2.SourceBuffer()
+    lm = gtksourceview2.LanguageManager()
+    sm = gtksourceview2.StyleManager()
+    buffer = gtksourceview2.Buffer()
     buffer.set_data('languages-manager', lm)
+    buffer.set_style_scheme(sm.get_scheme('kate'))
 
     # parse arguments
     if len(args) > 2:
         open_file(buffer, args[1])
     else:
         open_file(buffer, args[0])
-        
+
     # create first window
     window = create_main_window(buffer)
     window.set_default_size(500, 500)
@@ -477,7 +442,6 @@ def main(args = []):
 
     # main loop
     gtk.main()
-    
 
 if __name__ == '__main__':
     if '--debug' in sys.argv:

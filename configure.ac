@@ -7,7 +7,7 @@ m4_define(pygtksourceview_micro_version, 0)
 m4_define(pygtksourceview_version, pygtksourceview_major_version.pygtksourceview_minor_version.pygtksourceview_micro_version)
 
 dnl versions of packages we require ...
-m4_define(pygobject_required_version, 2.10.0)
+m4_define(pygobject_required_version, 2.8.0)
 m4_define(pygtk_required_version, 2.8.0)
 m4_define(gtksourceview_required_version, 1.90.0)
 
@@ -100,14 +100,11 @@ export_dynamic=`(./libtool --config; echo eval echo \\$export_dynamic_flag_spec)
 
 dnl pygtk
 PKG_CHECK_MODULES(PYGTKSOURCEVIEW, [
-                  pygtk-2.0 >= pygtk_required_version,
+                  pygtk-2.0 >= pygtk_required_version
                   gtksourceview-2.0 >= gtksourceview_required_version
                   ])
-PYGTKSOURCEVIEW_LIBS=`echo $PYGTKSOURCEVIEW2_LIBS | sed -e "s/$export_dynamic//"`
 PYGTK_DATADIR=`pkg-config --variable=datadir pygtk-2.0`
 
-AC_SUBST(PYGTK_CFLAGS)
-AC_SUBST(PYGTK_LIBS)
 AC_SUBST(PYGTK_DATADIR)
 
 

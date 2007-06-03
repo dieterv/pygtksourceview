@@ -1,42 +1,42 @@
 ;; -*- scheme -*-
 ; object definitions ...
-(define-object SourceBuffer
-  (in-module "Gtk")
+(define-object Buffer
+  (in-module "GtkSourceView")
   (parent "GtkTextBuffer")
   (c-name "GtkSourceBuffer")
   (gtype-id "GTK_TYPE_SOURCE_BUFFER")
 )
 
-(define-object SourceLanguage
-  (in-module "Gtk")
+(define-object Language
+  (in-module "GtkSourceView")
   (parent "GObject")
   (c-name "GtkSourceLanguage")
   (gtype-id "GTK_TYPE_SOURCE_LANGUAGE")
 )
 
-(define-object SourceLanguageManager
-  (in-module "Gtk")
+(define-object LanguageManager
+  (in-module "GtkSourceView")
   (parent "GObject")
   (c-name "GtkSourceLanguageManager")
   (gtype-id "GTK_TYPE_SOURCE_LANGUAGE_MANAGER")
 )
 
-(define-object SourceStyleManager
-  (in-module "Gtk")
+(define-object StyleManager
+  (in-module "GtkSourceView")
   (parent "GObject")
   (c-name "GtkSourceStyleManager")
   (gtype-id "GTK_TYPE_SOURCE_STYLE_MANAGER")
 )
 
-(define-object SourceStyleScheme
-  (in-module "Gtk")
+(define-object StyleScheme
+  (in-module "GtkSourceView")
   (parent "GObject")
   (c-name "GtkSourceStyleScheme")
   (gtype-id "GTK_TYPE_SOURCE_STYLE_SCHEME")
 )
 
-(define-object SourceView
-  (in-module "Gtk")
+(define-object View
+  (in-module "GtkSourceView")
   (parent "GtkTextView")
   (c-name "GtkSourceView")
   (gtype-id "GTK_TYPE_SOURCE_VIEW")
@@ -44,14 +44,14 @@
 
 ;; Boxed types
 
-(define-boxed SourceStyle
-  (in-module "Gtk")
+(define-boxed Style
+  (in-module "GtkSourceView")
   (c-name "GtkSourceStyle")
   (gtype-id "GTK_TYPE_SOURCE_STYLE")
   (copy-func "gtk_source_style_copy")
   (release-func "gtk_source_style_free")
   (fields
-    '("guint" "mask")
+    '("GtkSourceStyleMask" "mask")
     '("GdkColor" "foreground")
     '("GdkColor" "background")
     '("gboolean" "italic")
@@ -63,8 +63,8 @@
 
 ;; Typedefs
 
-(define-object SourceMarker
-  (in-module "Gtk")
+(define-object Marker
+  (in-module "GtkSourceView")
   (parent "GtkTextMark")
   (c-name "GtkSourceMarker")
   (gtype-id "GTK_TYPE_SOURCE_MARKER")
@@ -72,8 +72,8 @@
 
 ;; Enumerations and flags ...
 
-(define-flags SourceSearchFlags
-  (in-module "Gtk")
+(define-flags SearchFlags
+  (in-module "GtkSourceView")
   (c-name "GtkSourceSearchFlags")
   (gtype-id "GTK_TYPE_SOURCE_SEARCH_FLAGS")
   (values
@@ -83,30 +83,16 @@
   )
 )
 
-(define-flags SourceStyleMask
-  (in-module "Gtk")
+(define-flags StyleMask
+  (in-module "GtkSourceView")
   (c-name "GtkSourceStyleMask")
   (gtype-id "GTK_TYPE_SOURCE_STYLE_MASK")
-  (values
-    '("background" "GTK_SOURCE_STYLE_USE_BACKGROUND")
-    '("foreground" "GTK_SOURCE_STYLE_USE_FOREGROUND")
-    '("italic" "GTK_SOURCE_STYLE_USE_ITALIC")
-    '("bold" "GTK_SOURCE_STYLE_USE_BOLD")
-    '("underline" "GTK_SOURCE_STYLE_USE_UNDERLINE")
-    '("strikethrough" "GTK_SOURCE_STYLE_USE_STRIKETHROUGH")
-  )
 )
 
-(define-enum SourceViewSmartHomeEndType
-  (in-module "Gtk")
+(define-enum SmartHomeEndType
+  (in-module "GtkSourceView")
   (c-name "GtkSourceViewSmartHomeEndType")
   (gtype-id "GTK_TYPE_SOURCE_VIEW_SMART_HOME_END_TYPE")
-  (values
-    '("disabled" "GTKSOURCEVIEW_SMART_HOME_END_DISABLED")
-    '("before" "GTKSOURCEVIEW_SMART_HOME_END_BEFORE")
-    '("after" "GTKSOURCEVIEW_SMART_HOME_END_AFTER")
-    '("always" "GTKSOURCEVIEW_SMART_HOME_END_ALWAYS")
-  )
 )
 
 
@@ -121,16 +107,9 @@
   (c-name "gtk_source_buffer_new")
   (is-constructor-of "GtkSourceBuffer")
   (return-type "GtkSourceBuffer*")
-  (parameters
-    '("GtkTextTagTable*" "table" (null-ok) (default "NULL"))
-  )
-)
-
-(define-function gtk_source_buffer_new_with_language
-  (c-name "gtk_source_buffer_new_with_language")
-  (return-type "GtkSourceBuffer*")
-  (parameters
-    '("GtkSourceLanguage*" "language")
+  (properties
+    '("language" (optional))
+    '("tag_table" (optional))
   )
 )
 
@@ -645,22 +624,12 @@
 
 ;; From gtksourceview.h
 
-(define-function gtk_source_view_get_type
-  (c-name "gtk_source_view_get_type")
-  (return-type "GType")
-)
-
 (define-function gtk_source_view_new
   (c-name "gtk_source_view_new")
   (is-constructor-of "GtkSourceView")
   (return-type "GtkWidget*")
-)
-
-(define-function gtk_source_view_new_with_buffer
-  (c-name "gtk_source_view_new_with_buffer")
-  (return-type "GtkWidget*")
-  (parameters
-    '("GtkSourceBuffer*" "buffer")
+  (properties
+    '("buffer" (optional))
   )
 )
 
