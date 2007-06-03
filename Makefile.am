@@ -28,7 +28,7 @@ gtksourceview2module_la_LIBADD = $(PYGTKSOURCEVIEW2_LIBS)
 gtksourceview2module_la_SOURCES = gtksourceview2module.c 
 nodist_gtksourceview2module_la_SOURCES = gtksourceview2.c
 gtksourceview2.c: gtksourceview2.defs gtksourceview2.override
-CLEANFILES = pygtksourceview2.c
+CLEANFILES = gtksourceview2.c
 
 .defs.c:
 	(cd $(srcdir)\

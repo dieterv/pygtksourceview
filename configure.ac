@@ -1,8 +1,8 @@
 AC_PREREQ(2.52)
 
 dnl the pygtksourceview2 version number
-m4_define(pygtksourceview2_major_version, 0)
-m4_define(pygtksourceview2_minor_version, 8)
+m4_define(pygtksourceview2_major_version, 1)
+m4_define(pygtksourceview2_minor_version, 90)
 m4_define(pygtksourceview2_micro_version, 0)
 m4_define(pygtksourceview2_version, pygtksourceview2_major_version.pygtksourceview2_minor_version.pygtksourceview2_micro_version)
 
