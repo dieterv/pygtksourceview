@@ -169,7 +169,7 @@
   (c-name "gtk_source_buffer_set_language")
   (return-type "none")
   (parameters
-    '("GtkSourceLanguage*" "language")
+    '("GtkSourceLanguage*" "language" (null-ok))
   )
 )
 

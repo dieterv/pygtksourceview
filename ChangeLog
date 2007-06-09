@@ -1,3 +1,8 @@
+2007-06-09  Yevgen Muntyan  <muntyan@tamu.edu>
+
+	* gtksourceview2.defs: added (null-ok) to Buffer.set_language.
+	* autogen.sh: do not fail when builddir != srcdir.
+
 2007-06-03  Yevgen Muntyan  <muntyan@tamu.edu>
 
 	Some little fixes.

@@ -1,8 +1,11 @@
 #!/bin/sh
 # Run this to generate all the initial makefiles, etc.
 
+builddir=`pwd`
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
+srcdir=`cd $srcdir && pwd`
+cd $srcdir
 
 DIE=0
 
@@ -152,6 +155,7 @@ done
 
 conf_flags="--enable-maintainer-mode"
 
+cd $builddir
 if test x$NOCONFIGURE = x; then
   echo Running $srcdir/configure $conf_flags "$@" ...
   $srcdir/configure $conf_flags "$@" \
