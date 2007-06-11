@@ -406,6 +406,11 @@
   (return-type "GtkSourceLanguageManager*")
 )
 
+(define-function language_manager_get_default
+  (c-name "gtk_source_language_manager_get_default")
+  (return-type "GtkSourceLanguageManager*")
+)
+
 (define-method get_available_languages
   (of-object "GtkSourceLanguageManager")
   (c-name "gtk_source_language_manager_get_available_languages")
@@ -532,6 +537,11 @@
 (define-function gtk_source_style_manager_new
   (c-name "gtk_source_style_manager_new")
   (is-constructor-of "GtkSourceStyleManager")
+  (return-type "GtkSourceStyleManager*")
+)
+
+(define-function style_manager_get_default
+  (c-name "gtk_source_style_manager_get_default")
   (return-type "GtkSourceStyleManager*")
 )
 

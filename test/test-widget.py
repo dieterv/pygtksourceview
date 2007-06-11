@@ -79,7 +79,8 @@ def load_file(buffer, uri):
 ######################################################################
 ##### Note this function is silly and wrong, because it ignores mime
 ##### parent types and subtypes.
-def get_language_for_mime_type(lang_manager, mime):
+def get_language_for_mime_type(mime):
+    lang_manager = gtksourceview2.language_manager_get_default()
     langs = lang_manager.get_available_languages()
     for lang in langs:
         for m in lang.get_mime_types():
@@ -91,7 +92,6 @@ def get_language_for_mime_type(lang_manager, mime):
 ##### buffer creation
 def open_file(buffer, filename):
     # get the new language for the file mimetype
-    manager = buffer.get_data('languages-manager')
 
     if os.path.isabs(filename):
         path = filename
@@ -101,8 +101,9 @@ def open_file(buffer, filename):
 
     mime_type = gnomevfs.get_mime_type(path) # needs ASCII filename, not URI
     language = None
+
     if mime_type:
-        language = get_language_for_mime_type(manager, mime_type)
+        language = get_language_for_mime_type(mime_type)
         if not language:
             print 'No language found for mime type "%s"' % mime_type
     else:
@@ -423,11 +424,11 @@ def create_main_window(buffer):
 ##### main
 def main(args = []):
     # create buffer
-    lm = gtksourceview2.LanguageManager()
-    sm = gtksourceview2.StyleManager()
     buffer = gtksourceview2.Buffer()
-    buffer.set_data('languages-manager', lm)
-    buffer.set_style_scheme(sm.get_scheme('kate'))
+    mgr = gtksourceview2.style_manager_get_default()
+    style_scheme = mgr.get_scheme('kate')
+    if style_scheme:
+        buffer.set_style_scheme(style_scheme)
 
     # parse arguments
     if len(args) > 2:

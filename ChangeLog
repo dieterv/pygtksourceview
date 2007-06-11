@@ -1,3 +1,8 @@
+2007-06-11  Yevgen Muntyan  <muntyan@tamu.edu>
+
+	* gtksourceview2.defs: wrapped gtk_source_*_manager_get_default().
+	* test/test-widget.py: use new api here.
+
 2007-06-09  Yevgen Muntyan  <muntyan@tamu.edu>
 
 	* gtksourceview2.defs: added (null-ok) to Buffer.set_language.
