@@ -35,30 +35,18 @@
   (gtype-id "GTK_TYPE_SOURCE_STYLE_SCHEME")
 )
 
+(define-object Style
+  (in-module "GtkSourceView")
+  (parent "GObject")
+  (c-name "GtkSourceStyle")
+  (gtype-id "GTK_TYPE_SOURCE_STYLE")
+)
+
 (define-object View
   (in-module "GtkSourceView")
   (parent "GtkTextView")
   (c-name "GtkSourceView")
   (gtype-id "GTK_TYPE_SOURCE_VIEW")
-)
-
-;; Boxed types
-
-(define-boxed Style
-  (in-module "GtkSourceView")
-  (c-name "GtkSourceStyle")
-  (gtype-id "GTK_TYPE_SOURCE_STYLE")
-  (copy-func "gtk_source_style_copy")
-  (release-func "gtk_source_style_free")
-  (fields
-    '("GtkSourceStyleMask" "mask")
-    '("GdkColor" "foreground")
-    '("GdkColor" "background")
-    '("gboolean" "italic")
-    '("gboolean" "bold")
-    '("gboolean" "underline")
-    '("gboolean" "strikethrough")
-  )
 )
 
 ;; Typedefs
@@ -81,12 +69,6 @@
     '("text-only" "GTK_SOURCE_SEARCH_TEXT_ONLY")
     '("case-insensitive" "GTK_SOURCE_SEARCH_CASE_INSENSITIVE")
   )
-)
-
-(define-flags StyleMask
-  (in-module "GtkSourceView")
-  (c-name "GtkSourceStyleMask")
-  (gtype-id "GTK_TYPE_SOURCE_STYLE_MASK")
 )
 
 (define-enum SmartHomeEndType
@@ -508,9 +490,6 @@
   (c-name "gtk_source_style_new")
   (is-constructor-of "GtkSourceStyle")
   (return-type "GtkSourceStyle*")
-  (parameters
-    '("GtkSourceStyleMask" "mask")
-  )
 )
 
 (define-method copy
@@ -518,13 +497,6 @@
   (c-name "gtk_source_style_copy")
   (return-type "GtkSourceStyle*")
 )
-
-(define-method free
-  (of-object "GtkSourceStyle")
-  (c-name "gtk_source_style_free")
-  (return-type "none")
-)
-
 
 
 ;; From gtksourcestylemanager.h
@@ -600,6 +572,7 @@
   (of-object "GtkSourceStyleScheme")
   (c-name "gtk_source_style_scheme_get_style")
   (return-type "GtkSourceStyle*")
+  (caller-owns-return "t")
   (parameters
     '("const-gchar*" "style_name")
   )
@@ -608,6 +581,7 @@
 (define-method get_matching_brackets_style
   (of-object "GtkSourceStyleScheme")
   (c-name "gtk_source_style_scheme_get_matching_brackets_style")
+  (caller-owns-return "t")
   (return-type "GtkSourceStyle*")
 )
 
