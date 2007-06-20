@@ -796,21 +796,7 @@
 )
 
 
-(define-virtual highlight_updated
-  (of-object "GtkSourceBuffer")
-  (return-type "none")
-  (parameters
-    '("GtkTextIter*" "start")
-    '("GtkTextIter*" "end")
-  )
-)
-(define-virtual marker_updated
-  (of-object "GtkSourceBuffer")
-  (return-type "none")
-  (parameters
-    '("GtkTextIter*" "where")
-  )
-)
+
 (define-virtual changed
   (of-object "GtkSourceStyleManager")
   (return-type "none")
