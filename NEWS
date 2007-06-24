@@ -1,4 +1,13 @@
+News in 1.90.1
+==============
+
+    o plenty of fixes in defs file (muntyan, pbor)
+    o require pygobject 2.8 instead of 2.10 (muntyan)
+    o updated View and Buffer constructors (muntyan)
+    o removed Source prefix (muntyan)
+    o test-widget now works removing old gnome print stuff (muntyan)
+
 News in 1.90.0
 ==============
 
-* First public release, it binds most of the GtkSourceView 2 API.
+    o First public release, it binds most of the GtkSourceView 2 API.

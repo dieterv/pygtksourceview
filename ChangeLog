@@ -1,3 +1,12 @@
+=== pygtksourceview 1.90.1 ===
+
+2007-06-24  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* configure.ac:
+	* NEWS:
+
+	pygtksourceview 1.90.1 released
+
 2007-06-20  Paolo Borelli  <pborelli@katamail.com>
 
 	* gtksourceview2.defs: remove Buffer signals which are not 
