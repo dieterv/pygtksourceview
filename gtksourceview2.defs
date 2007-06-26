@@ -572,7 +572,6 @@
   (of-object "GtkSourceStyleScheme")
   (c-name "gtk_source_style_scheme_get_style")
   (return-type "GtkSourceStyle*")
-  (caller-owns-return "t")
   (parameters
     '("const-gchar*" "style_name")
   )
@@ -581,7 +580,6 @@
 (define-method get_matching_brackets_style
   (of-object "GtkSourceStyleScheme")
   (c-name "gtk_source_style_scheme_get_matching_brackets_style")
-  (caller-owns-return "t")
   (return-type "GtkSourceStyle*")
 )
 
@@ -594,15 +592,15 @@
   )
 )
 
-(define-method set_style
-  (of-object "GtkSourceStyleScheme")
-  (c-name "gtk_source_style_scheme_set_style")
-  (return-type "none")
-  (parameters
-    '("const-gchar*" "name")
-    '("const-GtkSourceStyle*" "style")
-  )
-)
+; (define-method set_style
+;   (of-object "GtkSourceStyleScheme")
+;   (c-name "gtk_source_style_scheme_set_style")
+;   (return-type "none")
+;   (parameters
+;     '("const-gchar*" "name")
+;     '("const-GtkSourceStyle*" "style")
+;   )
+; )
 
 
 

@@ -1,3 +1,7 @@
+2007-06-26  Yevgen Muntyan  <muntyan@tamu.edu>
+
+	* gtksourceview2.defs: updated for changed GtkSourceStyleScheme API.
+
 === pygtksourceview 1.90.1 ===
 
 2007-06-24  Gian Mario Tagliaretti  <gianmt@gnome.org>
