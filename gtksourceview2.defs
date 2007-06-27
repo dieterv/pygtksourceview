@@ -393,10 +393,10 @@
   (return-type "GtkSourceLanguageManager*")
 )
 
-(define-method get_available_languages
+(define-method list_languages
   (of-object "GtkSourceLanguageManager")
-  (c-name "gtk_source_language_manager_get_available_languages")
-  (return-type "const-GSList*")
+  (c-name "gtk_source_language_manager_list_languages")
+  (return-type "GSList*")
 )
 
 (define-method get_language_by_id

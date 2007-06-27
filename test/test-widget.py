@@ -81,7 +81,7 @@ def load_file(buffer, uri):
 ##### parent types and subtypes.
 def get_language_for_mime_type(mime):
     lang_manager = gtksourceview2.language_manager_get_default()
-    langs = lang_manager.get_available_languages()
+    langs = lang_manager.list_languages()
     for lang in langs:
         for m in lang.get_mime_types():
             if m == mime:

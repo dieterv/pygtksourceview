@@ -1,5 +1,13 @@
 2007-06-27  Yevgen Muntyan  <muntyan@tamu.edu>
 
+	* tests/test-widget.py
+	* gtksourceview2.defs:
+	* gtksourceview2.override (_wrap_gtk_source_style_manager_list_schemes,
+	_wrap_gtk_source_language_manager_list_languages):
+	API changed once again.
+
+2007-06-27  Yevgen Muntyan  <muntyan@tamu.edu>
+
 	* gtksourceview2.override (_wrap_gtk_source_style_manager_list_schemes):
 	updated for changed GtkSourceStyleManager API.
 
