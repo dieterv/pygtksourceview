@@ -1,3 +1,8 @@
+2007-06-27  Yevgen Muntyan  <muntyan@tamu.edu>
+
+	* gtksourceview2.override (_wrap_gtk_source_style_manager_list_schemes):
+	updated for changed GtkSourceStyleManager API.
+
 2007-06-26  Yevgen Muntyan  <muntyan@tamu.edu>
 
 	* gtksourceview2.defs: updated for changed GtkSourceStyleScheme API.

@@ -276,8 +276,5 @@ _wrap_gtk_source_style_manager_list_schemes(PyGObject *self)
     ret = gtk_source_style_manager_list_schemes(GTK_SOURCE_STYLE_MANAGER(self->obj));
     py_ret = gslist_to_pylist_objs(ret);
 
-    g_slist_foreach (ret, (GFunc) g_object_unref, NULL);
-    g_slist_free (ret);
-
     return py_ret;
 }
