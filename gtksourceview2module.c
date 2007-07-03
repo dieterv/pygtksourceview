@@ -40,7 +40,7 @@ initgtksourceview2 (void)
 
     pygtksourceview2_register_classes (d);
 
-    pygtksourceview2_add_constants(m, "GTK_");
+    pygtksourceview2_add_constants(m, "GTK_SOURCE_");
 
     PyModule_AddObject(m, "pygtksourceview2_version",
                        Py_BuildValue("iii",
