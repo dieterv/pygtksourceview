@@ -1,3 +1,13 @@
+
+=== pygtksourceview 1.90.2 ===
+
+2007-07-03  Paolo Borelli  <pborelli@katamail.com>
+
+	* configure.ac:
+	* NEWS:
+
+	pygtksourceview 1.90.2 released
+
 2007-07-03  Paolo Borelli  <pborelli@katamail.com>
 
 	* gtkosurceview2module.c: the prefix for constants is GTK_SOURCE_
