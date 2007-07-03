@@ -73,8 +73,8 @@
 
 (define-enum SmartHomeEndType
   (in-module "GtkSourceView")
-  (c-name "GtkSourceViewSmartHomeEndType")
-  (gtype-id "GTK_TYPE_SOURCE_VIEW_SMART_HOME_END_TYPE")
+  (c-name "GtkSourceSmartHomeEndType")
+  (gtype-id "GTK_TYPE_SOURCE_SMART_HOME_END_TYPE")
 )
 
 
@@ -774,14 +774,14 @@
   (c-name "gtk_source_view_set_smart_home_end")
   (return-type "none")
   (parameters
-    '("GtkSourceViewSmartHomeEndType" "smart_he")
+    '("GtkSourceSmartHomeEndType" "smart_he")
   )
 )
 
 (define-method get_smart_home_end
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_get_smart_home_end")
-  (return-type "GtkSourceViewSmartHomeEndType")
+  (return-type "GtkSourceSmartHomeEndType")
 )
 
 
