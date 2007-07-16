@@ -348,7 +348,7 @@ def create_view_window(buffer, sourceview = None):
     vbox.pack_start(pos_label, False, False, 0)
 
     # setup view
-    font_desc = pango.FontDescription('monospace 10')
+    font_desc = pango.FontDescription('monospace')
     if font_desc:
         view.modify_font(font_desc)
 

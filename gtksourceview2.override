@@ -198,10 +198,10 @@ override gtk_source_language_manager_get_search_path noargs
 static PyObject *
 _wrap_gtk_source_language_manager_get_search_path(PyGObject *self)
 {
-    gchar **ret;
+    char **ret;
     PyObject  *py_ret;
 
-    ret = gtk_source_language_manager_get_search_path(GTK_SOURCE_LANGUAGE_MANAGER(self->obj));
+    ret = gtk_source_language_manager_get_search_path (GTK_SOURCE_LANGUAGE_MANAGER(self->obj));
     py_ret = strv_to_pylist (ret);
 
     return py_ret;
@@ -234,11 +234,11 @@ override gtk_source_style_manager_get_search_path noargs
 static PyObject *
 _wrap_gtk_source_style_manager_get_search_path(PyGObject *self)
 {
-    gchar **ret;
+    const char * const *ret;
     PyObject *py_ret;
 
     ret = gtk_source_style_manager_get_search_path (GTK_SOURCE_STYLE_MANAGER (self->obj));
-    py_ret = strv_to_pylist (ret);
+    py_ret = strv_to_pylist ((char**) ret);
 
     return py_ret;
 }
@@ -266,16 +266,15 @@ _wrap_gtk_source_style_manager_set_search_path(PyGObject *self, PyObject *args, 
 }
 
 %%
-override gtk_source_style_manager_list_schemes noargs
+override gtk_source_style_manager_get_scheme_ids noargs
 static PyObject *
-_wrap_gtk_source_style_manager_list_schemes(PyGObject *self)
+_wrap_gtk_source_style_manager_get_scheme_ids (PyGObject *self)
 {
     PyObject *py_ret;
-    GSList *ret;
+    const char * const *ret;
 
-    ret = gtk_source_style_manager_list_schemes(GTK_SOURCE_STYLE_MANAGER(self->obj));
-    py_ret = gslist_to_pylist_objs(ret);
-    g_slist_free (ret);
+    ret = gtk_source_style_manager_get_scheme_ids (GTK_SOURCE_STYLE_MANAGER (self->obj));
+    py_ret = strv_to_pylist ((char**) ret);
 
     return py_ret;
 }

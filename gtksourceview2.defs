@@ -64,11 +64,6 @@
   (in-module "GtkSourceView")
   (c-name "GtkSourceSearchFlags")
   (gtype-id "GTK_TYPE_SOURCE_SEARCH_FLAGS")
-  (values
-    '("visible-only" "GTK_SOURCE_SEARCH_VISIBLE_ONLY")
-    '("text-only" "GTK_SOURCE_SEARCH_TEXT_ONLY")
-    '("case-insensitive" "GTK_SOURCE_SEARCH_CASE_INSENSITIVE")
-  )
 )
 
 (define-enum SmartHomeEndType
@@ -79,11 +74,6 @@
 
 
 ;; From gtksourcebuffer.h
-
-(define-function gtk_source_buffer_get_type
-  (c-name "gtk_source_buffer_get_type")
-  (return-type "GType")
-)
 
 (define-function gtk_source_buffer_new
   (c-name "gtk_source_buffer_new")
@@ -329,11 +319,6 @@
 
 ;; From gtksourcelanguage.h
 
-(define-function gtk_source_language_get_type
-  (c-name "gtk_source_language_get_type")
-  (return-type "GType")
-)
-
 (define-method get_id
   (of-object "GtkSourceLanguage")
   (c-name "gtk_source_language_get_id")
@@ -377,11 +362,6 @@
 
 ;; From gtksourcelanguagemanager.h
 
-(define-function gtk_source_language_manager_get_type
-  (c-name "gtk_source_language_manager_get_type")
-  (return-type "GType")
-)
-
 (define-function gtk_source_language_manager_new
   (c-name "gtk_source_language_manager_new")
   (is-constructor-of "GtkSourceLanguageManager")
@@ -411,7 +391,7 @@
 (define-method get_search_path
   (of-object "GtkSourceLanguageManager")
   (c-name "gtk_source_language_manager_get_search_path")
-  (return-type "gchar**")
+  (return-type "const-gchar**")
 )
 
 (define-method set_search_path
@@ -426,11 +406,6 @@
 
 
 ;; From gtksourcemarker.h
-
-(define-function gtk_source_marker_get_type
-  (c-name "gtk_source_marker_get_type")
-  (return-type "GType")
-)
 
 (define-method set_marker_type
   (of-object "GtkSourceMarker")
@@ -481,11 +456,6 @@
 
 ;; From gtksourcestyle.h
 
-(define-function gtk_source_style_get_type
-  (c-name "gtk_source_style_get_type")
-  (return-type "GType")
-)
-
 (define-function gtk_source_style_new
   (c-name "gtk_source_style_new")
   (is-constructor-of "GtkSourceStyle")
@@ -500,11 +470,6 @@
 
 
 ;; From gtksourcestylemanager.h
-
-(define-function gtk_source_style_manager_get_type
-  (c-name "gtk_source_style_manager_get_type")
-  (return-type "GType")
-)
 
 (define-function gtk_source_style_manager_new
   (c-name "gtk_source_style_manager_new")
@@ -529,13 +494,31 @@
 (define-method get_search_path
   (of-object "GtkSourceStyleManager")
   (c-name "gtk_source_style_manager_get_search_path")
-  (return-type "gchar**")
+  (return-type "const-gchar**")
 )
 
-(define-method list_schemes
+(define-method append_search_path
   (of-object "GtkSourceStyleManager")
-  (c-name "gtk_source_style_manager_list_schemes")
-  (return-type "GSList*")
+  (c-name "gtk_source_style_manager_append_search_path")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
+
+(define-method prepend_search_path
+  (of-object "GtkSourceStyleManager")
+  (c-name "gtk_source_style_manager_prepend_search_path")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
+
+(define-method get_scheme_ids
+  (of-object "GtkSourceStyleManager")
+  (c-name "gtk_source_style_manager_get_scheme_ids")
+  (return-type "const-gchar**")
 )
 
 (define-method get_scheme
@@ -550,11 +533,6 @@
 
 
 ;; From gtksourcestylescheme.h
-
-(define-function gtk_source_style_scheme_get_type
-  (c-name "gtk_source_style_scheme_get_type")
-  (return-type "GType")
-)
 
 (define-method get_id
   (of-object "GtkSourceStyleScheme")
@@ -782,28 +760,4 @@
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_get_smart_home_end")
   (return-type "GtkSourceSmartHomeEndType")
-)
-
-
-
-;; From gtksourceview-typebuiltins.h
-
-(define-function gtk_source_search_flags_get_type
-  (c-name "gtk_source_search_flags_get_type")
-  (return-type "GType")
-)
-
-
-
-(define-virtual changed
-  (of-object "GtkSourceStyleManager")
-  (return-type "none")
-)
-(define-virtual undo
-  (of-object "GtkSourceView")
-  (return-type "none")
-)
-(define-virtual redo
-  (of-object "GtkSourceView")
-  (return-type "none")
 )
