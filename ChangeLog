@@ -3,6 +3,15 @@
 	* gtkosurceview2.defs: add get_description and get_filename
 	to StyleScheme.
 
+2007-07-16  Yevgen Muntyan  <muntyan at tamu dot edu>
+
+	* tests/test-widget.py:
+	Do not hardcode font size, just use "monospace".
+
+	* gtksourceview2.defs:
+	* gtksourceview2.override:
+	API has changed once again.
+
 === pygtksourceview 1.90.2 ===
 
 2007-07-03  Paolo Borelli  <pborelli@katamail.com>
