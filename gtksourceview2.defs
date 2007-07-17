@@ -546,6 +546,18 @@
   (return-type "const-gchar*")
 )
 
+(define-method get_description
+  (of-object "GtkSourceStyleScheme")
+  (c-name "gtk_source_style_scheme_get_description")
+  (return-type "const-gchar*")
+)
+
+(define-method get_filename
+  (of-object "GtkSourceStyleScheme")
+  (c-name "gtk_source_style_scheme_get_filename")
+  (return-type "const-gchar*")
+)
+
 (define-method get_style
   (of-object "GtkSourceStyleScheme")
   (c-name "gtk_source_style_scheme_get_style")

@@ -1,3 +1,7 @@
+2007-07-17  Paolo Borelli  <pborelli@katamail.com>
+
+	* gtkosurceview2.defs: add get_description and get_filename
+	to StyleScheme.
 
 === pygtksourceview 1.90.2 ===
 
