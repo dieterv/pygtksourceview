@@ -1,3 +1,19 @@
+2007-07-17  Yevgen Muntyan  <muntyan at tamu dot edu>
+
+	Mingw cross-compiling fixes and some cleanup.
+
+	* acinclude.m4: MOO_AM_PYTHON_DEVEL_CROSS_MINGW macro to
+	use when cross-compiling with mingw.
+
+	* configure.ac:
+	Use that macro; use '$PKG_CONFIG' instead of 'pkg-config';
+	do not use -std=c9x gcc option, we do not do C99.
+
+	* Makefile.am:
+	require automake-1.9, not 1.7;
+        use -no-undefined and -shrext ".pyd" on win32;
+        call the library "gtksourceview2", not "gtksourceview2module".
+
 2007-07-17  Paolo Borelli  <pborelli@katamail.com>
 
 	* gtkosurceview2.defs: add get_description and get_filename

@@ -55,9 +55,12 @@ AC_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
+if test "x$os_win32" = xyes -a "x$cross_compiling" = xyes; then
+MOO_AM_PYTHON_DEVEL_CROSS_MINGW(,[AC_MSG_ERROR(could not find Python headers)])
+else
 AM_PATH_PYTHON(2.2)
-
 AM_CHECK_PYTHON_HEADERS(,[AC_MSG_ERROR(could not find Python headers)])
+fi
 
 dnl check pygobject path for docs xsl
 PKG_CHECK_MODULES(PYGOBJECT, [pygobject-2.0 >= pygobject_required_version])
@@ -103,14 +106,15 @@ PKG_CHECK_MODULES(PYGTKSOURCEVIEW, [
                   pygtk-2.0 >= pygtk_required_version
                   gtksourceview-2.0 >= gtksourceview_required_version
                   ])
-PYGTK_DATADIR=`pkg-config --variable=datadir pygtk-2.0`
+PYGTK_DATADIR=`$PKG_CONFIG --variable=datadir pygtk-2.0`
 
 AC_SUBST(PYGTK_DATADIR)
 
 
 dnl codegen
 AC_MSG_CHECKING(for pygtk codegen)
-CODEGENDIR=`pkg-config --variable=codegendir pygtk-2.0`
+CODEGENDIR=`$PKG_CONFIG --variable=codegendir pygtk-2.0`
+echo $CODEGENDIR
 if test -f $CODEGENDIR/codegen.py; then
 	CODEGEN=$CODEGENDIR/codegen.py
 	AC_MSG_RESULT(yes)
@@ -121,7 +125,6 @@ fi
 AC_SUBST(CODEGEN)
 
 JH_ADD_CFLAG([-Wall])
-JH_ADD_CFLAG([-std=c9x])
 JH_ADD_CFLAG([-fno-strict-aliasing])
 
 dnl output

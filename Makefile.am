@@ -1,5 +1,5 @@
-# require automake-1.7
-AUTOMAKE_OPTIONS=1.7
+# require automake-1.9
+AUTOMAKE_OPTIONS=1.9
 
 SUBDIRS = test
 
@@ -20,13 +20,18 @@ defs_DATA = gtksourceview2.defs
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = pygtksourceview-2.0.pc
 
+if PLATFORM_WIN32
+no_undefined = -no-undefined
+pyd_ext = -shrext ".pyd"
+endif
+
 # pygtksourceview2 module
-pyexec_LTLIBRARIES = gtksourceview2module.la
-gtksourceview2module_la_LDFLAGS = -module -avoid-version -export-symbols-regex initgtksourceview2
-gtksourceview2module_la_CFLAGS = $(PYGTKSOURCEVIEW_CFLAGS)
-gtksourceview2module_la_LIBADD = $(PYGTKSOURCEVIEW_LIBS)
-gtksourceview2module_la_SOURCES = gtksourceview2module.c 
-nodist_gtksourceview2module_la_SOURCES = gtksourceview2.c
+pyexec_LTLIBRARIES = gtksourceview2.la
+gtksourceview2_la_LDFLAGS = -module -avoid-version -export-symbols-regex initgtksourceview2 $(no_undefined) $(pyd_ext)
+gtksourceview2_la_CFLAGS = $(PYGTKSOURCEVIEW_CFLAGS)
+gtksourceview2_la_LIBADD = $(PYGTKSOURCEVIEW_LIBS) $(PYTHON_LIBS)
+gtksourceview2_la_SOURCES = gtksourceview2module.c 
+nodist_gtksourceview2_la_SOURCES = gtksourceview2.c
 gtksourceview2.c: gtksourceview2.defs gtksourceview2.override
 CLEANFILES = gtksourceview2.c
 
