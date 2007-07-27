@@ -1,3 +1,8 @@
+2007-07-27  Paolo Borelli  <pborelli@katamail.com>
+
+	* gtkosurceview2.defs: bind Buffer.ensure_highlight and
+	language.get_hidden.
+
 2007-07-17  Yevgen Muntyan  <muntyan at tamu dot edu>
 
 	Mingw cross-compiling fixes and some cleanup.

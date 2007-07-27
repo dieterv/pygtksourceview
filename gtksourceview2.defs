@@ -285,6 +285,16 @@
   )
 )
 
+(define-method ensure_highlight
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_ensure_highlight")
+  (return-type "none")
+  (parameters
+    '("GtkTextIter*" "start")
+    '("GtkTextIter*" "end")
+  )
+)
+
 
 
 ;; From gtksourceiter.h
@@ -335,6 +345,12 @@
   (of-object "GtkSourceLanguage")
   (c-name "gtk_source_language_get_section")
   (return-type "const-gchar*")
+)
+
+(define-method get_hidden
+  (of-object "GtkSourceLanguage")
+  (c-name "gtk_source_language_get_hidden")
+  (return-type "gboolean")
 )
 
 (define-method get_metadata
