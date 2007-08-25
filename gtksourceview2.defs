@@ -583,21 +583,6 @@
   )
 )
 
-(define-method get_matching_brackets_style
-  (of-object "GtkSourceStyleScheme")
-  (c-name "gtk_source_style_scheme_get_matching_brackets_style")
-  (return-type "GtkSourceStyle*")
-)
-
-(define-method get_current_line_color
-  (of-object "GtkSourceStyleScheme")
-  (c-name "gtk_source_style_scheme_get_current_line_color")
-  (return-type "gboolean")
-  (parameters
-    '("GdkColor*" "color")
-  )
-)
-
 ; (define-method set_style
 ;   (of-object "GtkSourceStyleScheme")
 ;   (c-name "gtk_source_style_scheme_set_style")
