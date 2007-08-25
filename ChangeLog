@@ -1,5 +1,9 @@
 2007-08-25  Paolo Borelli  <pborelli@katamail.com>
 
+	* gtkosurceview2.defs: update to latest api changes.
+
+2007-08-25  Paolo Borelli  <pborelli@katamail.com>
+
 	* gtkosurceview2.defs: remove methods that do not exist anymore.
 
 === pygtksourceview 1.90.2 ===

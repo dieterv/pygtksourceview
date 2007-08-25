@@ -85,30 +85,30 @@
   )
 )
 
-(define-method get_check_brackets
+(define-method get_highlight_syntax
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_get_check_brackets")
+  (c-name "gtk_source_buffer_get_highlight_syntax")
   (return-type "gboolean")
 )
 
-(define-method set_check_brackets
+(define-method set_highlight_syntax
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_set_check_brackets")
+  (c-name "gtk_source_buffer_set_highlight_syntax")
   (return-type "none")
   (parameters
-    '("gboolean" "check_brackets")
+    '("gboolean" "highlight")
   )
 )
 
-(define-method get_highlight
+(define-method get_highlight_matching_brackets
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_get_highlight")
+  (c-name "gtk_source_buffer_get_highlight_matching_brackets")
   (return-type "gboolean")
 )
 
-(define-method set_highlight
+(define-method set_highlight_matching_brackets
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_set_highlight")
+  (c-name "gtk_source_buffer_set_highlight_matching_brackets")
   (return-type "none")
   (parameters
     '("gboolean" "highlight")
@@ -636,18 +636,33 @@
   (return-type "gboolean")
 )
 
-(define-method set_tabs_width
+(define-method set_indent_width
   (of-object "GtkSourceView")
-  (c-name "gtk_source_view_set_tabs_width")
+  (c-name "gtk_source_view_set_indent_width")
   (return-type "none")
   (parameters
     '("guint" "width")
   )
 )
 
-(define-method get_tabs_width
+(define-method get_indent_width
   (of-object "GtkSourceView")
-  (c-name "gtk_source_view_get_tabs_width")
+  (c-name "gtk_source_view_get_indent_width")
+  (return-type "guint")
+)
+
+(define-method set_tab_width
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_tab_width")
+  (return-type "none")
+  (parameters
+    '("guint" "width")
+  )
+)
+
+(define-method get_tab_width
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_tab_width")
   (return-type "guint")
 )
 
