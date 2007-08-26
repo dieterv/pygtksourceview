@@ -395,9 +395,9 @@
   (return-type "GSList*")
 )
 
-(define-method get_language_by_id
+(define-method get_language
   (of-object "GtkSourceLanguageManager")
-  (c-name "gtk_source_language_manager_get_language_by_id")
+  (c-name "gtk_source_language_manager_get_language")
   (return-type "GtkSourceLanguage*")
   (parameters
     '("const-gchar*" "id")
