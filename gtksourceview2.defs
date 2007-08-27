@@ -696,21 +696,6 @@
   (return-type "gboolean")
 )
 
-(define-method set_show_margin
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_set_show_margin")
-  (return-type "none")
-  (parameters
-    '("gboolean" "show")
-  )
-)
-
-(define-method get_show_margin
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_get_show_margin")
-  (return-type "gboolean")
-)
-
 (define-method set_indent_on_tab
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_set_indent_on_tab")
@@ -741,18 +726,33 @@
   (return-type "gboolean")
 )
 
-(define-method set_margin
+(define-method set_show_right_margin
   (of-object "GtkSourceView")
-  (c-name "gtk_source_view_set_margin")
+  (c-name "gtk_source_view_set_show_right_margin")
   (return-type "none")
   (parameters
-    '("guint" "margin")
+    '("gboolean" "show")
   )
 )
 
-(define-method get_margin
+(define-method get_show_right_margin
   (of-object "GtkSourceView")
-  (c-name "gtk_source_view_get_margin")
+  (c-name "gtk_source_view_get_show_right_margin")
+  (return-type "gboolean")
+)
+
+(define-method set_right_margin_position
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_right_margin_position")
+  (return-type "none")
+  (parameters
+    '("guint" "pos")
+  )
+)
+
+(define-method get_right_margin_position
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_right_margin_position")
   (return-type "guint")
 )
 
