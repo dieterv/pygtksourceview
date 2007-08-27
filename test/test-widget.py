@@ -25,7 +25,7 @@
 import os, os.path
 import sys
 import gtk
-import gtksourceview2
+import gtksourceview2 as gtksourceview
 import gnomevfs
 import pango
 
@@ -80,7 +80,7 @@ def load_file(buffer, uri):
 ##### Note this function is silly and wrong, because it ignores mime
 ##### parent types and subtypes.
 def get_language_for_mime_type(mime):
-    lang_manager = gtksourceview2.language_manager_get_default()
+    lang_manager = gtksourceview.language_manager_get_default()
     langs = lang_manager.list_languages()
     for lang in langs:
         for m in lang.get_mime_types():
@@ -110,7 +110,7 @@ def open_file(buffer, filename):
         print 'Couldn\'t get mime type for file "%s"' % filename
 
     buffer.set_language(language)
-    buffer.set_highlight(True)
+    buffer.set_highlight_syntax(True)
     remove_all_markers(buffer)
     load_file(buffer, uri) # TODO: check return
     return True
@@ -127,7 +127,7 @@ def markers_toggled_cb(action, sourceview):
 
 
 def margin_toggled_cb(action, sourceview):
-    sourceview.set_show_margin(action.get_active())
+    sourceview.set_show_right_margin(action.get_active())
 
 
 def auto_indent_toggled_cb(action, sourceview):
@@ -139,7 +139,7 @@ def insert_spaces_toggled_cb(action, sourceview):
 
 
 def tabs_toggled_cb(action, action2, sourceview):
-    sourceview.set_tabs_width(action.get_current_value())
+    sourceview.set_tab_width(action.get_current_value())
 
 
 def new_view_cb(action, sourceview):
@@ -164,7 +164,7 @@ def open_file_cb(action, buffer):
 
 
 def update_cursor_position(buffer, view):
-    tabwidth = view.get_tabs_width()
+    tabwidth = view.get_tab_width()
     pos_label = view.get_data('pos_label')
     iter = buffer.get_iter_at_mark(buffer.get_insert())
     nchars = iter.get_offset()
@@ -243,7 +243,7 @@ view_actions = [
     ('FileMenu', None, '_File'),
     ('ViewMenu', None, '_View'),
     ('NewView', gtk.STOCK_NEW, '_New View', None, 'Create a new view of the file', new_view_cb),
-    ('TabsWidth', None, '_Tabs Width')
+    ('TabWidth', None, '_Tab Width')
 ]
 
 toggle_actions = [
@@ -255,11 +255,11 @@ toggle_actions = [
 ]
 
 radio_actions = [
-    ('TabsWidth4', None, '4', None, 'Set tabulation width to 4 spaces', 4),
-    ('TabsWidth6', None, '6', None, 'Set tabulation width to 6 spaces', 6),
-    ('TabsWidth8', None, '8', None, 'Set tabulation width to 8 spaces', 8),
-    ('TabsWidth10', None, '10', None, 'Set tabulation width to 10 spaces', 10),
-    ('TabsWidth12', None, '12', None, 'Set tabulation width to 12 spaces', 12)
+    ('TabWidth4', None, '4', None, 'Set tabulation width to 4 spaces', 4),
+    ('TabWidth6', None, '6', None, 'Set tabulation width to 6 spaces', 6),
+    ('TabWidth8', None, '8', None, 'Set tabulation width to 8 spaces', 8),
+    ('TabWidth10', None, '10', None, 'Set tabulation width to 10 spaces', 10),
+    ('TabWidth12', None, '12', None, 'Set tabulation width to 12 spaces', 12)
 ]
 
 view_ui_description = """
@@ -275,12 +275,12 @@ view_ui_description = """
       <menuitem action='AutoIndent'/>
       <menuitem action='InsertSpaces'/>
       <separator/>
-      <menu action='TabsWidth'>
-        <menuitem action='TabsWidth4'/>
-        <menuitem action='TabsWidth6'/>
-        <menuitem action='TabsWidth8'/>
-        <menuitem action='TabsWidth10'/>
-        <menuitem action='TabsWidth12'/>
+      <menu action='TabWidth'>
+        <menuitem action='TabWidth4'/>
+        <menuitem action='TabWidth6'/>
+        <menuitem action='TabWidth8'/>
+        <menuitem action='TabWidth10'/>
+        <menuitem action='TabWidth12'/>
       </menu>
     </menu>
   </menubar>
@@ -312,7 +312,7 @@ def create_view_window(buffer, sourceview = None):
     windows.append(window) # this list contains all view windows
 
     # view
-    view = gtksourceview2.View(buffer)
+    view = gtksourceview.View(buffer)
     buffer.connect('mark_set', move_cursor_cb, view)
     buffer.connect('changed', update_cursor_position, view)
     view.connect('button-press-event', button_press_cb)
@@ -359,12 +359,12 @@ def create_view_window(buffer, sourceview = None):
         action = action_group.get_action('ShowMarkers')
         action.set_active(sourceview.get_show_line_markers())
         action = action_group.get_action('ShowMargin')
-        action.set_active(sourceview.get_margin())
+        action.set_active(sourceview.get_show_right_margin())
         action = action_group.get_action('AutoIndent')
         action.set_active(sourceview.get_auto_indent())
         action = action_group.get_action('InsertSpaces')
         action.set_active(sourceview.get_insert_spaces_instead_of_tabs())
-        action = action_group.get_action('TabsWidth%d' % sourceview.get_tabs_width())
+        action = action_group.get_action('TabWidth%d' % sourceview.get_tab_width())
         if action:
             action.set_active(True)
 
@@ -414,7 +414,7 @@ def create_main_window(buffer):
     action.set_active(True)
     action = action_group.get_action('InsertSpaces')
     action.set_active(True)
-    action = action_group.get_action('TabsWidth8')
+    action = action_group.get_action('TabWidth8')
     action.set_active(True)
 
     return window
@@ -424,8 +424,8 @@ def create_main_window(buffer):
 ##### main
 def main(args = []):
     # create buffer
-    buffer = gtksourceview2.Buffer()
-    mgr = gtksourceview2.style_manager_get_default()
+    buffer = gtksourceview.Buffer()
+    mgr = gtksourceview.style_scheme_manager_get_default()
     style_scheme = mgr.get_scheme('kate')
     if style_scheme:
         buffer.set_style_scheme(style_scheme)

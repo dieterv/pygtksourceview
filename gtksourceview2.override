@@ -7,7 +7,7 @@ headers
 #include <gtksourceview/gtksourceview.h>
 #include <gtksourceview/gtksourceview-typebuiltins.h>
 #include <gtksourceview/gtksourcelanguagemanager.h>
-#include <gtksourceview/gtksourcestylemanager.h>
+#include <gtksourceview/gtksourcestyleschememanager.h>
 #include <gtksourceview/gtksourcestyle.h>
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcemarker.h>
@@ -230,35 +230,35 @@ _wrap_gtk_source_language_manager_set_search_path (PyGObject *self, PyObject *ar
 }
 
 %%
-override gtk_source_style_manager_get_search_path noargs
+override gtk_source_style_scheme_manager_get_search_path noargs
 static PyObject *
-_wrap_gtk_source_style_manager_get_search_path(PyGObject *self)
+_wrap_gtk_source_style_scheme_manager_get_search_path(PyGObject *self)
 {
     const char * const *ret;
     PyObject *py_ret;
 
-    ret = gtk_source_style_manager_get_search_path (GTK_SOURCE_STYLE_MANAGER (self->obj));
+    ret = gtk_source_style_scheme_manager_get_search_path (GTK_SOURCE_STYLE_SCHEME_MANAGER (self->obj));
     py_ret = strv_to_pylist ((char**) ret);
 
     return py_ret;
 }
 
 %%
-override gtk_source_style_manager_set_search_path kwargs
+override gtk_source_style_scheme_manager_set_search_path kwargs
 static PyObject *
-_wrap_gtk_source_style_manager_set_search_path(PyGObject *self, PyObject *args, PyObject *kwargs)
+_wrap_gtk_source_style_scheme_manager_set_search_path(PyGObject *self, PyObject *args, PyObject *kwargs)
 {
     static char *kwlist[] = { "dirs", NULL };
     PyObject *py_dirs;
     char **dirs;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs,"O:GtkSourceStyleManager.set_search_path", kwlist, &py_dirs))
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs,"O:GtkSourceStyleSchemeManager.set_search_path", kwlist, &py_dirs))
         return NULL;
 
     if (!pylist_to_strv (py_dirs, &dirs))
         return NULL;
 
-    gtk_source_style_manager_set_search_path (GTK_SOURCE_STYLE_MANAGER (self->obj), dirs);
+    gtk_source_style_scheme_manager_set_search_path (GTK_SOURCE_STYLE_SCHEME_MANAGER (self->obj), dirs);
     g_strfreev (dirs);
 
     Py_INCREF(Py_None);
@@ -266,14 +266,14 @@ _wrap_gtk_source_style_manager_set_search_path(PyGObject *self, PyObject *args, 
 }
 
 %%
-override gtk_source_style_manager_get_scheme_ids noargs
+override gtk_source_style_scheme_manager_get_scheme_ids noargs
 static PyObject *
-_wrap_gtk_source_style_manager_get_scheme_ids (PyGObject *self)
+_wrap_gtk_source_style_scheme_manager_get_scheme_ids (PyGObject *self)
 {
     PyObject *py_ret;
     const char * const *ret;
 
-    ret = gtk_source_style_manager_get_scheme_ids (GTK_SOURCE_STYLE_MANAGER (self->obj));
+    ret = gtk_source_style_scheme_manager_get_scheme_ids (GTK_SOURCE_STYLE_SCHEME_MANAGER (self->obj));
     py_ret = strv_to_pylist ((char**) ret);
 
     return py_ret;
