@@ -1,5 +1,12 @@
 2007-08-27  Paolo Borelli  <pborelli@katamail.com>
 
+	* gtkosurceview2.defs:
+	* test/test-widget.py:
+
+	More api update (language-manager)
+
+2007-08-27  Paolo Borelli  <pborelli@katamail.com>
+
 	* gtkosurceview2.defs: more api updates.
 	* test/test-widget.py: bring uptodate with api changes
 

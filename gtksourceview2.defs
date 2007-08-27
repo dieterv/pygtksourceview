@@ -389,10 +389,10 @@
   (return-type "GtkSourceLanguageManager*")
 )
 
-(define-method list_languages
+(define-method get_language_ids
   (of-object "GtkSourceLanguageManager")
-  (c-name "gtk_source_language_manager_list_languages")
-  (return-type "GSList*")
+  (c-name "gtk_source_language_manager_get_language_ids")
+  (return-type "const-gchar**")
 )
 
 (define-method get_language
@@ -572,6 +572,12 @@
   (of-object "GtkSourceStyleScheme")
   (c-name "gtk_source_style_scheme_get_description")
   (return-type "const-gchar*")
+)
+
+(define-method get_authors
+  (of-object "GtkSourceStyleScheme")
+  (c-name "gtk_source_style_scheme_get_authors")
+  (return-type "const-gchar**")
 )
 
 (define-method get_filename
