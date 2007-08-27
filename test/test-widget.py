@@ -81,8 +81,9 @@ def load_file(buffer, uri):
 ##### parent types and subtypes.
 def get_language_for_mime_type(mime):
     lang_manager = gtksourceview.language_manager_get_default()
-    langs = lang_manager.list_languages()
-    for lang in langs:
+    lang_ids = lang_manager.get_language_ids()
+    for i in lang_ids:
+        lang = lang_manager.get_language(i)
         for m in lang.get_mime_types():
             if m == mime:
                 return lang
@@ -426,7 +427,7 @@ def main(args = []):
     # create buffer
     buffer = gtksourceview.Buffer()
     mgr = gtksourceview.style_scheme_manager_get_default()
-    style_scheme = mgr.get_scheme('kate')
+    style_scheme = mgr.get_scheme('classic')
     if style_scheme:
         buffer.set_style_scheme(style_scheme)
 
