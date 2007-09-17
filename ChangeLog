@@ -1,4 +1,13 @@
 
+=== pygtksourceview 2.0.0 ===
+
+2007-09-17  Paolo Borelli  <pborelli@katamail.com>
+
+	* configure.ac:
+	* NEWS:
+
+	pygtksourceview 2.0.0 released
+
 === pygtksourceview 1.90.2 ===
 
 2007-08-28  Paolo Borelli  <pborelli@katamail.com>
