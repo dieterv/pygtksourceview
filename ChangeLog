@@ -1,3 +1,9 @@
+2007-12-29  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* gtkosurceview2.override: Add override-slot GtkSourceLanguage.tp_new,
+	prevents instances of gtkosurceview2.Language() to be created.
+
+	* configure.ac: release version bump to 2.0.1.
 
 === pygtksourceview 2.0.0 ===
 

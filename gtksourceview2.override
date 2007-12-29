@@ -291,3 +291,13 @@ _wrap_gtk_source_style_scheme_get_authors (PyGObject *self)
 
     return py_ret;
 }
+
+%%
+override-slot GtkSourceLanguage.tp_new
+static PyObject *
+_wrap_gtk_source_language_tp_new(PyTypeObject *type)
+{
+    PyErr_SetString(PyExc_TypeError,
+		    "cannot create instance of type `GtkSourceLanguage'");
+    return NULL;
+}
