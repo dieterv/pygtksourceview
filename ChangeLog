@@ -1,3 +1,8 @@
+2007-12-30  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* gtkosurceview2.override: override-slot GtkSourceStyleScheme.tp_new,
+	prevents instances of gtkosurceview2.StyleScheme() to be created.
+
 2007-12-29  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* gtkosurceview2.override: Add override-slot GtkSourceLanguage.tp_new,
