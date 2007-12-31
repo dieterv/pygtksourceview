@@ -325,3 +325,13 @@ _wrap_gtk_source_language_get_style_ids(PyGObject *self)
 
     return py_ret;
 }
+
+%%
+override-slot GtkSourceMarker.tp_new
+static PyObject *
+_wrap_gtk_source_marker_tp_new(PyTypeObject *type)
+{
+    PyErr_SetString(PyExc_TypeError,
+		    "cannot create instance of type `GtkSourceMarker'");
+    return NULL;
+}

@@ -1,5 +1,10 @@
 2007-12-31  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* gtksourceview2.override: override-slot GtkSourceMarker.tp_new,
+	prevents instances of gtksourceview2.Marker() to be created.
+
+2007-12-31  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* gtksourceview2.defs: add gtk_source_language_get_style_ids and
 	gtk_source_language_get_style_name.
 	
