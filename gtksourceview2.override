@@ -311,3 +311,17 @@ _wrap_gtk_source_style_scheme_tp_new(PyTypeObject *type)
 		    "cannot create instance of type `GtkSourceStyleScheme'");
     return NULL;
 }
+
+%%
+override gtk_source_language_get_style_ids noargs
+static PyObject *
+_wrap_gtk_source_language_get_style_ids(PyGObject *self)
+{
+    gchar       **ret;
+    PyObject    *py_ret;
+
+    ret = gtk_source_language_get_style_ids(GTK_SOURCE_LANGUAGE(self->obj));
+    py_ret = strv_to_pylist ((char**) ret);
+
+    return py_ret;
+}

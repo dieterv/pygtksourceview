@@ -374,6 +374,21 @@
   (return-type "gchar**")
 )
 
+(define-method get_style_ids
+  (of-object "GtkSourceLanguage")
+  (c-name "gtk_source_language_get_style_ids")
+  (return-type "gchar**")
+)
+
+(define-method get_style_name
+  (of-object "GtkSourceLanguage")
+  (c-name "gtk_source_language_get_style_name")
+  (return-type "const-char*")
+  (parameters
+    '("const-char*" "style_id")
+  )
+)
+
 
 
 ;; From gtksourcelanguagemanager.h

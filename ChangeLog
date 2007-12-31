@@ -1,12 +1,19 @@
+2007-12-31  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* gtksourceview2.defs: add gtk_source_language_get_style_ids and
+	gtk_source_language_get_style_name.
+	
+	* gtksourceview2.override: wrap gtk_source_language_get_style_ids.
+
 2007-12-30  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
-	* gtkosurceview2.override: override-slot GtkSourceStyleScheme.tp_new,
-	prevents instances of gtkosurceview2.StyleScheme() to be created.
+	* gtksourceview2.override: override-slot GtkSourceStyleScheme.tp_new,
+	prevents instances of gtksourceview2.StyleScheme() to be created.
 
 2007-12-29  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
-	* gtkosurceview2.override: Add override-slot GtkSourceLanguage.tp_new,
-	prevents instances of gtkosurceview2.Language() to be created.
+	* gtksourceview2.override: Add override-slot GtkSourceLanguage.tp_new,
+	prevents instances of gtksourceview2.Language() to be created.
 
 	* configure.ac: release version bump to 2.0.1.
 
@@ -30,27 +37,27 @@
 
 2007-08-27  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2.defs:
+	* gtksourceview2.defs:
 	* test/test-widget.py:
 
 	More api update (language-manager)
 
 2007-08-27  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2.defs: more api updates.
+	* gtksourceview2.defs: more api updates.
 	* test/test-widget.py: bring uptodate with api changes
 
 2007-08-27  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2.defs: update to latest api changes.
+	* gtksourceview2.defs: update to latest api changes.
 
 2007-08-25  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2.defs: update to latest api changes.
+	* gtksourceview2.defs: update to latest api changes.
 
 2007-08-25  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2.defs: remove methods that do not exist anymore.
+	* gtksourceview2.defs: remove methods that do not exist anymore.
 
 === pygtksourceview 1.90.2 ===
 
@@ -63,7 +70,7 @@
 
 2007-07-27  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2.defs: bind Buffer.ensure_highlight and
+	* gtksourceview2.defs: bind Buffer.ensure_highlight and
 	language.get_hidden.
 
 2007-07-17  Yevgen Muntyan  <muntyan at tamu dot edu>
@@ -84,7 +91,7 @@
 
 2007-07-17  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2.defs: add get_description and get_filename
+	* gtksourceview2.defs: add get_description and get_filename
 	to StyleScheme.
 
 2007-07-16  Yevgen Muntyan  <muntyan at tamu dot edu>
@@ -107,7 +114,7 @@
 
 2007-07-03  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtkosurceview2module.c: the prefix for constants is GTK_SOURCE_
+	* gtksourceview2module.c: the prefix for constants is GTK_SOURCE_
 	not GTK_.
 
 2007-06-27  Yevgen Muntyan  <muntyan@tamu.edu>
