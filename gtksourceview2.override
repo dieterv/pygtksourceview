@@ -10,7 +10,6 @@ headers
 #include <gtksourceview/gtksourcestyleschememanager.h>
 #include <gtksourceview/gtksourcestyle.h>
 #include <gtksourceview/gtksourcestylescheme.h>
-#include <gtksourceview/gtksourcemarker.h>
 #include <gtksourceview/gtksourcelanguage.h>
 #include <gtksourceview/gtksourceiter.h>
 #include <gtksourceview/gtksourcebuffer.h>
@@ -122,45 +121,6 @@ _wrap_gtk_source_language_get_globs(PyGObject *self)
     g_strfreev (globs);
 
     return ret;
-}
-
-%%
-override gtk_source_buffer_get_markers_in_region kwargs
-static PyObject *
-_wrap_gtk_source_buffer_get_markers_in_region(PyGObject *self,
-                                              PyObject *args,
-                                              PyObject *kwargs)
-{
-    static char *kwlist[] = { "begin", "end", NULL };
-    PyObject    *py_begin, *py_end, *py_ret;
-    GtkTextIter *begin = NULL, *end = NULL;
-    GSList      *ret;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs,
-                                     "OO:GtkSourceBuffer.get_markers_in_region",
-                                     kwlist, &py_begin, &py_end))
-        return NULL;
-
-    if (pyg_boxed_check(py_begin, GTK_TYPE_TEXT_ITER))
-        begin = pyg_boxed_get(py_begin, GtkTextIter);
-    else {
-        PyErr_SetString(PyExc_TypeError, "begin should be a GtkTextIter");
-        return NULL;
-    }
-    
-    if (pyg_boxed_check(py_end, GTK_TYPE_TEXT_ITER))
-        end = pyg_boxed_get(py_end, GtkTextIter);
-    else {
-        PyErr_SetString(PyExc_TypeError, "end should be a GtkTextIter");
-        return NULL;
-    }
-    
-    ret = gtk_source_buffer_get_markers_in_region(GTK_SOURCE_BUFFER(self->obj),
-                                                  begin, end);
-    
-    py_ret = gslist_to_pylist_objs (ret);
-    
-    return py_ret;    
 }
 
 %%
@@ -324,14 +284,4 @@ _wrap_gtk_source_language_get_style_ids(PyGObject *self)
     py_ret = strv_to_pylist ((char**) ret);
 
     return py_ret;
-}
-
-%%
-override-slot GtkSourceMarker.tp_new
-static PyObject *
-_wrap_gtk_source_marker_tp_new(PyTypeObject *type)
-{
-    PyErr_SetString(PyExc_TypeError,
-		    "cannot create instance of type `GtkSourceMarker'");
-    return NULL;
 }
