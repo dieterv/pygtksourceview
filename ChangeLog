@@ -1,5 +1,9 @@
 2008-01-01  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* gtksourceview2.override: hide gslist_to_pylist_objs for now.
+
+2008-01-01  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* gtksourceview2.defs:
 	* gtksourceview2.override: remove GtkSourceMarker stuff.
 

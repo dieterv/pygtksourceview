@@ -14,6 +14,7 @@ headers
 #include <gtksourceview/gtksourceiter.h>
 #include <gtksourceview/gtksourcebuffer.h>
 
+#if 0
 static PyObject *
 gslist_to_pylist_objs (const GSList *source)
 {
@@ -27,6 +28,7 @@ gslist_to_pylist_objs (const GSList *source)
     }
     return dest;
 }
+#endif
 
 static PyObject *
 strv_to_pylist (char **strv)
