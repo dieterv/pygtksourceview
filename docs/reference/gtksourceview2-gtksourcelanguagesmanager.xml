@@ -1,192 +1,264 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
 
-<refentry id="class-gtksourcelanguagesmanager">
+<refentry id="class-gtksourcelanguagemanager2">
   <refnamediv>
-    <refname>gtksourceview.SourceLanguagesManager</refname>
-    <refpurpose>Languages Manager object for <link linkend="class-gtksourceview">gtksourceview.SourceView</link></refpurpose>
+    <refname>gtksourceview2.LanguageManager</refname>
+    <refpurpose>Languages Manager object for <link linkend="class-gtksourceview2">gtksourceview2.View</link></refpurpose>
   </refnamediv>
 
-<!-- ******************************************* -->
-<!-- BEGIN OF GTKSOURCELANGUAGESMANAGER SYNOPSIS -->
-<!-- ******************************************* -->
+<!-- ****************************************** -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER SYNOPSIS -->
+<!-- ****************************************** -->
 
 <refsect1>
   <title>Synopsis</title>
   
   <classsynopsis language="python">
-    <ooclass><classname>gtksourceview.SourceLanguagesManager</classname></ooclass>
+    <ooclass><classname>gtksourceview2.LanguageManager</classname></ooclass>
     <ooclass><classname><link linkend="class-gobject">gobject.GObject</link></classname></ooclass>
 
     <constructorsynopsis language="python">
-	    <methodname><link linkend="constructor-gtksourcelanguagesmanager">gtksourceview.SourceLanguagesManager</link></methodname>
-	    <methodparam><parameter role="keyword"></parameter></methodparam>
+      <methodname><link linkend="constructor-gtksourcelanguagemanager2">gtksourceview2.LanguageManager</link></methodname>
+      <methodparam></methodparam>
     </constructorsynopsis>    
 
     <methodsynopsis language="python">
-	    <methodname><link linkend="method-gtksourcelanguagesmanager--get-available-languages">get_available_languages</link></methodname>
-	    <methodparam></methodparam>
+      <methodname><link linkend="method-gtksourcelanguagemanager2--get-language">get_language</link></methodname>
+      <methodparam><parameter role="keyword">id</parameter></methodparam>
     </methodsynopsis>
     
     <methodsynopsis language="python">
-	    <methodname><link linkend="method-gtksourcelanguagesmanager--get-language-from-mime-type">get_language_from_mime_type</link></methodname>
-	    <methodparam></methodparam>
+      <methodname><link linkend="method-gtksourcelanguagemanager2--get-language-ids">get_language_ids</link></methodname>
+      <methodparam></methodparam>
     </methodsynopsis>
     
     <methodsynopsis language="python">
-	    <methodname><link linkend="method-gtksourcelanguagesmanager--get-lang-files-dirs">get_lang_files_dirs</link></methodname>
-	    <methodparam></methodparam>
+      <methodname><link linkend="method-gtksourcelanguagemanager2--get-search-path">get_search_path</link></methodname>
+      <methodparam></methodparam>
+    </methodsynopsis>
+    
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcelanguagemanager2--set-search-path">set_search_path</link></methodname>
+      <methodparam></methodparam>
     </methodsynopsis>
   </classsynopsis>
+
+<programlisting>
+<emphasis role="bold">Functions</emphasis>
+
+<methodsynopsis language="python">
+<methodname><link linkend="function-gtksourcelanguagemanager2--get-default">gtksourceview2.language_manager_get_default</link></methodname>
+<methodparam></methodparam>
+</methodsynopsis></programlisting>
 </refsect1>
 
-<!-- ******************************************* -->
-<!-- BEGIN OF GTKSOURCELANGUAGESMANAGER ANCESTRY -->
-<!-- ******************************************* -->
+<!-- ****************************************** -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER ANCESTRY -->
+<!-- ****************************************** -->
 
 <refsect1>
     <title>Ancestry</title>
 
 <synopsis>+-- <link linkend="class-gobject">gobject.GObject</link>
-  +-- <link linkend="class-gtksourcelanguagesmanager">gtksourceview.SourceLanguagesManager</link>
+    +-- <link linkend="class-gtksourcelanguagemanager2">gtksourceview2.LanguageManager</link>
 </synopsis>
 </refsect1>
 
-<!-- ********************************************* -->
-<!-- BEGIN OF GTKSOURCELANGUAGESMANAGER PROPERTIES -->
-<!-- ********************************************* -->
+<!-- ******************************************** -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER PROPERTIES -->
+<!-- ******************************************** -->
 
 <refsect1>
   <title>Properties</title>
 
   <blockquote role="properties">
     <informaltable pgwide="1" frame="none">
-	    <tgroup cols="3">
-	    <colspec column="1" colwidth="1in"/>
-	    <colspec column="2" colwidth="1in"/>
-	    <colspec column="3" colwidth="3in"/>
-	    <tbody>
+      <tgroup cols="3">
+      <colspec column="1" colwidth="1in"/>
+      <colspec column="2" colwidth="1in"/>
+      <colspec column="3" colwidth="3in"/>
+      <tbody>
 
-	    <row valign="top">
-	      <entry>"lang-files-dirs"</entry>
-	      <entry>Read-Write</entry>
-	      <entry>fixme</entry>
-	    </row>
+      <row valign="top">
+        <entry>"language-ids"</entry>
+        <entry>Read</entry>
+        <entry>List of the ids of the available languages.</entry>
+      </row>
+      
+      <row valign="top">
+        <entry>"search-path"</entry>
+        <entry>Read-Write</entry>
+        <entry>List of directories where the language specification files (.lang) are located.</entry>
+      </row>
+      
       </tbody>
-	    </tgroup>
+      </tgroup>
     </informaltable>
   </blockquote>
 </refsect1>
 
 
-<!-- ********************************************** -->
-<!-- BEGIN OF GTKSOURCELANGUAGESMANAGER DESCRIPTION -->
-<!-- ********************************************** -->
+<!-- ********************************************* -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER DESCRIPTION -->
+<!-- ********************************************* -->
 
-<refsect1 id="description-gtktextlanguagesmanager">
+<refsect1 id="description-gtksourcelanguagemanager">
     <title>Description</title>
 
-<para>
-
-</para>
+  <para>
+    Interface to manage available and custom source code language descriptions.
+  </para>
 </refsect1>
 
 
-<!-- ********************************************** -->
-<!-- BEGIN OF GTKSOURCELANGUAGESMANAGER CONSTRUCTOR -->
-<!-- ********************************************** -->
+<!-- ********************************************* -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER CONSTRUCTOR -->
+<!-- ********************************************* -->
 
-<refsect1 id="constructor-gtksourcelanguagesmanager">
+<refsect1 id="constructor-gtksourcelanguagemanager2">
   <title>Constructor</title>
 
   <programlisting><constructorsynopsis language="python">
-	  <methodname>gtksourceview.SourceLanguagesManager</methodname>
-	  <methodparam><parameter role="keyword"></parameter></methodparam>
+    <methodname>gtksourceview2.LanguageManager</methodname>
+    <methodparam><parameter role="keyword"></parameter></methodparam>
   </constructorsynopsis></programlisting>
     
   <variablelist>
     <varlistentry>
-	    <term><emphasis>Returns</emphasis>&nbsp;:</term>
-	    <listitem><simpara>a new <link linkend="class-gtksourcelanguagesmanager"><classname>gtksourceview.SourceLanguagesManager</classname></link>.</simpara></listitem>
+      <term><emphasis>Returns</emphasis>&nbsp;:</term>
+      <listitem><simpara>a new <link linkend="class-gtksourcelanguagemanager2"><classname>gtksourceview2.LanguageManager</classname></link>.</simpara></listitem>
     </varlistentry>
   </variablelist>
 
   <para>
-    Creates a new <link linkend="class-gtksourcelanguagesmanager"><classname>gtksourceview.SourceLanguagesManager</classname></link> object.
+    Creates a new <link linkend="class-gtksourcelanguagemanager2"><classname>gtksourceview2.LanguageManager</classname></link> object.
   </para>
 </refsect1>
 
 <!-- ****************************************** -->
-<!-- BEGIN OF GTKSOURCELANGUAGESMANAGER METHODS -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER METHODS -->
 <!-- ****************************************** -->
 
 <refsect1>
   <title>Methods</title>
 
-  <refsect2 id="method-gtksourcelanguagesmanager--get-available-languages">
-    <title>gtksourceview.SourceLanguagesManager.get_available_languages</title>
+  <refsect2 id="method-gtksourcelanguagemanager2--get-language">
+    <title>gtksourceview2.LanguageManager.get_language</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>get_available_languages</methodname>
-	  <methodparam></methodparam>
-	  </methodsynopsis></programlisting>
+    <methodname>get_language</methodname>
+    <methodparam><parameter role="keyword">id</parameter></methodparam>
+    </methodsynopsis></programlisting>
       
     <variablelist>
-	    <varlistentry>
-	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
-	      <listitem><simpara>	a list of <link linkend="class-gtksourcelanguage"><classname>gtksourceview.SourceLanguage</classname></link>.</simpara></listitem>
-	    </varlistentry>
-    </variablelist>
-
-    <para>
-      The <methodname>get_available_languages</methodname>() method gets a list of available languages for the given language manager.
-	  </para>
-  </refsect2>
-
-
-  <refsect2 id="method-gtksourcelanguagesmanager--get-language-from-mime-type">
-    <title>gtksourceview.SourceLanguagesManager.get_language_from_mime_type</title>
-    <programlisting><methodsynopsis language="python">
-	  <methodname>get_language_from_mime_type</methodname>
-	  <methodparam>mime_type</methodparam>
-	  </methodsynopsis></programlisting>
-      
-    <variablelist>
-	    <varlistentry>
-	      <term><emphasis>mime_type</emphasis>&nbsp;:</term>
-	      <listitem><simpara>	a mime type.</simpara></listitem>
-	    </varlistentry>
       <varlistentry>
-	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
-	      <listitem><simpara>	a <link linkend="class-gtksourcelanguage"><classname>gtksourceview.SourceLanguage</classname></link> 
-        or <literal>None </literal> if there is no language associated with the given <parameter>mime_type</parameter>.</simpara></listitem>
-	    </varlistentry>
+        <term><emphasis>id</emphasis>&nbsp;:</term>
+        <listitem><simpara>an ID.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtksourcelanguage2"><classname>gtksourceview2.Language</classname></link>,
+        or <literal>None</literal> if there is no language identified by the given id.</simpara></listitem>
+      </varlistentry>
     </variablelist>
 
     <para>
-      The <methodname>get_language_from_mime_type</methodname>() method gets the 
-      <link linkend="class-gtksourcelanguage"><classname>gtksourceview.SourceLanguage</classname></link> 
-      which is associated with the given <parameter>mime_type</parameter> in the language manager.
-	  </para>
+      The <methodname>get_language</methodname>() method gets the
+      <link linkend="class-gtksourcelanguage2"><classname>gtksourceview2.Language</classname></link>
+      identified by the given id in the language manager.
+    </para>
   </refsect2>
 
-  <refsect2 id="method-gtksourcelanguagesmanager--get-lang-files-dirs">
-    <title>gtksourceview.SourceLanguagesManager.get_lang_files_dirs</title>
+
+  <refsect2 id="method-gtksourcelanguagemanager2--get-language-ids">
+    <title>gtksourceview2.LanguageManager.get_language_ids</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>get_lang_files_dirs</methodname>
-	  <methodparam></methodparam>
-	  </methodsynopsis></programlisting>
+    <methodname>get_language_ids</methodname>
+    <methodparam></methodparam>
+    </methodsynopsis></programlisting>
       
     <variablelist>
-	    <varlistentry>
-	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
-	      <listitem><simpara> a list of language files directories (as strings).</simpara></listitem>
-	    </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a list containing the ids of the available languages or
+        <literal>None</literal> if no language is available.</simpara></listitem>
+      </varlistentry>
     </variablelist>
 
     <para>
-      The <methodname>get_lang_files_dirs</methodname>() method gets a list of language files directories for the given language manager.
-	  </para>
+      The <methodname>get_language_ids</methodname>() method
+      returns the ids of the available languages.
+    </para>
   </refsect2>
 
+  <refsect2 id="method-gtksourcelanguagemanager2--get-search-path">
+    <title>gtksourceview2.LanguageManager.get_search_path</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>get_search_path</methodname>
+    <methodparam></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a list of language files directories (as string).</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>get_search_path</methodname>() method
+      gets the list directories where @lm looks for language files.
+    </para>
+  </refsect2>
+  
+  <refsect2 id="method-gtksourcelanguagemanager2--set-search-path">
+    <title>gtksourceview2.LanguageManager.set_search_path</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>set_search_path</methodname>
+    <methodparam><parameter role="keyword">dirs</parameter></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>dirs</emphasis>&nbsp;:</term>
+        <listitem><simpara>a list of dirs (as string).</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>set_search_path</methodname>() method sets the list of directories
+      where the lm looks for language files.
+      If dirs is <literal>None</literal>, the search path is reset to default.
+    </para>
+  </refsect2>
+
+</refsect1>
+
+<!-- ******************************************* -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER FUNCTIONS -->
+<!-- ******************************************* -->
+
+<refsect1>
+    <title>Functions</title>
+
+  <refsect2 id="function-gtksourcelanguagemanager2--get-default">
+    <title>gtksourceview2.language_manager_get_default</title>
+    <programlisting><methodsynopsis language="python">
+  	  <methodname>gtksourceview2.language_manager_get_default</methodname>
+      <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+    <variablelist>
+	    <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>a <link linkend="class-gtksourcelanguagemanager2"><classname>gtksourceview2.LanguageManager</classname></link>.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+      <para>
+        The <methodname>language_manager_get_default</methodname>() function Returns the default
+        <link linkend="class-gtksourcelanguagemanager2"><classname>gtksourceview2.LanguageManager</classname></link> instance.
+      </para>
+  </refsect2>
 </refsect1> 
 </refentry>

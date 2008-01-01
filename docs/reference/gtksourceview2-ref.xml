@@ -8,7 +8,7 @@
 <book id="pygtksourceview2-reference" xmlns:xi="http://www.w3.org/2001/XInclude">
   <bookinfo>
     <pubdate>&builddate;</pubdate>
-    <title>PyGtksourceview2 2.0.0 Reference Manual</title>
+    <title>PyGtksourceview2 Reference Manual</title>
     <edition>PyGtksourceview2 Reference Manual for PyGtksourceview2 &version;</edition>
     <releaseinfo>For PyGtksourceview2 version &version;</releaseinfo>
     <authorgroup>
@@ -30,7 +30,7 @@
     <xi:include href="gtksourceview2-gtksourcebuffer.xml"/>
     <xi:include href="gtksourceview2-gtksourcelanguage.xml"/>
     <xi:include href="gtksourceview2-gtksourcelanguagesmanager.xml"/>
-    <xi:include href="gtksourceview2-gtksourcemarker.xml"/>
+    <!-- HOLD <xi:include href="gtksourceview2-gtksourcemarker.xml"/> -->
     <xi:include href="gtksourceview2-gtksourcestylescheme.xml"/>
 
 </book>

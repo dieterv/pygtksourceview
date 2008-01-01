@@ -6,39 +6,37 @@ FULL_VERSION = $(REF_VERSION).$(PYGTKSOURCEVIEW_MICRO_VERSION)
 HTML_STYLE = $(PYGOBJECT_DATADIR)/pygobject/xsl/ref-html-style.xsl
 PDF_STYLE = $(PYGOBJECT_DATADIR)/pygobject/xsl/pdf-style.xsl
 
-XMLFILES = 														\
-    reference/gtksourceview2-ref.xml							\
-    reference/gtksourceview2-gtksourceview.xml					\
-    reference/gtksourceview2-gtksourcebuffer.xml				\
-    reference/gtksourceview2-gtksourcelanguage.xml				\
-    reference/gtksourceview2-gtksourcelanguagesmanager.xml		\
-    reference/gtksourceview2-gtksourcemarker.xml				\
+XMLFILES = 							\
+    reference/gtksourceview2-ref.xml				\
+    reference/gtksourceview2-gtksourceview.xml			\
+    reference/gtksourceview2-gtksourcebuffer.xml		\
+    reference/gtksourceview2-gtksourcelanguage.xml		\
+    reference/gtksourceview2-gtksourcelanguagesmanager.xml	\
     reference/gtksourceview2-gtksourcestylescheme.xml
 
 
 HTMLdir = $(datadir)/gtk-doc/html/pygtksourceview2
-HTML_DATA =										\
-	html/index.html								\
-	html/index.sgml								\
-	html/class-gtksourcebuffer.html				\
-	html/class-gtksourcelanguage.html			\
-	html/class-gtksourcelanguagesmanager.html	\
-	html/class-gtksourcemarker.html				\
-	html/class-gtksourcestylescheme.html		\
-	html/class-gtksourceview.html				\
+HTML_DATA =						\
+	html/index.html					\
+	html/index.sgml					\
+	html/class-gtksourcebuffer2.html		\
+	html/class-gtksourcelanguage2.html		\
+	html/class-gtksourcelanguagemanager2.html	\
+	html/class-gtksourcestylescheme2.html		\
+	html/class-gtksourceview2.html			\
 	html/pygtksourceview2.devhelp
 
 CSS_FILES = $(PYGOBJECT_PYGDOCS)/style.css
 CSSdir = $(HTMLdir)
 CSS_DATA = $(CSS_FILES)
 
-BUILT_SOURCES = 			\
-	build_stamp 			\
+BUILT_SOURCES = 		\
+	build_stamp 		\
 	reference/builddate.xml	\
 	$(HTML_DATA)
 
-CLEANFILES = 				\
-	build_stamp 			\
+CLEANFILES = 			\
+	build_stamp 		\
 	gtksourceview2-ref.*	\
 	reference/builddate.xml	\
 	$(HTML_DATA)

@@ -1,5 +1,19 @@
 2008-01-01  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* docs/Makefile.am:
+	* docs/reference/gtksourceview2-ref.xml:
+	* docs/reference/gtksourceview2-gtksourcebuffer.xml:
+	* docs/reference/gtksourceview2-gtksourceview.xml:
+	* docs/reference/gtksourceview2-gtksourcemarker.xml:
+	* docs/reference/gtksourceview2-gtksourcelanguage.xml:
+	* docs/reference/gtksourceview2-gtksourcestylescheme.xml:
+	* docs/reference/gtksourceview2-gtksourcelanguagesmanager.xml: updated.
+
+	* docs/reference/gtksourceview2-classes.xml:
+	* docs/reference/gtksourceview2-gtksourceprintjob.xml: delete unsed.
+
+2008-01-01  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* gtksourceview2.override: hide gslist_to_pylist_objs for now.
 
 2008-01-01  Gian Mario Tagliaretti  <gianmt@gnome.org>
