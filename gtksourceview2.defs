@@ -49,14 +49,6 @@
   (gtype-id "GTK_TYPE_SOURCE_VIEW")
 )
 
-;; Typedefs
-
-(define-object Marker
-  (in-module "GtkSourceView")
-  (parent "GtkTextMark")
-  (c-name "GtkSourceMarker")
-  (gtype-id "GTK_TYPE_SOURCE_MARKER")
-)
 
 ;; Enumerations and flags ...
 
@@ -510,21 +502,6 @@
   (return-type "gboolean")
 )
 
-(define-method set_show_line_markers
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_set_show_line_markers")
-  (return-type "none")
-  (parameters
-    '("gboolean" "show")
-  )
-)
-
-(define-method get_show_line_markers
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_get_show_line_markers")
-  (return-type "gboolean")
-)
-
 (define-method set_indent_width
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_set_indent_width")
@@ -643,25 +620,6 @@
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_get_right_margin_position")
   (return-type "guint")
-)
-
-(define-method set_marker_pixbuf
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_set_marker_pixbuf")
-  (return-type "none")
-  (parameters
-    '("const-gchar*" "marker_type")
-    '("GdkPixbuf*" "pixbuf")
-  )
-)
-
-(define-method get_marker_pixbuf
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_get_marker_pixbuf")
-  (return-type "GdkPixbuf*")
-  (parameters
-    '("const-gchar*" "marker_type")
-  )
 )
 
 (define-method set_smart_home_end
