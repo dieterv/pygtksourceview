@@ -12,6 +12,7 @@ XMLFILES = 							\
     reference/gtksourceview2-gtksourcebuffer.xml		\
     reference/gtksourceview2-gtksourcelanguage.xml		\
     reference/gtksourceview2-gtksourcelanguagesmanager.xml	\
+    reference/gtksourceview2-gtksourcestyle.xml			\
     reference/gtksourceview2-gtksourcestylescheme.xml
 
 
@@ -22,6 +23,7 @@ HTML_DATA =						\
 	html/class-gtksourcebuffer2.html		\
 	html/class-gtksourcelanguage2.html		\
 	html/class-gtksourcelanguagemanager2.html	\
+	html/class-gtksourcestyle2.html			\
 	html/class-gtksourcestylescheme2.html		\
 	html/class-gtksourceview2.html			\
 	html/pygtksourceview2.devhelp

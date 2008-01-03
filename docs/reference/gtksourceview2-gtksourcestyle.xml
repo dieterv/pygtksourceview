@@ -1,0 +1,170 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="class-gtksourcestyle2">
+  <refnamediv>
+    <refname>gtksourceview2.Style</refname>
+    <refpurpose>Style object for <link linkend="class-gtksourceview2">gtksourceview2.View</link></refpurpose>
+  </refnamediv>
+
+<!-- ******************************** -->
+<!-- BEGIN OF GTKSOURCESTYLE SYNOPSIS -->
+<!-- ******************************** -->
+
+<refsect1>
+  <title>Synopsis</title>
+  
+  <classsynopsis language="python">
+    <ooclass><classname>gtksourceview2.Style</classname></ooclass>
+    <ooclass><classname><link linkend="class-gobject">gobject.GObject</link></classname></ooclass>
+
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyle2--copy">copy</link></methodname>
+      <methodparam></methodparam>
+    </methodsynopsis>
+  </classsynopsis>
+</refsect1>
+
+<!-- ******************************** -->
+<!-- BEGIN OF GTKSOURCESTYLE ANCESTRY -->
+<!-- ******************************** -->
+
+<refsect1>
+    <title>Ancestry</title>
+
+<synopsis>+-- <link linkend="class-gobject">gobject.GObject</link>
+    +-- <link linkend="class-gtksourcestyle2">gtksourceview2.Style</link>
+</synopsis>
+</refsect1>
+
+<!-- ********************************** -->
+<!-- BEGIN OF GTKSOURCESTYLE PROPERTIES -->
+<!-- ********************************** -->
+
+<refsect1>
+  <title>Properties</title>
+
+  <blockquote role="properties">
+    <informaltable pgwide="1" frame="none">
+      <tgroup cols="3">
+      <colspec column="1" colwidth="1in"/>
+      <colspec column="2" colwidth="1in"/>
+      <colspec column="3" colwidth="3in"/>
+      <tbody>
+
+      <row valign="top">
+        <entry>"background"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Background color. Default value: <literal>None</literal>.</entry>
+      </row>
+
+      <row valign="top">
+        <entry>"background-set"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Whether background color is set. Default value: <literal>False</literal>.</entry>
+      </row>
+
+      <row valign="top">
+        <entry>"bold-set"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Whether bold attribute is set. Default value: <literal>False</literal>.</entry>
+      </row>
+
+      <row valign="top">
+        <entry>"foreground"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Foreground color. Default value: <literal>None</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"foreground-set"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Whether foreground color is set. Default value: <literal>False</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"italic"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Italic. Default value: <literal>False</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"italic-set"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Whether italic attribute is set. Default value: <literal>False</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"line-background"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Line background color. Default value: <literal>None</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"line-background-set"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Whether line background color is set. Default value: <literal>False</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"strikethrough"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Strikethrough. Default value: <literal>False</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"strikethrough-set"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Whether strikethrough attribute is set. Default value: <literal>False</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"underline"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Underline. Default value: <literal>False</literal>.</entry>
+      </row>
+      <row valign="top">
+        <entry>"underline-set"</entry>
+        <entry>Read-Write-Construct only</entry>
+        <entry>Whether underline attribute is set. Default value: <literal>False</literal>.</entry>
+      </row>
+      
+      </tbody>
+      </tgroup>
+    </informaltable>
+  </blockquote>
+</refsect1>
+
+
+<!-- *********************************** -->
+<!-- BEGIN OF GTKSOURCESTYLE DESCRIPTION -->
+<!-- *********************************** -->
+
+<refsect1 id="description-gtksourcelanguagemanager">
+    <title>Description</title>
+
+</refsect1>
+
+<!-- ******************************* -->
+<!-- BEGIN OF GTKSOURCESTYLE METHODS -->
+<!-- ******************************* -->
+
+<refsect1>
+  <title>Methods</title>
+
+  <refsect2 id="method-gtksourcestyle2--copy">
+    <title>gtksourceview2.Style.copy</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>copy</methodname>
+    <methodparam></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a copy of
+        <link linkend="class-gtksourcestyle2"><classname>gtksourceview2.Style</classname></link>.</simpara></listitem>        
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>copy</methodname>() method Creates a copy of <parameter>style</parameter>,
+      that is a new <link linkend="class-gtksourcestyle2"><classname>gtksourceview2.Style</classname></link>
+      instance which has the same attributes set.
+    </para>
+  </refsect2>
+
+</refsect1> 
+</refentry>

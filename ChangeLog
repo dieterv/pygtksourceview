@@ -1,6 +1,12 @@
 2008-01-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* docs/Makefile.am:
+	* docs/reference/gtksourceview2-ref.xml:
+	* docs/reference/gtksourceview2-gtksourcestyle.xml: add new Style docs.
+
+2008-01-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* docs/Makefile.am:
 
 2008-01-02  Gian Mario Tagliaretti  <gianmt@gnome.org>
 

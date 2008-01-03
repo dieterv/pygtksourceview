@@ -31,6 +31,7 @@
     <xi:include href="gtksourceview2-gtksourcelanguage.xml"/>
     <xi:include href="gtksourceview2-gtksourcelanguagesmanager.xml"/>
     <!-- HOLD <xi:include href="gtksourceview2-gtksourcemarker.xml"/> -->
+    <xi:include href="gtksourceview2-gtksourcestyle.xml"/>
     <xi:include href="gtksourceview2-gtksourcestylescheme.xml"/>
 
 </book>
