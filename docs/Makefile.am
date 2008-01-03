@@ -53,6 +53,8 @@ REFERENCE_DEPS = 	\
 
 $(HTML_DATA): build_stamp
 
+if ENABLE_DOCS
+
 reference/builddate.xml: $(REFERENCE_DEPS)
 	$(PYTHON) -c 'import datetime; print datetime.date.today()' > $@
 
@@ -69,3 +71,4 @@ pdf: $(REFERENCE_DEPS) reference/builddate.xml
 	xsltproc --nonet --xinclude -o gtksourceview2-ref.fo \
 	         $(PDF_STYLE) reference/gtksourceview2-ref.xml
 	pdfxmltex gtksourceview2-ref.fo >output </dev/null
+endif
