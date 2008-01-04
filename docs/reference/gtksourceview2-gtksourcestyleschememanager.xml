@@ -1,0 +1,340 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="class-gtksourcestyleschememanager2">
+  <refnamediv>
+    <refname>gtksourceview2.StyleSchemeManager</refname>
+    <refpurpose>Scheme Manager object for <link linkend="class-gtksourceview2">gtksourceview2.View</link></refpurpose>
+  </refnamediv>
+
+<!-- **************************************** -->
+<!-- BEGIN OF GTKSOURCESCHEMEMANAGER SYNOPSIS -->
+<!-- **************************************** -->
+
+<refsect1>
+  <title>Synopsis</title>
+  
+  <classsynopsis language="python">
+    <ooclass><classname>gtksourceview2.StyleSchemeManager</classname></ooclass>
+    <ooclass><classname><link linkend="class-gobject">gobject.GObject</link></classname></ooclass>
+
+    <constructorsynopsis language="python">
+      <methodname><link linkend="constructor-gtksourcestyleschememanager2">gtksourceview2.StyleSchemeManager</link></methodname>
+      <methodparam></methodparam>
+    </constructorsynopsis>    
+
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyleschememanager2--append-search-path">append_search_path</link></methodname>
+      <methodparam><parameter role="keyword">path</parameter></methodparam>
+    </methodsynopsis>
+    
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyleschememanager2--force-rescan">force_rescan</link></methodname>
+      <methodparam></methodparam>
+    </methodsynopsis>
+    
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyleschememanager2--get-scheme">get_scheme</link></methodname>
+      <methodparam></methodparam>
+    </methodsynopsis>
+    
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyleschememanager2--get-scheme-ids">get_scheme_ids</link></methodname>
+      <methodparam></methodparam>
+    </methodsynopsis>
+    
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyleschememanager2--get-search-path">get_search_path</link></methodname>
+      <methodparam></methodparam>
+    </methodsynopsis>
+    
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyleschememanager2--prepend-search-path">prepend_search_path</link></methodname>
+      <methodparam><parameter role="keyword">path</parameter></methodparam>
+    </methodsynopsis>
+    
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcestyleschememanager2--set-search-path">set_search_path</link></methodname>
+      <methodparam><parameter role="keyword">path</parameter></methodparam>
+    </methodsynopsis>
+  </classsynopsis>
+
+<programlisting>
+<emphasis role="bold">Functions</emphasis>
+
+<methodsynopsis language="python">
+<methodname><link linkend="function-gtksourcestyleschememanager2--get-default">gtksourceview2.style_scheme_manager_get_default</link></methodname>
+<methodparam></methodparam>
+</methodsynopsis></programlisting>
+</refsect1>
+
+<!-- **************************************** -->
+<!-- BEGIN OF GTKSOURCESCHEMEMANAGER ANCESTRY -->
+<!-- **************************************** -->
+
+<refsect1>
+    <title>Ancestry</title>
+
+<synopsis>+-- <link linkend="class-gobject">gobject.GObject</link>
+    +-- <link linkend="class-gtksourcestyleschememanager2">gtksourceview2.StyleSchemeManager</link>
+</synopsis>
+</refsect1>
+
+<!-- ****************************************** -->
+<!-- BEGIN OF GTKSOURCESCHEMEMANAGER PROPERTIES -->
+<!-- ****************************************** -->
+
+<refsect1>
+  <title>Properties</title>
+
+  <blockquote role="properties">
+    <informaltable pgwide="1" frame="none">
+      <tgroup cols="3">
+      <colspec column="1" colwidth="1in"/>
+      <colspec column="2" colwidth="1in"/>
+      <colspec column="3" colwidth="3in"/>
+      <tbody>
+
+      <row valign="top">
+        <entry>"scheme-ids"</entry>
+        <entry>Read</entry>
+        <entry>List of the ids of the available schemes.</entry>
+      </row>
+      
+      <row valign="top">
+        <entry>"search-path"</entry>
+        <entry>Read-Write</entry>
+        <entry>List of of directories and files where the style schemes are located.</entry>
+      </row>
+      
+      </tbody>
+      </tgroup>
+    </informaltable>
+  </blockquote>
+</refsect1>
+
+
+<!-- ******************************************* -->
+<!-- BEGIN OF GTKSOURCESCHEMEMANAGER DESCRIPTION -->
+<!-- ******************************************* -->
+
+<refsect1 id="description-gtksourcelanguagemanager">
+    <title>Description</title>
+
+  <para>
+    Interface to manage available and custom style schemes.
+  </para>
+</refsect1>
+
+
+<!-- ******************************************* -->
+<!-- BEGIN OF GTKSOURCESCHEMEMANAGER CONSTRUCTOR -->
+<!-- ******************************************* -->
+
+<refsect1 id="constructor-gtksourcestyleschememanager2">
+  <title>Constructor</title>
+
+  <programlisting><constructorsynopsis language="python">
+    <methodname>gtksourceview2.StyleSchemeManager</methodname>
+    <methodparam><parameter role="keyword"></parameter></methodparam>
+  </constructorsynopsis></programlisting>
+    
+  <variablelist>
+    <varlistentry>
+      <term><emphasis>Returns</emphasis>&nbsp;:</term>
+      <listitem><simpara>a new <link linkend="class-gtksourcestyleschememanager2"><classname>gtksourceview2.StyleSchemeManager</classname></link>.</simpara></listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para>
+    Creates a new <link linkend="class-gtksourcestyleschememanager2"><classname>gtksourceview2.StyleSchemeManager</classname></link> object.
+  </para>
+</refsect1>
+
+<!-- *************************************** -->
+<!-- BEGIN OF GTKSOURCESCHEMEMANAGER METHODS -->
+<!-- *************************************** -->
+
+<refsect1>
+  <title>Methods</title>
+
+  <refsect2 id="method-gtksourcestyleschememanager2--append-search-path">
+    <title>gtksourceview2.StyleSchemeManager.append_search_path</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>append_search_path</methodname>
+    <methodparam><parameter role="keyword">path</parameter></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>path</emphasis>&nbsp;:</term>
+        <listitem><simpara>a directory or a filename.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>append_search_path</methodname>() method appends path to the list of
+      directories where the manager looks for style scheme files. See
+      <methodname><link linkend="method-gtksourcestyleschememanager2--set-search-path">gtksourceview2.StyleSchemeManager.set_search_path</link></methodname>()
+      for details.
+    </para>
+  </refsect2>
+
+
+  <refsect2 id="method-gtksourcestyleschememanager2--force_rescan">
+    <title>gtksourceview2.StyleSchemeManager.force_rescan</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>force_rescan</methodname>
+    <methodparam></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+    </variablelist>
+
+    <para>
+      The <methodname>force_rescan</methodname>() method mark any currently cached
+      information about the available style scehems as invalid. All the available
+      style schemes will be reloaded next time the manager is accessed.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcestyleschememanager2--get-scheme">
+    <title>gtksourceview2.StyleSchemeManager.get_scheme</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>get_scheme</methodname>
+    <methodparam><parameter role="keyword">scheme_id</parameter></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>scheme_id</emphasis>&nbsp;:</term>
+        <listitem><simpara>style scheme id to find.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtksourcestylescheme2"><classname>gtksourceview2.StyleScheme</classname></link>
+        object.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>get_scheme</methodname>() method looks up style scheme by id.
+    </para>
+  </refsect2>
+  
+  <refsect2 id="method-gtksourcestyleschememanager2--get-scheme-ids">
+    <title>gtksourceview2.StyleSchemeManager.get_scheme_ids</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>get_scheme_ids</methodname>
+    <methodparam></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a list of strings containing the ids of the available style
+        schemes or <literal>None</literal> if no style scheme is available.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>get_scheme_ids</methodname>() method
+      returns the ids of the available style schemes.
+    </para>
+  </refsect2>
+  
+  <refsect2 id="method-gtksourcestyleschememanager2--get-search-path">
+    <title>gtksourceview2.StyleSchemeManager.get_search_path</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>get_search_path</methodname>
+    <methodparam></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a list of string containing the search path.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>get_search_path</methodname>() method
+      gets the Returns the current search path for the manager, See
+      <methodname><link linkend="method-gtksourcestyleschememanager2--set-search-path">gtksourceview2.StyleSchemeManager.set_search_path</link></methodname>()
+      for details.
+    </para>
+  </refsect2>
+  
+  <refsect2 id="method-gtksourcestyleschememanager2--prepend-search-path">
+    <title>gtksourceview2.StyleSchemeManager.prepend_search_path</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>prepend_search_path</methodname>
+    <methodparam><parameter role="keyword">path</parameter></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>path</emphasis>&nbsp;:</term>
+        <listitem><simpara>a directory or a filename.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>prepend_search_path</methodname>() method prepends path to the list of
+      directories where the manager looks for style scheme files. See
+      <methodname><link linkend="method-gtksourcestyleschememanager2--set-search-path">gtksourceview2.StyleSchemeManager.set_search_path</link></methodname>()
+      for details.
+    </para>
+  </refsect2>
+  
+  <refsect2 id="method-gtksourcestyleschememanager2--set-search-path">
+    <title>gtksourceview2.StyleSchemeManager.set_search_path</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>set_search_path</methodname>
+    <methodparam><parameter role="keyword">dirs</parameter></methodparam>
+    </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>dirs</emphasis>&nbsp;:</term>
+        <listitem><simpara>a list of dirs (as string).</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>set_search_path</methodname>() method sets the list of directories
+      where the manager looks for style scheme files.
+      If dirs is <literal>None</literal>, the search path is reset to default.
+    </para>
+  </refsect2>
+
+</refsect1>
+
+<!-- ***************************************** -->
+<!-- BEGIN OF GTKSOURCESCHEMEMANAGER FUNCTIONS -->
+<!-- ***************************************** -->
+
+<refsect1>
+    <title>Functions</title>
+
+  <refsect2 id="function-gtksourcestyleschememanager2--get-default">
+    <title>gtksourceview2.language_manager_get_default</title>
+    <programlisting><methodsynopsis language="python">
+  	  <methodname>gtksourceview2.language_manager_get_default</methodname>
+      <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+    <variablelist>
+	    <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>a <link linkend="class-gtksourcestyleschememanager2"><classname>gtksourceview2.StyleSchemeManager</classname></link>.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+      <para>
+        The <methodname>language_manager_get_default</methodname>() function Returns the default
+        <link linkend="class-gtksourcestyleschememanager2"><classname>gtksourceview2.StyleSchemeManager</classname></link> instance.
+      </para>
+  </refsect2>
+</refsect1> 
+</refentry>
