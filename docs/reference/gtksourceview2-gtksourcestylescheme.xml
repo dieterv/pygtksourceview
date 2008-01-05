@@ -62,6 +62,54 @@
 </synopsis>
 </refsect1>
 
+<!-- **************************************** -->
+<!-- BEGIN OF GTKSOURCESTYLESCHEME PROPERTIES -->
+<!-- **************************************** -->
+
+<refsect1>
+    <title>Properties</title>
+
+    <blockquote role="properties">
+      <informaltable pgwide="1" frame="none">
+      <tgroup cols="3">
+        <colspec column="1" colwidth="1in"/>
+        <colspec column="2" colwidth="1in"/>
+        <colspec column="3" colwidth="4in"/>
+          <tbody>
+      
+            <row valign="top">
+              <entry>"description"</entry>
+              <entry>Read</entry>
+              <entry>Style scheme description. Default value: <literal>None</literal>.</entry>
+            </row>
+      
+            <row valign="top">
+              <entry>"filename"</entry>
+              <entry>Read</entry>
+              <entry>Style scheme filename or <literal>None</literal>. Default value: <literal>None</literal>.</entry>
+            </row>
+      
+            <row valign="top">
+              <entry>"id"</entry>
+              <entry>Read-Write-Construct only</entry>
+              <entry>Style scheme id, a unique string used to identify the style scheme in
+              <link linkend="class-gtksourcestyleschememanager2"><classname>gtksourceview2.StyleSchemeManager</classname></link>.
+              Default value: <literal>None</literal>.</entry>
+            </row>
+
+            <row valign="top">
+              <entry>"name"</entry>
+              <entry>Read-Write</entry>
+              <entry>Style scheme name, a translatable string to present to user.
+              Default value: <literal>None</literal>.</entry>
+            </row>
+
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </blockquote>
+</refsect1>
+
 <!-- ***************************************** -->
 <!-- BEGIN OF GTKSOURCESTYLESCHEME DESCRIPTION -->
 <!-- ***************************************** -->

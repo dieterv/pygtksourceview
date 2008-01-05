@@ -1,3 +1,8 @@
+2008-01-05  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* docs/reference/gtksourceview2-gtksourcestylescheme.xml:
+	 add properties section.
+
 2008-01-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* docs/Makefile.am:
