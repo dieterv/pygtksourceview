@@ -1,5 +1,10 @@
 2008-01-05  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* gtksourceview2.defs:
+	* gtksourceview2.override: add the new GtkSourceMark stuff.
+
+2008-01-05  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* docs/reference/gtksourceview2-gtksourcestylescheme.xml:
 	 add properties section.
 

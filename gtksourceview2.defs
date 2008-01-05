@@ -21,6 +21,13 @@
   (gtype-id "GTK_TYPE_SOURCE_LANGUAGE_MANAGER")
 )
 
+(define-object Mark
+  (in-module "Gtk")
+  (parent "GtkTextMark")
+  (c-name "GtkSourceMark")
+  (gtype-id "GTK_TYPE_SOURCE_MARK")
+)
+
 (define-object Style
   (in-module "GtkSourceView")
   (parent "GObject")
@@ -195,6 +202,68 @@
   (parameters
     '("GtkTextIter*" "start")
     '("GtkTextIter*" "end")
+  )
+)
+
+(define-method create_mark
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_create_mark")
+  (return-type "GtkSourceMark*")
+  (parameters
+    '("const-gchar*" "name")
+    '("const-gchar*" "category")
+    '("const-GtkTextIter*" "where")
+  )
+)
+
+(define-method forward_iter_to_mark
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_forward_iter_to_mark")
+  (return-type "gboolean")
+  (parameters
+    '("GtkTextIter*" "iter")
+    '("const-gchar*" "category")
+  )
+)
+
+(define-method backward_iter_to_mark
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_backward_iter_to_mark")
+  (return-type "gboolean")
+  (parameters
+    '("GtkTextIter*" "iter")
+    '("const-gchar*" "category")
+  )
+)
+
+(define-method get_marks_at_iter
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_get_marks_at_iter")
+  (return-type "GSList*")
+  (parameters
+    '("GtkTextIter*" "iter")
+    '("const-gchar*" "category")
+  )
+)
+
+(define-method get_marks_at_line
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_get_marks_at_line")
+  (return-type "GSList*")
+  (parameters
+    '("gint" "line")
+    '("const-gchar*" "category")
+  )
+)
+
+(define-method remove_marks
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_remove_marks")
+  (return-type "none")
+  (parameters
+    '("GtkTextIter*" "start")
+    '("GtkTextIter*" "end")
+    '("const-gchar*" "category")
   )
 )
 
@@ -621,6 +690,58 @@
   (c-name "gtk_source_view_get_right_margin_position")
   (return-type "guint")
 )
+(define-method set_show_line_marks
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_show_line_marks")
+  (return-type "none")
+  (parameters
+    '("gboolean" "show")
+  )
+)
+
+(define-method get_show_line_marks
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_show_line_marks")
+  (return-type "gboolean")
+)
+
+(define-method set_mark_category_pixbuf
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_pixbuf")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("GdkPixbuf*" "pixbuf")
+  )
+)
+
+(define-method get_mark_category_pixbuf
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_mark_category_pixbuf")
+  (return-type "GdkPixbuf*")
+  (parameters
+    '("const-gchar*" "category")
+  )
+)
+
+(define-method set_mark_category_priority
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_priority")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("gint" "priority")
+  )
+)
+
+(define-method get_mark_category_priority
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_mark_category_priority")
+  (return-type "gint")
+  (parameters
+    '("const-gchar*" "category")
+  )
+)
 
 (define-method set_smart_home_end
   (of-object "GtkSourceView")
@@ -635,4 +756,42 @@
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_get_smart_home_end")
   (return-type "GtkSourceSmartHomeEndType")
+)
+
+
+
+;; From gtksourcemark.h
+
+(define-function gtk_source_mark_new
+  (c-name "gtk_source_mark_new")
+  (is-constructor-of "GtkSourceMark")
+  (return-type "GtkSourceMark*")
+  (parameters
+    '("const-gchar*" "name")
+    '("const-gchar*" "category")
+  )
+)
+
+(define-method get_category
+  (of-object "GtkSourceMark")
+  (c-name "gtk_source_mark_get_category")
+  (return-type "const-gchar*")
+)
+
+(define-method next
+  (of-object "GtkSourceMark")
+  (c-name "gtk_source_mark_next")
+  (return-type "GtkSourceMark*")
+  (parameters
+    '("const-gchar*" "category")
+  )
+)
+
+(define-method prev
+  (of-object "GtkSourceMark")
+  (c-name "gtk_source_mark_prev")
+  (return-type "GtkSourceMark*")
+  (parameters
+    '("const-gchar*" "category")
+  )
 )

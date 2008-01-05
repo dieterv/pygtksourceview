@@ -14,7 +14,6 @@ headers
 #include <gtksourceview/gtksourceiter.h>
 #include <gtksourceview/gtksourcebuffer.h>
 
-#if 0
 static PyObject *
 gslist_to_pylist_objs (const GSList *source)
 {
@@ -28,7 +27,6 @@ gslist_to_pylist_objs (const GSList *source)
     }
     return dest;
 }
-#endif
 
 static PyObject *
 strv_to_pylist (char **strv)
@@ -287,3 +285,62 @@ _wrap_gtk_source_language_get_style_ids(PyGObject *self)
 
     return py_ret;
 }
+
+%%
+override gtk_source_buffer_get_marks_at_iter kwargs 	 
+static PyObject * 	 
+_wrap_gtk_source_buffer_get_marks_at_iter(PyGObject *self, 	 
+                                          PyObject *args, 	 
+                                          PyObject *kwargs) 	 
+{ 	 
+    static char *kwlist[] = { "iter", "category", NULL }; 	 
+    PyObject    *py_iter, *py_ret;
+    gchar       *category;
+    GtkTextIter *iter = NULL;
+    GSList      *ret; 	 
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, 	 
+                                     "Os:GtkSourceBuffer.get_marks_at_iter", 	 
+                                     kwlist, &py_iter, &category)) 	 
+        return NULL; 	 
+
+    if (pyg_boxed_check(py_iter, GTK_TYPE_TEXT_ITER)) 	 
+        iter = pyg_boxed_get(py_iter, GtkTextIter); 	 
+    else { 	 
+        PyErr_SetString(PyExc_TypeError, "iter should be a GtkTextIter"); 	 
+        return NULL; 	 
+    }	 
+
+    ret = gtk_source_buffer_get_marks_at_iter(GTK_SOURCE_BUFFER(self->obj), 	 
+                                              iter, category); 	 
+
+    py_ret = gslist_to_pylist_objs (ret); 	 
+
+    return py_ret; 	 
+} 	 
+
+%%
+override gtk_source_buffer_get_marks_at_line kwargs 	 
+static PyObject * 	 
+_wrap_gtk_source_buffer_get_marks_at_line(PyGObject *self, 	 
+                                          PyObject *args, 	 
+                                          PyObject *kwargs) 	 
+{ 	 
+    static char *kwlist[] = { "line", "category", NULL }; 	 
+    PyObject    *py_ret;
+    gint        line;
+    gchar       *category;
+    GSList      *ret; 	 
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, 	 
+                                     "is:GtkSourceBuffer.get_marks_at_iter", 	 
+                                     kwlist, &line, &category)) 	 
+        return NULL;
+
+    ret = gtk_source_buffer_get_marks_at_line(GTK_SOURCE_BUFFER(self->obj), 	 
+                                              line, category); 	 
+
+    py_ret = gslist_to_pylist_objs (ret); 	 
+
+    return py_ret; 	 
+} 	 
