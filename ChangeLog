@@ -1,4 +1,8 @@
-2008-01-05  Gian Mario Tagliaretti  <gianmt@gnome.org>
+2008-01-06  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* docs/reference/gtksourceview2-gtksourcestyleschememanager.xml: typo.
+
+2008-01-06  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* gtksourceview2.defs: Fix null-ok in parameters.
 	

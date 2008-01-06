@@ -181,7 +181,7 @@
   </refsect2>
 
 
-  <refsect2 id="method-gtksourcestyleschememanager2--force_rescan">
+  <refsect2 id="method-gtksourcestyleschememanager2--force-rescan">
     <title>gtksourceview2.StyleSchemeManager.force_rescan</title>
     <programlisting><methodsynopsis language="python">
     <methodname>force_rescan</methodname>
