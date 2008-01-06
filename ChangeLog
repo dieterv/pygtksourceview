@@ -1,5 +1,18 @@
 2008-01-05  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* gtksourceview2.defs: Fix null-ok in parameters.
+	
+	* docs/reference/gtksourceview2-gtksourcemarker.xml: remove old docs.
+	
+	* docs/reference/gtksourceview2-gtksourcemark.xml: add new mark docs.
+	
+	* docs/Makefile.am:
+	* docs/reference/gtksourceview2-gtksourcebuffer.xml:
+	* docs/reference/gtksourceview2-gtksourceview.xml:
+	* docs/reference/gtksourceview2-ref.xml: New mark API documented.	
+
+2008-01-05  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* gtksourceview2.defs:
 	* gtksourceview2.override: add the new GtkSourceMark stuff.
 

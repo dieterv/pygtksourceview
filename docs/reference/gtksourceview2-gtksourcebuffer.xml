@@ -24,6 +24,12 @@
     </constructorsynopsis>
     
     <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourcebuffer2--backward-iter-to-mark">backward_iter_to_mark</link></methodname>
+        <methodparam><parameter role="keyword">iter</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis>
+
+    <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--begin-not-undoable-action">begin_not_undoable_action</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
@@ -38,18 +44,13 @@
       <methodparam></methodparam>
     </methodsynopsis>
     
-    <!-- NOT YET IMPLEMENTED <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -create-marker">create_marker</link></methodname>
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcebuffer2--create-mark">create_mark</link></methodname>
       <methodparam><parameter role="keyword">name</parameter></methodparam>
-      <methodparam><parameter role="keyword">type</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
       <methodparam><parameter role="keyword">where</parameter></methodparam>
     </methodsynopsis> 
-    
-    <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -delete-marker">delete_marker</link></methodname>
-      <methodparam><parameter role="keyword">marker</parameter></methodparam>
-    </methodsynopsis> END NON YET IMPLEMENTED -->
-    
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--end-not-undoable-action">end_not_undoable_action</link></methodname>
       <methodparam></methodparam>
@@ -61,11 +62,12 @@
       <methodparam><parameter role="keyword">end</parameter></methodparam>
     </methodsynopsis>
     
-    <!-- NOT YET IMPLEMENTED <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -get-first-marker">get_first_marker</link></methodname>
-      <methodparam></methodparam>
-    </methodsynopsis> END NON YET IMPLEMENTED -->
-    
+    <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourcebuffer2--forward-iter-to-mark">forward_iter_to_mark</link></methodname>
+        <methodparam><parameter role="keyword">iter</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis>
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--get-highlight-matching-brackets">get_highlight_matching_brackets</link></methodname>
       <methodparam></methodparam>
@@ -75,63 +77,45 @@
       <methodname><link linkend="method-gtksourcebuffer2--get-highlight-syntax">get_highlight_syntax</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
-    
-    <!-- NOT YET IMPLEMENTED <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -get-iter-at-marker">get_iter_at_marker</link></methodname>
-      <methodparam></methodparam>
-    </methodsynopsis> END NON YET IMPLEMENTED -->
-    
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--get-language">get_language</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
-    
-    <!-- NOT YET IMPLEMENTED <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -get-last-marker">get_last_marker</link></methodname>
-      <methodparam></methodparam>
-    </methodsynopsis>
-    
+
     <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourcebuffer2- -get-marker">get_marker</link></methodname>
-        <methodparam><parameter role="keyword">name</parameter></methodparam>
+        <methodname><link linkend="method-gtksourcebuffer2--get-marks-at-iter">get_marks_at_iter</link></methodname>
+        <methodparam><parameter role="keyword">iter</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
     </methodsynopsis>
 	
     <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourcebuffer2- -get-markers-in-region">get_marker_in_region</link></methodname>
-        <methodparam><parameter role="keyword">start</parameter></methodparam>
-        <methodparam><parameter role="keyword">end</parameter></methodparam>
-    </methodsynopsis> END NON YET IMPLEMENTED -->
+        <methodname><link linkend="method-gtksourcebuffer2--get-marks-at-line">get_marks_at_line</link></methodname>
+        <methodparam><parameter role="keyword">line</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis>
     
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--get-max-undo-levels">get_max_undo_levels</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
-    
-    <!-- NOT YET IMPLEMENTED <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -get-next-marker">get_next_marker</link></methodname>
-      <methodparam></methodparam>
-    </methodsynopsis>
- 	
-    <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -get-prev-marker">get_prev_marker</link></methodname>
-      <methodparam></methodparam>
-    </methodsynopsis> END NON YET IMPLEMENTED -->
-    
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--get-style-scheme">get_style_scheme</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
-    
-    <!-- NOT YET IMPLEMENTED <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2- -move-marker">move_marker</link></methodname>
-      <methodparam><parameter role="keyword">marker</parameter></methodparam>
-      <methodparam><parameter role="keyword">where</parameter></methodparam>
-    </methodsynopsis> END NON YET IMPLEMENTED -->
-    
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--redo">redo</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
+
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcebuffer2--remove-marks">remove_marks</link></methodname>
+      <methodparam><parameter role="keyword">start</parameter></methodparam>
+      <methodparam><parameter role="keyword">end</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis> 
     
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--set-highlight-matching-brackets">set_highlight_matching_brackets</link></methodname>
@@ -255,8 +239,8 @@
         </listitem>
       </varlistentry>
 
-      <!-- NOT YET IMPLEMENTED <varlistentry>
-        <term><link linkend="signal-gtksourcebuffer2- -marker-updated">"marker-updated"</link></term>
+      <varlistentry>
+        <term><link linkend="signal-gtksourcebuffer2--source-mark-updated">"source-mark-updated"</link></term>
         <listitem>
           <methodsynopsis language="python"><methodname>callback</methodname>
             <methodparam><parameter>sourceview</parameter></methodparam>
@@ -265,7 +249,7 @@
             <methodparam><parameter>...</parameter></methodparam>
           </methodsynopsis>
         </listitem>
-      </varlistentry> END NON YET IMPLEMENTED -->
+      </varlistentry>
     </variablelist>
 </refsect1>
 
@@ -339,7 +323,37 @@ By default highlighting is enabled, but you can disable it with
 <refsect1>
     <title>Methods</title>
 
-  <refsect2 id="method-gtksourcebuffer2--begin-not-undoable-action">
+  <refsect2 id="method-gtksourcebuffer2--backward-iter-to-mark">
+    <title>gtksourceview2.Buffer.backward_iter_to_mark</title>
+    <programlisting><methodsynopsis language="python">
+	  <methodname>backward_iter_to_mark</methodname>
+      <methodparam><parameter role="keyword">iter</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis></programlisting>
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">iter</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link></simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>category to search for or <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>whether iter moved.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>backward_iter_to_mark</methodname>() method moves iter to the
+      position of the previous <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+      of the given category. Returns <literal>True</literal> if iter was moved.
+      If category is <literal>None</literal>, the previous source mark can be of any category.
+    </para>
+  </refsect2>
+
+ <refsect2 id="method-gtksourcebuffer2--begin-not-undoable-action">
     <title>gtksourceview2.Buffer.begin_not_undoable_action</title>
     <programlisting><methodsynopsis language="python">
 	  <methodname>begin_not_undoable_action</methodname>
@@ -392,78 +406,60 @@ By default highlighting is enabled, but you can disable it with
     </para>
   </refsect2>
   
-  <!-- NOT YET IMPLEMENTED  <refsect2 id="method-gtksourcebuffer2- -create-marker">
+  <refsect2 id="method-gtksourcebuffer2--create-mark">
     <title>gtksourceview2.Buffer.create_marker</title>
     <programlisting><methodsynopsis language="python">
 	  <methodname>create_marker</methodname>
-	  <methodparam><parameter role="keyword">name</parameter></methodparam>
-	  <methodparam><parameter role="keyword">type</parameter></methodparam>
-    <methodparam><parameter role="keyword">where</parameter></methodparam>
+      <methodparam><parameter role="keyword">name</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">where</parameter></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
-	  <varlistentry>
-	  <term><parameter role="keyword">name</parameter>&nbsp;:</term>
-    <listitem><simpara> the name of the marker, or <literal>None</literal>.</simpara></listitem></varlistentry>
-    <varlistentry><term><parameter role="keyword">type</parameter>&nbsp;:</term>
-    <listitem><simpara> a string defining the marker type, or <literal>None</literal>.</simpara></listitem></varlistentry>
-    <varlistentry><term><parameter role="keyword">where</parameter>&nbsp;:</term>
-    <listitem><simpara> location to place the marker.</simpara></listitem></varlistentry>
-	  <varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term>
-    <listitem><simpara> a new
-    <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link>
-    </simpara></listitem></varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">name</parameter>&nbsp;:</term>
+        <listitem><simpara>the name of the mark, or <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>a string defining the mark category.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">where</parameter>&nbsp;:</term>
+        <listitem><simpara>location to place the mark.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara> a new
+        <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+        </simpara></listitem>
+      </varlistentry>
     </variablelist>
 
     <para>
-    The <methodname>create_marker</methodname>() method creates a marker in the 
-    <methodname><link linkend="constructor-gtksourcebuffer2">gtksourceview2.Buffer</link></methodname> of type 
-    <parameter>type</parameter>. A marker is semantically very similar to a 
-    <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>, except it has a type which is used by the 
-    <classname><link linkend="class-gtksourceview2">gtksourceview2.View</link></classname> displaying the buffer to show 
-    a pixmap on the left margin, at the line the marker is in. Because of this, a marker is generally associated to a line 
-    and not a character position. Markers are also accessible through a position or range in the buffer.
+      The <methodname>create_mark</methodname>() method creates a mark in the 
+      <methodname><link linkend="constructor-gtksourcebuffer2">gtksourceview2.Buffer</link></methodname> of category 
+      <parameter>category</parameter>. A mark is semantically very similar to a 
+      <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>, but organised into categories.
     </para>
     <para>
-    Markers are implemented using <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>, so all 
-    characteristics and restrictions to marks apply to markers too. These includes life cycle issues 
-    and "mark-set" and "mark-deleted" signal emissions.
+     Like a <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>, a
+     <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+     can be anonymous if the passed name is <literal>None</literal>.
     </para>
     <para>
-    Like a <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>, a 
-    <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link>
-    can be anonymous if the passed <parameter>name</parameter> is <literal>None</literal>. 
-    Also, the buffer owns the markers so you shouldn't unreference it.
+      Like a <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>, a 
+      <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link>
+      can be anonymous if the passed <parameter>name</parameter> is <literal>None</literal>. 
+      Also, the buffer owns the markers so you shouldn't unreference it.
     </para>
     <para>
-    Markers always have left gravity and are moved to the beginning of the line when the user deletes the line they were in. 
-    Also, if the user deletes a region of text which contained lines with markers, those are deleted.
+      Marks always have left gravity and are moved to the beginning of the line when the user deletes the line they were in. 
+      Also, if the user deletes a region of text which contained lines with markers, those are deleted.
     </para>
     <para>
-    Typical uses for a marker are bookmarks, breakpoints, current executing instruction indication in a source file, etc..
+      Typical uses for marks are bookmarks, breakpoints, current executing instruction indication in a source file, etc..
     </para>
-    </refsect2>
-  
-  <refsect2 id="method-gtksourcebuffer2- -delete-marker">
-    <title>gtksourceview2.Buffer.delete_marker</title>
-    <programlisting><methodsynopsis language="python">
-	  <methodname>delete_marker</methodname>
-	  <methodparam><parameter role="keyword">marker</parameter></methodparam>
-    </methodsynopsis></programlisting>
-    <variablelist>
-	  <varlistentry>
-    <term><parameter role="keyword">marker</parameter>&nbsp;:</term>
-    <listitem><simpara> a <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link>.</simpara></listitem></varlistentry>
-    <varlistentry><term><parameter role="keyword">where</parameter>&nbsp;:</term>
-    <listitem><simpara> the new location for the marker.</simpara></listitem>
-    </varlistentry>
-    </variablelist>
-
-    <para>
-    Deletes <parameter>marker</parameter> from the source buffer. The same conditions as for 
-    <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>
-    apply here. The marker is no longer accessible from the buffer, but if you held a reference to it, it will not be destroyed.
-    </para>
-    </refsect2> END NON YET IMPLEMENTED -->
+  </refsect2>
   
   <refsect2 id="method-gtksourcebuffer2--end-not-undoable-action">
     <title>gtksourceview2.Buffer.end_not_undoable_action</title>
@@ -499,25 +495,36 @@ By default highlighting is enabled, but you can disable it with
       and highlight the given area synchronously.
     </para>
     </refsect2>
-  
-  <!-- NOT YET IMPLEMENTED <refsect2 id="method-gtksourcebuffer2- -get-first-marker">
-    <title>gtksourceview2.Buffer.get_first_marker</title>
+
+  <refsect2 id="method-gtksourcebuffer2--forward-iter-to-mark">
+    <title>gtksourceview2.Buffer.forward_iter_to_mark</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>get_first_marker</methodname>
-	  <methodparam></methodparam></methodsynopsis></programlisting>
+	  <methodname>forward_iter_to_mark</methodname>
+      <methodparam><parameter role="keyword">iter</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis></programlisting>
     <variablelist>
-	    <varlistentry>
-	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
-	      <listitem><simpara> a reference to the first
-        <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link>, 
-        or <literal>None</literal> if there are no markers in the buffer.
-        </simpara></listitem>
-	    </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">iter</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link></simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>category to search for or <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>whether iter moved.</simpara></listitem>
+      </varlistentry>
     </variablelist>
+
     <para>
-      Returns the first (nearest to the top of the buffer) marker in buffer.
+      The <methodname>forward_iter_to_mark</methodname>() method moves iter to the
+      position of the next <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+      of the given category. Returns <literal>True</literal> if iter was moved.
+      If category is <literal>None</literal>, the previous source mark can be of any category.
     </para>
-  </refsect2> END NON YET IMPLEMENTED -->
+  </refsect2>
   
   <refsect2 id="method-gtksourcebuffer2--get-highlight-matching-brackets">
     <title>gtksourceview2.Buffer.get_highlight_matching_brackets</title>
@@ -559,28 +566,6 @@ By default highlighting is enabled, but you can disable it with
     </para>
   </refsect2>
   
-  <!-- NOT YET IMPLEMENTED <refsect2 id="method-gtksourcebuffer2- -get-iter-at-marker">
-    <title>gtksourceview2.Buffer.get_iter_at_marker</title>
-    <programlisting><methodsynopsis language="python">
-	  <methodname>get_iter_at_marker</methodname>
-	  <methodparam><parameter role="keyword">iter</parameter></methodparam>
-    <methodparam><parameter role="keyword">marker</parameter></methodparam>
-    </methodsynopsis></programlisting>
-    <variablelist>
-    <varlistentry><term><parameter role="keyword">iter</parameter>&nbsp;:</term>
-    <listitem><simpara> a <classname><link linkend="class-gtktextiter">gtk.TextIter</link></classname> to initialize.
-    </simpara></listitem></varlistentry>
-    <varlistentry><term><parameter role="keyword">marker</parameter>&nbsp;:</term>
-    <listitem><simpara> a <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link> of buffer.
-    </simpara></listitem></varlistentry>
-    </variablelist>
-
-    <para>
-    The <methodname>get_iter_at_marker</methodname>() method initializes
-    <parameter>iter</parameter> at the location of <parameter>marker</parameter>.
-    </para>
-  </refsect2> END NON YET IMPLEMENTED -->
-  
   <refsect2 id="method-gtksourcebuffer2--get-language">
     <title>gtksourceview2.Buffer.get_language</title>
     <programlisting><methodsynopsis language="python">
@@ -602,72 +587,58 @@ By default highlighting is enabled, but you can disable it with
         <methodname><link linkend="method-gtksourcebuffer2--set-language">gtksourceview2.Buffer.set_language</link></methodname>().
     </para>
   </refsect2>
-  
-  <!-- NOT YET IMPLEMENTED <refsect2 id="method-gtksourcebuffer2- -get-last-marker">
-    <title>gtksourceview2.Buffer.get_last_marker</title>
+
+  <refsect2 id="method-gtksourcebuffer2--get-marks-at-iter">
+    <title>gtksourceview2.Buffer.get_marks_at_iter</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>get_last_marker</methodname>
-	  <methodparam></methodparam></methodsynopsis></programlisting>
-    <variablelist>
-	    <varlistentry>
-	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
-	      <listitem><simpara> a reference to the last
-        <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link>, 
-        or <literal>None</literal> if there are no markers in the buffer.
-        </simpara></listitem>
-	    </varlistentry>
-    </variablelist>
-    <para>
-      The <methodname>get_last_marker</methodname>() method returns the last
-      (nearest to the bottom of the buffer) marker in buffer.
-    </para>
-  </refsect2>    
-  
-  <refsect2 id="method-gtksourcebuffer2- -get-marker">
-    <title>gtksourceview2.Buffer.get_marker</title>
-    <programlisting><methodsynopsis language="python">
-	  <methodname>get_marker</methodname>
-	  <methodparam><parameter role="keyword">name</parameter></methodparam>
+	  <methodname>get_marks_at_iter</methodname>
+      <methodparam><parameter role="keyword">iter</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
-	  <varlistentry>
-    <term><parameter role="keyword">name</parameter>&nbsp;:</term>
-    <listitem><simpara> name of the <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link> 
-    to retreive.</simpara></listitem></varlistentry>
+      <varlistentry><term><parameter role="keyword">iter</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link>.</simpara></listitem>
+      </varlistentry>
+      <varlistentry><term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>category to search for or <literal>None</literal></simpara></listitem>
+      </varlistentry>
+      <varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara> a list of <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>.</simpara></listitem>
+      </varlistentry>
     </variablelist>
 
     <para>
-    The <methodname>get_marker</methodname>() method Looks up the
-    <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link> 
-    named <parameter role="keyword">name</parameter> in <parameter role="keyword">buffer</parameter>, returning 
-    <literal>None</literal> if it doesn't exists.
+      The <methodname>get_marks_at_iter</methodname>() method returns the list of marks
+      of the given category at iter. If category is <literal>None</literal>
+      it returns all marks at iter.
     </para>
   </refsect2>
-  
-  <refsect2 id="method-gtksourcebuffer2- -get-markers-in-region">
-    <title>gtksourceview2.Buffer.get_markers_in_region</title>
+
+  <refsect2 id="method-gtksourcebuffer2--get-marks-at-line">
+    <title>gtksourceview2.Buffer.get_marks_at_line</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>get_markers_in_region</methodname>
-	  <methodparam><parameter role="keyword">begin</parameter></methodparam>
-    <methodparam><parameter role="keyword">end</parameter></methodparam>
+	  <methodname>get_marks_at_line</methodname>
+      <methodparam><parameter role="keyword">iter</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
-    <varlistentry><term><parameter role="keyword">begin</parameter>&nbsp;:</term>
-    <listitem><simpara> beginning of the range.</simpara></listitem></varlistentry>
-    <varlistentry><term><parameter role="keyword">end</parameter>&nbsp;:</term>
-    <listitem><simpara> end of the range.</simpara></listitem></varlistentry>
-    <varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term>
-    <listitem><simpara> a list of the <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link> 
-    in the range.</simpara></listitem></varlistentry>
+      <varlistentry><term><parameter role="keyword">iter</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link>.</simpara></listitem>
+      </varlistentry>
+      <varlistentry><term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>category to search for or <literal>None</literal></simpara></listitem>
+      </varlistentry>
+      <varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara> a list of <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>.</simpara></listitem>
+      </varlistentry>
     </variablelist>
 
     <para>
-    The <methodname>get_markers_in_region</methodname>() method returns an ordered (by position)
-    list of <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link> 
-    objects inside the region delimited by the <classname><link linkend="class-gtktextiter">gtk.TextIter</link></classname> 
-    <parameter>begin</parameter> and <parameter>end</parameter>. The iters may be in any order.
+      The <methodname>get_marks_at_line</methodname>() method returns the list of marks
+      of the given category at line. If category is <literal>None</literal>
+      it returns all marks at line.
     </para>
-  </refsect2> END NON YET IMPLEMENTED -->
+  </refsect2>
   
   <refsect2 id="method-gtksourcebuffer2--get-max-undo-levels">
     <title>gtksourceview2.Buffer.get_max_undo_levels</title>
@@ -687,52 +658,6 @@ By default highlighting is enabled, but you can disable it with
       of undo levels the buffer will track for buffer edits.
     </para>
   </refsect2>
-  
-  <!-- NOT YET IMPLEMENTED <refsect2 id="method-gtksourcebuffer2- -get-next-marker">
-    <title>gtksourceview2.Buffer.get_next_marker</title>
-    <programlisting><methodsynopsis language="python">
-	  <methodname>get_next_marker</methodname>
-	  <methodparam><parameter role="keyword">iter</parameter></methodparam>
-    </methodsynopsis></programlisting>
-    <variablelist>
-    <varlistentry><term><parameter role="keyword">iter</parameter>&nbsp;:</term>
-    <listitem><simpara> the location to start searching from.</simpara></listitem></varlistentry>
-    <varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term>
-    <listitem><simpara> the <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link> 
-    nearest to the right of <parameter>iter</parameter>, or <literal>None</literal> if there are no more markers after 
-    <parameter>iter</parameter>.</simpara></listitem></varlistentry>
-    </variablelist>
-
-    <para>
-    The <methodname>get_next_marker</methodname>() method returns the nearest marker to the
-    right of <parameter>iter</parameter>. If there are multiple markers at the same position, 
-    this function will always return the first one (from the internal linked list), even if starting the search exactly at its location. 
-    You can get the others using <methodname><link linkend="method-gtksourcemarker2- -next">gtksourcemarker2.Marker.next</link></methodname>().
-    </para>
-  </refsect2>
-  
-  <refsect2 id="method-gtksourcebuffer2- -get-prev-marker">
-    <title>gtksourceview2.Buffer.get_prev_marker</title>
-    <programlisting><methodsynopsis language="python">
-	  <methodname>get_prev_marker</methodname>
-	  <methodparam><parameter role="keyword">iter</parameter></methodparam>
-    </methodsynopsis></programlisting>
-    <variablelist>
-    <varlistentry><term><parameter role="keyword">iter</parameter>&nbsp;:</term>
-    <listitem><simpara> the location to start searching from.</simpara></listitem></varlistentry>
-    <varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term>
-    <listitem><simpara> the <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link> 
-    nearest to the left of <parameter>iter</parameter>, or <literal>None</literal> if there are no more markers before 
-    <parameter>iter</parameter>.</simpara></listitem></varlistentry>
-    </variablelist>
-
-    <para>
-    The <methodname>get_prev_marker</methodname>() method returns the nearest marker
-    to the left of <parameter>iter</parameter>. If there are multiple markers at the same position, 
-    this function will always return the first one (from the internal linked list), even if starting the search exactly at its location. 
-    You can get the others using <methodname><link linkend="method-gtksourcemarker2- -prev">gtksourcemarker2.Marker.prev</link></methodname>().
-    </para>
-  </refsect2> END NON YET IMPLEMENTED -->
   
   <refsect2 id="method-gtksourcebuffer2--get-style-scheme">
     <title>gtksourceview2.Buffer.get_style_scheme</title>
@@ -756,28 +681,6 @@ By default highlighting is enabled, but you can disable it with
     You can get the others using <methodname><link linkend="method-gtksourcemarker2--next">gtksourceview2.Marker.next</link></methodname>().
     </para>
   </refsect2>
-  
-  <!-- NOT YET IMPLEMENTED <refsect2 id="method-gtksourcebuffer2- -move-marker">
-    <title>gtksourceview2.Buffer.move_marker</title>
-    <programlisting><methodsynopsis language="python">
-	  <methodname>move_marker</methodname>
-	  <methodparam><parameter role="keyword">marker</parameter></methodparam>
-    <methodparam><parameter role="keyword">where</parameter></methodparam>
-    </methodsynopsis></programlisting>
-    <variablelist>
-	  <varlistentry>
-    <term><parameter role="keyword">marker</parameter>&nbsp;:</term>
-    <listitem><simpara> a <link linkend="class-gtksourcemarker2"><classname>gtksourceview2.Marker</classname></link>.</simpara></listitem></varlistentry>
-    <varlistentry><term><parameter role="keyword">where</parameter>&nbsp;:</term>
-    <listitem><simpara> the new location for the marker.</simpara></listitem>
-    </varlistentry>
-    </variablelist>
-
-    <para>
-    The <methodname>move_marker</methodname>() method moves <parameter>marker</parameter>
-    to the new location <parameter>where</parameter>.
-    </para>
-  </refsect2> END NON YET IMPLEMENTED -->
 
   <refsect2 id="method-gtksourcebuffer2--redo">
     <title>gtksourceview2.Buffer.redo</title>
@@ -787,6 +690,36 @@ By default highlighting is enabled, but you can disable it with
       The <methodname>redo</methodname>() method redoes the last undo operation. Use 
       <methodname><link linkend="method-gtksourcebuffer2--can-redo">gtksourceview2.Buffer.can_redo</link></methodname>
       to check whether a call to this function will have any effect.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcebuffer2--remove-marks">
+    <title>gtksourceview2.Buffer.remove_marks</title>
+    <programlisting><methodsynopsis language="python">
+	  <methodname>remove_marks</methodname>
+      <methodparam><parameter role="keyword">start</parameter></methodparam>
+      <methodparam><parameter role="keyword">end</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis></programlisting>
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">start</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link></simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">end</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link></simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>category to search for or <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>remove_marks</methodname>() method remove all marks of category
+      between start and end from the buffer. If category is <literal>None</literal>,
+      all marks in the range will be removed.
     </para>
   </refsect2>
 
@@ -983,7 +916,7 @@ By default highlighting is enabled, but you can disable it with
 
   </refsect2>
 
-  <!-- NOT YET IMPLEMENTED  <refsect2 id="signal-gtksourcebuffer2- -marker-updated">
+  <refsect2 id="signal-gtksourcebuffer2-source--mark-updated">
     <title>The "marker-updated" gtksourceview2.Buffer Signal</title>
 
     <programlisting><methodsynopsis language="python">
@@ -1001,13 +934,13 @@ By default highlighting is enabled, but you can disable it with
 	    </varlistentry>
       <varlistentry>
 	      <term><parameter>arg1</parameter>&nbsp;:</term>
-          <listitem><simpara>the <classname><link linkend="class-gtktextiter">gtk.TextIter</link></classname>
+          <listitem><simpara>the <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>
           at the location where the change occurred.</simpara></listitem>
 	    </varlistentry>
 	    <varlistentry>
 	      <term><parameter>user_param1</parameter>&nbsp;:</term>
         <listitem><simpara>the first user parameter (if any) specified with the 
-        <link linkend="method-gobject- -connect"><methodname>connect</methodname>()</link> method</simpara></listitem>
+        <link linkend="method-gobject--connect"><methodname>connect</methodname>()</link> method</simpara></listitem>
 	    </varlistentry>
 	    <varlistentry>
 	      <term><parameter>...</parameter>&nbsp;:</term>
@@ -1016,9 +949,8 @@ By default highlighting is enabled, but you can disable it with
     </variablelist>
 
     <para>
-      The "marker-updated" signal is emitted whenever a marker of <parameter>sourcebuffer</parameter> has changed and 
-      needs to be redisplayed by the view. A change in a marker's type or location can trigger this signal.
+      The "source-mark-updated" signal is emitted whenever a mark is added to, moved or removed from the buffer.
     </para>
-  </refsect2> END NON YET IMPLEMENTED -->
+  </refsect2>
 </refsect1>
 </refentry>

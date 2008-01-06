@@ -49,8 +49,13 @@
       </methodsynopsis>
       
       <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourceview2--get-marker-pixbuf">get_marker_pixbuf</link></methodname>
-          <methodparam></methodparam>
+        <methodname><link linkend="method-gtksourceview2--get-mark-category-pixbuf">get_mark_category_pixbuf</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--get-mark-category-priority">get_mark_category_priority</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
       </methodsynopsis>
       
       <methodsynopsis language="python">
@@ -59,7 +64,7 @@
       </methodsynopsis>
       
       <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourceview2--get-show-line-markers">get_show_line_markers</link></methodname>
+        <methodname><link linkend="method-gtksourceview2--get-show-line-marks">get_show_line_marks</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
       
@@ -109,9 +114,15 @@
       </methodsynopsis>
       
       <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourceview2--set-marker-pixbuf">set_marker_pixbuf</link></methodname>
-          <methodparam><parameter role="keyword">marker_type</parameter></methodparam>
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-pixbuf">set_mark_category_pixbuf</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
           <methodparam><parameter role="keyword">pixbuf</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-priority">set_mark_category_priority</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+          <methodparam><parameter role="keyword">priority</parameter></methodparam>
       </methodsynopsis>
       
       <methodsynopsis language="python">
@@ -120,7 +131,7 @@
       </methodsynopsis>
       
       <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourceview2--set-show-line-markers">set_show_line_markers</link></methodname>
+        <methodname><link linkend="method-gtksourceview2--set-show-line-marks">set_show_line_marks</link></methodname>
           <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis>
       
@@ -215,9 +226,9 @@
             </row>
       
             <row valign="top">
-              <entry>"show-line-markers"</entry>
+              <entry>"show-line-marks"</entry>
               <entry>Read-Write</entry>
-              <entry>If <literal>True</literal>, the display line marker pixbufs will be shown. Default value: False.</entry>
+              <entry>If <literal>True</literal>, the display line marks pixbufs will be shown. Default value: False.</entry>
             </row>
       
             <row valign="top">
@@ -450,18 +461,18 @@
       </para>
     </refsect2>
 
-    <refsect2 id="method-gtksourceview2--get-marker-pixbuf">
-      <title>gtksourceview2.View.get_marker_pixbuf</title>
+    <refsect2 id="method-gtksourceview2--get-mark-category-pixbuf">
+      <title>gtksourceview2.View.get_mark_category_pixbuf</title>
 
       <programlisting><methodsynopsis language="python">
-        <methodname>get_marker_pixbuf</methodname>
-          <methodparam><parameter role="keyword">marker_type</parameter></methodparam>
+        <methodname>get_mark_category_pixbuf</methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
       </methodsynopsis></programlisting>
         
       <variablelist>
         <varlistentry>
-          <term><parameter role="keyword">marker_type</parameter>&nbsp;:</term>
-          <listitem><simpara>a marker type.</simpara></listitem>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
         </varlistentry>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -471,8 +482,34 @@
       </variablelist>
 
       <para>
-        The <methodname>get_marker_pixbuf</methodname>() method gets the pixbuf which
-        is associated with the given marker_type.
+        The <methodname>get_marker_category_pixbuf</methodname>() method gets the pixbuf which
+        is associated with the given category.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceview2--get-mark-category-priority">
+      <title>gtksourceview2.View.get_mark_category_priority</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_mark_category_priority</methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>a <link linkend="class-gdkpixbuf"><classname>gtk.gdk.Pixbuf</classname></link>
+          if found, or <literal>None</literal> if not found.</simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_mark_category_priority</methodname>() method gets
+        the priority which is associated with the given category.
       </para>
     </refsect2>
 
@@ -497,25 +534,25 @@
       </para>
     </refsect2>
 
-    <refsect2 id="method-gtksourceview2--get-show-line-markers">
-      <title>gtksourceview2.View.get_show_line_markers</title>
+    <refsect2 id="method-gtksourceview2--get-show-line-marks">
+      <title>gtksourceview2.View.get_show_line_marks</title>
 
       <programlisting><methodsynopsis language="python">
-        <methodname>get_show_line_markers</methodname>
+        <methodname>get_show_line_marks</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
         
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
-          <listitem><simpara><literal>True</literal> if the line markers are displayed.
+          <listitem><simpara><literal>True</literal> if the line marks are displayed.
           <literal>False</literal> otherwise.</simpara></listitem>
         </varlistentry>
       </variablelist>
 
       <para>
-        The <methodname>get_show_line_markers</methodname>() method returns
-        whether line markers are displayed beside the text.
+        The <methodname>get_show_line_marks</methodname>() method returns
+        whether line marks are displayed beside the text.
       </para>
     </refsect2>
 
@@ -715,30 +752,59 @@
       </para>
     </refsect2>
 
-    <refsect2 id="method-gtksourceview2--set-marker-pixbuf">
-      <title>gtksourceview2.View.set_marker_pixbuf</title>
+    <refsect2 id="method-gtksourceview2--set-mark-category-pixbuf">
+      <title>gtksourceview2.View.set_mark_category_pixbuf</title>
 
       <programlisting><methodsynopsis language="python">
-        <methodname>set_marker_pixbuf</methodname>
-        <methodparam><parameter role="keyword">marker_type</parameter></methodparam>
+        <methodname>set_mark_category_pixbuf</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
         <methodparam><parameter role="keyword">pixbuf</parameter></methodparam>
       </methodsynopsis></programlisting>
       
       <variablelist>
         <varlistentry>
-          <term><parameter role="keyword">marker_type</parameter>&nbsp;:</term>
-          <listitem><simpara>a marker type.</simpara></listitem>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
         </varlistentry>
         <varlistentry>
           <term><parameter role="keyword">pixbuf</parameter>&nbsp;:</term>
-          <listitem><simpara>a <link linkend="class-gdkpixbuf"><classname>gtk.gdk.Pixbuf</classname></link>.</simpara></listitem>
+          <listitem><simpara>a <link linkend="class-gdkpixbuf"><classname>gtk.gdk.Pixbuf</classname></link>
+          or <literal>None</literal>.</simpara></listitem>
         </varlistentry>
       </variablelist>
 
       <para>
-        The <methodname>set_marker_pixbuf</methodname>() method
+        The <methodname>set_mark_category_priority</methodname>() method
         associates a given <parameter>pixbuf</parameter> with a given
-        <parameter>marker_type</parameter>.
+        <parameter>category</parameter>. If pixbuf is <literal>None</literal>,
+        the pixbuf is unset.
+      </para>
+    </refsect2>
+
+    <refsect2 id="method-gtksourceview2--set-mark-category-priority">
+      <title>gtksourceview2.View.set_mark_category_priority</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_mark_category_priority</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">priority</parameter></methodparam>
+      </methodsynopsis></programlisting>
+      
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">priority</parameter>&nbsp;:</term>
+          <listitem><simpara>the priority for the category.</simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_mark_category_priority</methodname>() method
+        Set the priority for the given mark category. When there are multiple marks
+        on the same line, marks of categories with higher priorities will be drawn on top.
       </para>
     </refsect2>
 
@@ -763,25 +829,25 @@
       </para>
     </refsect2>
 
-    <refsect2 id="method-gtksourceview2--set-show-line-markers">
-      <title>gtksourceview2.View.set_show_line_markers</title>
+    <refsect2 id="method-gtksourceview2--set-show-line-marks">
+      <title>gtksourceview2.View.set_show_line_marks</title>
 
       <programlisting><methodsynopsis language="python">
-        <methodname>set_show_line_markers</methodname>
+        <methodname>set_show_line_marks</methodname>
         <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis></programlisting>
       
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">show</parameter>&nbsp;:</term>
-          <listitem><simpara>if <literal>True</literal> line markers will be
+          <listitem><simpara>if <literal>True</literal> line marks will be
           displayed beside the text.</simpara></listitem>
         </varlistentry>
       </variablelist>
 
       <para>
-        The <methodname>set_show_line_markers</methodname>() method sets
-        whether line markers should be displayed.
+        The <methodname>set_show_line_marks</methodname>() method sets
+        whether line marks should be displayed.
       </para>
     </refsect2>
 

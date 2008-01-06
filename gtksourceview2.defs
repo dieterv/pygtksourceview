@@ -210,7 +210,7 @@
   (c-name "gtk_source_buffer_create_mark")
   (return-type "GtkSourceMark*")
   (parameters
-    '("const-gchar*" "name")
+    '("const-gchar*" "name" (null-ok))
     '("const-gchar*" "category")
     '("const-GtkTextIter*" "where")
   )
@@ -222,7 +222,7 @@
   (return-type "gboolean")
   (parameters
     '("GtkTextIter*" "iter")
-    '("const-gchar*" "category")
+    '("const-gchar*" "category" (null-ok))
   )
 )
 
@@ -232,7 +232,7 @@
   (return-type "gboolean")
   (parameters
     '("GtkTextIter*" "iter")
-    '("const-gchar*" "category")
+    '("const-gchar*" "category" (null-ok))
   )
 )
 
@@ -242,7 +242,7 @@
   (return-type "GSList*")
   (parameters
     '("GtkTextIter*" "iter")
-    '("const-gchar*" "category")
+    '("const-gchar*" "category" (null-ok))
   )
 )
 
@@ -252,7 +252,7 @@
   (return-type "GSList*")
   (parameters
     '("gint" "line")
-    '("const-gchar*" "category")
+    '("const-gchar*" "category" (null-ok))
   )
 )
 
@@ -263,7 +263,7 @@
   (parameters
     '("GtkTextIter*" "start")
     '("GtkTextIter*" "end")
-    '("const-gchar*" "category")
+    '("const-gchar*" "category" (null-ok))
   )
 )
 
@@ -711,7 +711,7 @@
   (return-type "none")
   (parameters
     '("const-gchar*" "category")
-    '("GdkPixbuf*" "pixbuf")
+    '("GdkPixbuf*" "pixbuf" (null-ok))
   )
 )
 
@@ -767,7 +767,7 @@
   (is-constructor-of "GtkSourceMark")
   (return-type "GtkSourceMark*")
   (parameters
-    '("const-gchar*" "name")
+    '("const-gchar*" "name" (null-ok))
     '("const-gchar*" "category")
   )
 )
@@ -783,7 +783,7 @@
   (c-name "gtk_source_mark_next")
   (return-type "GtkSourceMark*")
   (parameters
-    '("const-gchar*" "category")
+    '("const-gchar*" "category" (null-ok))
   )
 )
 
@@ -792,6 +792,6 @@
   (c-name "gtk_source_mark_prev")
   (return-type "GtkSourceMark*")
   (parameters
-    '("const-gchar*" "category")
+    '("const-gchar*" "category" (null-ok))
   )
 )

@@ -1,0 +1,240 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="class-gtksourcemark2">
+  <refnamediv>
+    <refname>gtksourceview2.Mark</refname>
+    <refpurpose>Mark object for <link linkend="class-gtksourceview">gtksourceview.SourceView</link></refpurpose>
+  </refnamediv>
+
+<!-- ******************************* -->
+<!-- BEGIN OF GTKSOURCEMARK SYNOPSIS -->
+<!-- ******************************* -->
+
+<refsect1>
+  <title>Synopsis</title>
+  
+    <classsynopsis language="python">
+    <ooclass><classname>gtksourceview2.Mark</classname></ooclass>
+    <ooclass><classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname></ooclass>
+
+    <constructorsynopsis language="python">
+      <methodname><link linkend="constructor-gtksourcemark2">gtksourceview2.Mark</link></methodname>
+      <methodparam><parameter role="keyword">name</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </constructorsynopsis>
+
+    <methodsynopsis language="python">
+	    <methodname><link linkend="method-gtksourcemark2--get-category">get_category</link></methodname>
+	    <methodparam></methodparam>
+    </methodsynopsis>
+
+    <methodsynopsis language="python">
+	    <methodname><link linkend="method-gtksourcemark2--next">next</link></methodname>
+	    <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis>  
+
+    <methodsynopsis language="python">
+	    <methodname><link linkend="method-gtksourcemark2--prev">prev</link></methodname>
+	    <methodparam><parameter role="keyword">category</parameter></methodparam>
+    </methodsynopsis>
+  </classsynopsis>
+</refsect1>
+
+<!-- ******************************* -->
+<!-- BEGIN OF GTKSOURCEMARK ANCESTRY -->
+<!-- ******************************* -->
+
+<refsect1>
+    <title>Ancestry</title>
+
+<synopsis>+-- <link linkend="class-gobject">gobject.GObject</link>
+    +-- <link linkend="class-gtktextmark">gtk.TextMark</link>
+        +-- <link linkend="class-gtksourcemark2">gtksourceview2.Mark</link>
+</synopsis>
+</refsect1>
+
+<!-- ********************************* -->
+<!-- BEGIN OF GTKSOURCEMARK PROPERTIES -->
+<!-- ********************************* -->
+
+  <refsect1>
+    <title>Properties</title>
+
+    <blockquote role="properties">
+      <informaltable pgwide="1" frame="none">
+        <tgroup cols="3">
+          <colspec column="1" colwidth="1in"/>
+          <colspec column="2" colwidth="1in"/>
+          <colspec column="3" colwidth="4in"/>
+          <tbody>
+
+            <row valign="top">
+              <entry>"category"</entry>
+              <entry>Read-Write-Construct Only</entry>
+              <entry>The category of the
+              <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>,
+              classified the mark and control what pixbuf is used and with which priority it is drawn.
+              Default value: <literal>None</literal></entry>
+            </row>            
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </blockquote>
+
+  </refsect1>
+
+<!-- ********************************** -->
+<!-- BEGIN OF GTKSOURCEMARK DESCRIPTION -->
+<!-- ********************************** -->
+
+<refsect1 id="description-gtktextmarker">
+    <title>Description</title>
+
+  <para>
+    A <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+    preserves a position in the text where you want to display additional info. It is based on
+    <link linkend="class-gtktextmark"><classname>gtk.TextMark</classname></link> and thus is still
+    valid after the text has changed though it may change it's position.
+  </para>
+  <para>
+    <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link> are organised
+    in categories which you have to set when you create the mark. Each category can have a pixbuf and a
+    priority associated using
+    <methodname><link linkend="method-gtksourceview2--set-mark_category-pixbuf">gtksourceview2.View.set_mark_category_pixbuf</link></methodname>()
+    and <methodname><link linkend="method-gtksourceview2--set-mark_category-pixbuf">gtksourceview2.View.set_mark_category_priority</link></methodname>().
+    The pixbuf will be displayed in the margin at the line where the mark residents if the "show-line-marks"
+    property is set to <literal>True</literal>. If there are multiple marks in the same line,
+    the pixbufs will be drawn on top of each other. The mark with the highest priority will be drawn on top.
+  </para>
+</refsect1>
+
+<!-- ********************************** -->
+<!-- BEGIN OF GTKSOURCEMARK CONSTRUCTOR -->
+<!-- ********************************** -->
+
+  <refsect1 id="constructor-gtksourcemark2">
+    <title>Constructor</title>
+
+    <programlisting><constructorsynopsis language="python">
+      <methodname>gtksourceview2.Mark</methodname>
+      <methodparam><parameter role="keyword">name</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      </constructorsynopsis></programlisting>
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">name</parameter>&nbsp;:</term>
+          <listitem><simpara>name of the <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>,can be
+          <literal>None</literal> when not using a name.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>used to classify marks according to common characteristics
+          (e.g. all the marks representing a bookmark could belong to the "bookmark" category,
+          or all the marks representing a compilation error could belong to "error"
+          category).</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>a new <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+    <para>
+      Creates a new <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>.
+      Add it to a buffer using
+      <methodname><link linkend="method-gtktextbuffer--add-mark">gtk.TextBuffer.add_mark</link></methodname>().
+      If name is <literal>None</literal>, the mark is anonymous; otherwise, the mark can be retrieved by name using
+      <methodname><link linkend="method-gtktextbuffer--get-mark">gtk.TextBuffer.get_mark</link></methodname>().
+      Normally marks are created using the utility function
+      <methodname><link linkend="method-gtksourcebuffer2--create-mark">gtksourceview2.Buffer.create_mark</link></methodname>().
+    </para>
+
+  </refsect1>
+
+<!-- ****************************** -->
+<!-- BEGIN OF GTKSOURCEMARK METHODS -->
+<!-- ****************************** -->
+
+<refsect1>
+  <title>Methods</title>
+
+  <refsect2 id="method-gtksourcemark2--get-category">
+    <title>gtksourceview2.Mark.get_category</title>
+    <programlisting><methodsynopsis language="python">
+	  <methodname>get_category</methodname>
+	  <methodparam></methodparam>
+	  </methodsynopsis></programlisting>
+      
+    <variablelist>
+	    <varlistentry>
+	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>the category.</simpara></listitem>
+	    </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>get_category</methodname>() method returns the category of
+      <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--next">
+    <title>gtksourceview2.Mark.next</title>
+    <programlisting><methodsynopsis language="python">
+	  <methodname>next</methodname>
+	  <methodparam><parameter role="keyword">category</parameter></methodparam>
+	  </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>a string specifying the mark category or <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+            <varlistentry>
+	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>the next <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+              or <literal>None</literal>.</simpara></listitem>
+	    </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>next</methodname>() method returns the next
+      <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+      in the buffer or <literal>None</literal> if the mark was not added to a buffer.
+      If there is no next mark, <literal>None</literal> will be returned.
+      If category is <literal>None</literal>, looks for marks of any category.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--prev">
+    <title>gtksourceview2.Mark.prev</title>
+    <programlisting><methodsynopsis language="python">
+	  <methodname>prev</methodname>
+	  <methodparam><parameter role="keyword">category</parameter></methodparam>
+	  </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+        <listitem><simpara>a string specifying the mark category or <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+            <varlistentry>
+	      <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>the previous <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+              or <literal>None</literal>.</simpara></listitem>
+	    </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>prev</methodname>() method returns the previous
+      <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
+      in the buffer or <literal>None</literal> if the mark was not added to a buffer.
+      If there is no next mark, <literal>None</literal> will be returned.
+      If category is <literal>None</literal>, looks for marks of any category.
+    </para>
+  </refsect2>
+
+</refsect1> 
+</refentry>
