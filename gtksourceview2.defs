@@ -28,6 +28,13 @@
   (gtype-id "GTK_TYPE_SOURCE_MARK")
 )
 
+(define-object PrintCompositor
+  (in-module "Gtk")
+  (parent "GObject")
+  (c-name "GtkSourcePrintCompositor")
+  (gtype-id "GTK_TYPE_SOURCE_PRINT_COMPOSITOR")
+)
+
 (define-object Style
   (in-module "GtkSourceView")
   (parent "GObject")
@@ -533,16 +540,6 @@
   )
 )
 
-; (define-method set_style
-;   (of-object "GtkSourceStyleScheme")
-;   (c-name "gtk_source_style_scheme_set_style")
-;   (return-type "none")
-;   (parameters
-;     '("const-gchar*" "name")
-;     '("const-GtkSourceStyle*" "style")
-;   )
-; )
-
 
 
 ;; From gtksourceview.h
@@ -794,4 +791,329 @@
   (parameters
     '("const-gchar*" "category" (null-ok))
   )
+)
+
+
+
+;; From gtksourceprintcompositor.h
+
+(define-function gtk_source_print_compositor_get_type
+  (c-name "gtk_source_print_compositor_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_source_print_compositor_new
+  (c-name "gtk_source_print_compositor_new")
+  (is-constructor-of "GtkSourcePrintCompositor")
+  (return-type "GtkSourcePrintCompositor*")
+  (parameters
+    '("GtkSourceBuffer*" "buffer")
+  )
+)
+
+(define-function gtk_source_print_compositor_new_from_view
+  (c-name "gtk_source_print_compositor_new_from_view")
+  (return-type "GtkSourcePrintCompositor*")
+  (parameters
+    '("GtkSourceView*" "view")
+  )
+)
+
+(define-method get_buffer
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_buffer")
+  (return-type "GtkSourceBuffer*")
+)
+
+(define-method set_tab_width
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_tab_width")
+  (return-type "none")
+  (parameters
+    '("guint" "width")
+  )
+)
+
+(define-method get_tab_width
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_tab_width")
+  (return-type "guint")
+)
+
+(define-method set_wrap_mode
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_wrap_mode")
+  (return-type "none")
+  (parameters
+    '("GtkWrapMode" "wrap_mode")
+  )
+)
+
+(define-method get_wrap_mode
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_wrap_mode")
+  (return-type "GtkWrapMode")
+)
+
+(define-method set_highlight_syntax
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_highlight_syntax")
+  (return-type "none")
+  (parameters
+    '("gboolean" "highlight")
+  )
+)
+
+(define-method get_highlight_syntax
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_highlight_syntax")
+  (return-type "gboolean")
+)
+
+(define-method set_print_line_numbers
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_print_line_numbers")
+  (return-type "none")
+  (parameters
+    '("guint" "interval")
+  )
+)
+
+(define-method get_print_line_numbers
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_print_line_numbers")
+  (return-type "guint")
+)
+
+(define-method set_body_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_body_font_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "font_name")
+  )
+)
+
+(define-method get_body_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_body_font_name")
+  (return-type "gchar*")
+)
+
+(define-method set_line_numbers_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_line_numbers_font_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "font_name")
+  )
+)
+
+(define-method get_line_numbers_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_line_numbers_font_name")
+  (return-type "gchar*")
+)
+
+(define-method set_header_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_header_font_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "font_name")
+  )
+)
+
+(define-method get_header_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_header_font_name")
+  (return-type "gchar*")
+)
+
+(define-method set_footer_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_footer_font_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "font_name")
+  )
+)
+
+(define-method get_footer_font_name
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_footer_font_name")
+  (return-type "gchar*")
+)
+
+(define-method get_top_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_top_margin")
+  (return-type "gdouble")
+  (parameters
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method set_top_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_top_margin")
+  (return-type "none")
+  (parameters
+    '("gdouble" "margin")
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method get_bottom_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_bottom_margin")
+  (return-type "gdouble")
+  (parameters
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method set_bottom_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_bottom_margin")
+  (return-type "none")
+  (parameters
+    '("gdouble" "margin")
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method get_left_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_left_margin")
+  (return-type "gdouble")
+  (parameters
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method set_left_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_left_margin")
+  (return-type "none")
+  (parameters
+    '("gdouble" "margin")
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method get_right_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_right_margin")
+  (return-type "gdouble")
+  (parameters
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method set_right_margin
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_right_margin")
+  (return-type "none")
+  (parameters
+    '("gdouble" "margin")
+    '("GtkUnit" "unit")
+  )
+)
+
+(define-method set_print_header
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_print_header")
+  (return-type "none")
+  (parameters
+    '("gboolean" "print")
+  )
+)
+
+(define-method get_print_header
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_print_header")
+  (return-type "gboolean")
+)
+
+(define-method set_print_footer
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_print_footer")
+  (return-type "none")
+  (parameters
+    '("gboolean" "print")
+  )
+)
+
+(define-method get_print_footer
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_print_footer")
+  (return-type "gboolean")
+)
+
+(define-method set_header_format
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_header_format")
+  (return-type "none")
+  (parameters
+    '("gboolean" "separator")
+    '("const-gchar*" "left")
+    '("const-gchar*" "center")
+    '("const-gchar*" "right")
+  )
+)
+
+(define-method set_footer_format
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_set_footer_format")
+  (return-type "none")
+  (parameters
+    '("gboolean" "separator")
+    '("const-gchar*" "left")
+    '("const-gchar*" "center")
+    '("const-gchar*" "right")
+  )
+)
+
+(define-method get_n_pages
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_n_pages")
+  (return-type "gint")
+)
+
+(define-method paginate
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_paginate")
+  (return-type "gboolean")
+  (parameters
+    '("GtkPrintContext*" "context")
+  )
+)
+
+(define-method get_pagination_progress
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_get_pagination_progress")
+  (return-type "gdouble")
+)
+
+(define-method draw_page
+  (of-object "GtkSourcePrintCompositor")
+  (c-name "gtk_source_print_compositor_draw_page")
+  (return-type "none")
+  (parameters
+    '("GtkPrintContext*" "context")
+    '("gint" "page_nr")
+  )
+)
+
+
+;; virtuals
+
+(define-virtual undo
+  (of-object "GtkSourceView")
+  (return-type "none")
+)
+(define-virtual redo
+  (of-object "GtkSourceView")
+  (return-type "none")
 )
