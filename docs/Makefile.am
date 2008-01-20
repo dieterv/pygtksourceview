@@ -13,6 +13,7 @@ XMLFILES = 							\
     reference/gtksourceview2-gtksourcelanguage.xml		\
     reference/gtksourceview2-gtksourcelanguagesmanager.xml	\
     reference/gtksourceview2-gtksourcemark.xml			\
+    reference/gtksourceview2-gtksourceprintcompositor.xml	\
     reference/gtksourceview2-gtksourcestyle.xml			\
     reference/gtksourceview2-gtksourcestylescheme.xml		\
     reference/gtksourceview2-gtksourcestyleschememanager.xml
@@ -26,6 +27,7 @@ HTML_DATA =						\
 	html/class-gtksourcelanguage2.html		\
 	html/class-gtksourcelanguagemanager2.html	\
 	html/class-gtksourcemark2.html			\
+	html/class-gtksourceprintcompositor2.html	\
 	html/class-gtksourcestyle2.html			\
 	html/class-gtksourcestylescheme2.html		\
 	html/class-gtksourcestyleschememanager2.html	\

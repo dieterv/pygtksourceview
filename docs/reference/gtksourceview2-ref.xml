@@ -31,6 +31,7 @@
     <xi:include href="gtksourceview2-gtksourcelanguage.xml"/>
     <xi:include href="gtksourceview2-gtksourcelanguagesmanager.xml"/>
     <xi:include href="gtksourceview2-gtksourcemark.xml"/>
+    <xi:include href="gtksourceview2-gtksourceprintcompositor.xml"/>
     <xi:include href="gtksourceview2-gtksourcestyle.xml"/>
     <xi:include href="gtksourceview2-gtksourcestylescheme.xml"/>
     <xi:include href="gtksourceview2-gtksourcestyleschememanager.xml"/>

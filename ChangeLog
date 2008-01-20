@@ -1,3 +1,14 @@
+2008-01-20  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml: add.
+	
+	* docs/reference/gtksourceview2-ref.xml:
+	* docs/Makefile.am: add gtksourceprintcompositor docs.
+	
+	* configure.ac: bump to version 2.1.0 and require gtksourceview 2.1.0.
+	
+	* gtksourceview2.defs: fix NULL in parameters.
+
 2008-01-16  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* gtksourceview2.defs:

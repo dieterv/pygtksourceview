@@ -278,7 +278,7 @@
 
 ;; From gtksourceiter.h
 
-(define-function gtk_source_iter_forward_search
+(define-function iter_forward_search
   (c-name "gtk_source_iter_forward_search")
   (return-type "gboolean")
   (parameters
@@ -291,7 +291,7 @@
   )
 )
 
-(define-function gtk_source_iter_backward_search
+(define-function iter_backward_search
   (c-name "gtk_source_iter_backward_search")
   (return-type "gboolean")
   (parameters
@@ -811,7 +811,7 @@
   )
 )
 
-(define-function gtk_source_print_compositor_new_from_view
+(define-function print_compositor_new_from_view
   (c-name "gtk_source_print_compositor_new_from_view")
   (return-type "GtkSourcePrintCompositor*")
   (parameters
@@ -905,7 +905,7 @@
   (c-name "gtk_source_print_compositor_set_line_numbers_font_name")
   (return-type "none")
   (parameters
-    '("const-gchar*" "font_name")
+    '("const-gchar*" "font_name" (null-ok))
   )
 )
 
@@ -920,7 +920,7 @@
   (c-name "gtk_source_print_compositor_set_header_font_name")
   (return-type "none")
   (parameters
-    '("const-gchar*" "font_name")
+    '("const-gchar*" "font_name" (null-ok))
   )
 )
 
@@ -935,7 +935,7 @@
   (c-name "gtk_source_print_compositor_set_footer_font_name")
   (return-type "none")
   (parameters
-    '("const-gchar*" "font_name")
+    '("const-gchar*" "font_name" (null-ok))
   )
 )
 
@@ -1057,9 +1057,9 @@
   (return-type "none")
   (parameters
     '("gboolean" "separator")
-    '("const-gchar*" "left")
-    '("const-gchar*" "center")
-    '("const-gchar*" "right")
+    '("const-gchar*" "left" (null-ok))
+    '("const-gchar*" "center" (null-ok))
+    '("const-gchar*" "right" (null-ok))
   )
 )
 
@@ -1069,9 +1069,9 @@
   (return-type "none")
   (parameters
     '("gboolean" "separator")
-    '("const-gchar*" "left")
-    '("const-gchar*" "center")
-    '("const-gchar*" "right")
+    '("const-gchar*" "left" (null-ok))
+    '("const-gchar*" "center" (null-ok))
+    '("const-gchar*" "right" (null-ok))
   )
 )
 

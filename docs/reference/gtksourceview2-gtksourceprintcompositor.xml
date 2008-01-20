@@ -1,0 +1,1484 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="class-gtksourceprintcompositor2">
+  <refnamediv>
+    <refname>gtksourceview2.PrintCompositor</refname>
+    <refpurpose>Compose a GtkSourceBuffer for printing.</refpurpose>
+  </refnamediv>
+
+<!-- ****************************************** -->
+<!-- BEGIN OF GTKSOURCEPRINTCOMPOSITOR SYNOPSIS -->
+<!-- ****************************************** -->
+
+  <refsect1>
+    <title>Synopsis</title>
+
+    <classsynopsis language="python">
+      <ooclass><classname>gtksourceview2.PrintCompositor</classname></ooclass>
+      <ooclass><classname><link linkend="class-gobject">gobject.GObject</link></classname></ooclass>
+      <constructorsynopsis language="python">
+        <methodname><link linkend="constructor-gtksourceprintcompositor2">gtksourceview2.PrintCompositor</link></methodname>
+          <methodparam><parameter role="keyword">buffer</parameter></methodparam>
+      </constructorsynopsis>
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--draw-page">draw_page</link></methodname>
+          <methodparam><parameter role="keyword">context</parameter></methodparam>
+          <methodparam><parameter role="keyword">page_nr</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-body-font-name">get_body_font_name</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-bottom-margin">get_bottom_margin</link></methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-buffer">get_buffer</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-footer-font-name">get_footer_font_name</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-header-font-name">get_header_font_name</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-highlight-syntax">get_highlight_syntax</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-left-margin">get_left_margin</link></methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-line-numbers-font-name">get_line_numbers_font_name</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-n-pages">get_n_pages</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-pagination-progress">get_pagination_progress</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-print-footer">get_print_footer</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-print-header">get_print_header</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get_print_line_numbers">get_print_line_numbers</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-right-margin">get_right_margin</link></methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-tab-width">get_tab_width</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-top-margin">get_top_margin</link></methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--get-wrap-mode">get_wrap_mode</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">paginate</link></methodname>
+          <methodparam><parameter role="keyword">context</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-body-font-name">set_body_font_name</link></methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-bottom-margin">set_bottom_margin</link></methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-footer-font-name">set_footer_font_name</link></methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-footer-format">set_footer_format</link></methodname>
+          <methodparam><parameter role="keyword">separator</parameter></methodparam>
+          <methodparam><parameter role="keyword">left</parameter></methodparam>
+          <methodparam><parameter role="keyword">center</parameter></methodparam>
+          <methodparam><parameter role="keyword">right</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-header-font-name">set_header_font_name</link></methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-header-format">set_header_format</link></methodname>
+          <methodparam><parameter role="keyword">separator</parameter></methodparam>
+          <methodparam><parameter role="keyword">left</parameter></methodparam>
+          <methodparam><parameter role="keyword">center</parameter></methodparam>
+          <methodparam><parameter role="keyword">right</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-highlight-syntax">set_highlight_syntax</link></methodname>
+          <methodparam><parameter role="keyword">highlight</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-left-margin">set_left_margin</link></methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-line-numbers-font-name">set_line_numbers_font_name</link></methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-footer">set_print_footer</link></methodname>
+          <methodparam><parameter role="keyword">print</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-header">set_print_header</link></methodname>
+          <methodparam><parameter role="keyword">print</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-line-numbers">set_print_line_numbers</link></methodname>
+          <methodparam><parameter role="keyword">interval</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-right-margin">set_right_margin</link></methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-tab-width">set_tab_width</link></methodname>
+          <methodparam><parameter role="keyword">width</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-top-margin">set_top_margin</link></methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis>
+      
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-wrap-mode">set_wrap_mode</link></methodname>
+          <methodparam><parameter role="keyword">wrap_mode</parameter></methodparam>
+      </methodsynopsis>
+
+</classsynopsis>
+  </refsect1>
+
+<!-- ****************************************** -->
+<!-- BEGIN OF GTKSOURCEPRINTCOMPOSITOR ANCESTRY -->
+<!-- ****************************************** -->
+
+  <refsect1>
+    <title>Ancestry</title>
+
+<synopsis>+-- <link linkend="class-gobject">gobject.GObject</link>
+    +-- <link linkend="class-gtksourceprintcompositor2">gtksourceview2.PrintCompositor</link>
+</synopsis>
+
+  </refsect1>
+
+<!-- ******************************************** -->
+<!-- BEGIN OF GTKSOURCEPRINTCOMPOSITOR PROPERTIES -->
+<!-- ******************************************** -->
+
+  <refsect1>
+    <title>Properties</title>
+
+    <blockquote role="properties">
+      <informaltable pgwide="1" frame="none">
+        <tgroup cols="3">
+          <colspec column="1" colwidth="1in"/>
+          <colspec column="2" colwidth="1in"/>
+          <colspec column="3" colwidth="4in"/>
+          <tbody>
+
+            <row valign="top">
+              <entry>"body-font-name"</entry>
+              <entry>Read-Write</entry>
+              <entry>Name of the font used for the text body. Accepted values are strings
+                representing a font description Pango can understand. (e.g. "Monospace 10"). See
+                <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+                constructor for a description of the format of the string representation.
+                The value of this property cannot be changed anymore after the firstcall to the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: <literal>None</literal>. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"buffer"</entry>
+              <entry>Read-Write-Construct</entry>
+              <entry>The <methodname><link linkend="constructor-gtksourcebuffer2">gtksourceview2.Buffer</link></methodname>
+                object to print. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"footer-font-name"</entry>
+              <entry>Read-Write</entry>
+              <entry>Name of the font used to print page footer. If this property is unspecified,
+                the text body font is used. Accepted values are strings representing a font description
+                Pango can understand. (e.g. "Monospace 10"). See
+                <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+                constructor for a description of the format of the string representation.
+                The value of this property cannot be changed anymore after the first callto the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: <literal>None</literal>. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"header-font-name"</entry>
+              <entry>Read-Write</entry>
+              <entry>Name of the font used to print page footer. If this property is unspecified,
+                the text body font is used. Accepted values are strings representing a font description
+                Pango can understand. (e.g. "Monospace 10"). See
+                <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+                constructor for a description of the format of the string representation.
+                The value of this property cannot be changed anymore after the first callto the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: <literal>None</literal>. Since 2.2.
+              </entry>
+            </row>
+
+            <row valign="top">
+              <entry>"highlight-syntax"</entry>
+              <entry>Read-Write</entry>
+              <entry>Whether to print the document with highlighted syntax. The value of this
+                property cannot be changed anymore after the first call to the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: <literal>True</literal>. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"line-numbers-font-name"</entry>
+              <entry>Read-Write</entry>
+              <entry>Name of the font used to print page footer. If this property is unspecified,
+                the text body font is used. Accepted values are strings representing a font description
+                Pango can understand. (e.g. "Monospace 10"). See
+                <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+                constructor for a description of the format of the string representation.
+                The value of this property cannot be changed anymore after the first callto the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: <literal>None</literal>. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"n-pages"</entry>
+              <entry>Read</entry>
+              <entry>The number of pages in the document or -1 if the document has not been completely paginated.
+                Allowed values: >= -1. Default value: -1. Since 2.2
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"print-footer"</entry>
+              <entry>Read-Write</entry>
+              <entry>Whether to print a footer in each page. Note that by default the footer format is
+                unspecified, and if it is unspecified the footer will not be printed, regardless of the value of this property.
+                The value of this property cannot be changed anymore after the first call to the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: <literal>False</literal>. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"print-header"</entry>
+              <entry>Read-Write</entry>
+              <entry>Whether to print a header in each page. Note that by default the header format is
+                unspecified, and if it is unspecified the header will not be printed, regardless of the value of this property.
+                The value of this property cannot be changed anymore after the first call to the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: <literal>False</literal>. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"print-line-numbers"</entry>
+              <entry>Read-Write</entry>
+              <entry>Interval of printed line numbers. If this property is set to 0 no numbers will be printed.
+                If greater than 0, a number will be printed every "print-line-numbers" lines (i.e. 1 will print all line numbers).
+                The value of this property cannot be changed anymore after the first call to the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Allowed values: &#60;= 100. Default value: 1. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"tab-width"</entry>
+              <entry>Read-Write</entry>
+              <entry>Width of a tab character expressed in spaces. The value of this property cannot
+                be changed anymore after the first call to the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Allowed values: [1,32]. Default value: 8. Since 2.2.
+              </entry>
+            </row>
+            
+            <row valign="top">
+              <entry>"wrap-mode"</entry>
+              <entry>Read-Write</entry>
+              <entry>Whether to wrap lines never, at word boundaries, or at character boundaries.
+                The value of this property cannot be changed anymore after the first call to the
+                <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+                Default value: gtk.WRAP_NONE. Since 2.2.
+              </entry>
+            </row>
+            
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </blockquote>
+
+  </refsect1>
+
+<!-- ********************************************* -->
+<!-- BEGIN OF GTKSOURCEPRINTCOMPOSITOR DESCRIPTION -->
+<!-- ********************************************* -->
+
+  <refsect1 id="description-gtktextview">
+    <title>Description</title>
+
+      <para>
+        The <methodname><link linkend="constructor-gtksourceprintcompositor2">gtksourceview2.PrintCompositor</link></methodname>
+        object is used to compose a <methodname><link linkend="constructor-gtksourcebuffer">gtksourceview2.buffer</link></methodname>
+        for printing. You can set various configuration options to customize the printed output.
+        <methodname><link linkend="constructor-gtksourceview">gtksourceview2.PrintCompositor</link></methodname>
+        is designed to be used with the high-level printing API of gtk+, i.e.
+        <methodname><link linkend="constructor-gtkprintoperation">gtk.PrintOperation</link></methodname>.
+      </para>
+      
+      <para>
+        The margins specified in this object are the layout margins: they define the blank space bordering the
+        printed area of the pages. They must not be confused with the "print margins", i.e. the parts of the
+        page that the printer cannot print on, defined in the <methodname><link linkend="constructor-gtkpagesetup">gtk.PageSetup</link></methodname>
+        objects. If the specified layout
+        margins are smaller than the "print margins", the latter ones are used as a fallback by the
+        <methodname><link linkend="constructor-gtksourceprintcompositor2">gtksourceview2.PrintCompositor</link></methodname>
+        object, so that the printed area is not clipped.
+      </para>
+  </refsect1>
+
+<!-- ********************************************* -->
+<!-- BEGIN OF GTKSOURCEPRINTCOMPOSITOR CONSTRUCTOR -->
+<!-- ********************************************* -->
+
+  <refsect1 id="constructor-gtksourceprintcompositor2">
+    <title>Constructor</title>
+
+    <programlisting><constructorsynopsis language="python">
+      <methodname>gtksourceview2.PrintCompositor</methodname>
+      <methodparam><parameter role="keyword">buffer</parameter></methodparam>
+      </constructorsynopsis></programlisting>
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">buffer</parameter>&nbsp;:</term>
+          <listitem><simpara>a <link linkend="class-gtksourcebuffer2"><classname>gtksourceview2.Buffer</classname></link></simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>a new <link linkend="class-gtksourceprintcompositor2"><classname>gtksourceview2.PrintCompositor</classname></link>.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+    <para>
+      Creates a new
+      <link linkend="class-gtksourceprintcompositor2"><classname>gtksourceview2.PrintCompositor</classname></link>
+      that can be used to print buffer.
+    </para>
+
+  </refsect1>
+
+<!-- ***************************************** -->
+<!-- BEGIN OF GTKSOURCEPRINTCOMPOSITOR METHODS -->
+<!-- ***************************************** -->
+
+  <refsect1>
+    <title>Methods</title>
+
+    <refsect2 id="method-gtksourceprintcompositor2--draw-page">
+      <title>gtksourceview2.PrintCompositor.draw_page</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>draw_page</methodname>
+          <methodparam><parameter role="keyword">context</parameter></methodparam>
+          <methodparam><parameter role="keyword">page_nr</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">context</parameter>&nbsp;:</term>
+          <listitem><simpara>the <link linkend="class-gtkprintcontext"><classname>gtk.PrintContext</classname></link>
+          encapsulating the context information that is required when drawing the page for printing.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">page_nr</parameter>&nbsp;:</term>
+          <listitem><simpara>the number of the page to print.</simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>draw_page</methodname>() method draws page <parameter>page_nr</parameter> for printing on the the
+        Cairo context encapsuled in context. This method has been designed to be called in the handler
+        of the "draw_page" signal as shown in the following example: 
+      </para>
+<programlisting><![CDATA[
+# Signal handler for the GtkPrintOperation::draw_page signal
+
+def draw_page(operation, context, page_nr, compositor)
+    compositor.draw_page(context, page_nr)
+]]></programlisting>
+
+    </refsect2>
+
+    <refsect2 id="method-gtksourceprintcompositor2--get-body-font-name">
+      <title>gtksourceview2.PrintCompositor.get_body_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_body_font_name</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            a new string containing the name of the font used to print the text body.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_body_font_name</methodname>() method returns the name of the font used to print
+        the text body.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-bottom-margin">
+      <title>gtksourceview2.PrintCompositor.get_bottom_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_bottom_margin</methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>the unit for the return value.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the bottom margin.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_bottom_margin</methodname>() method gets the bottom margin
+        in units of <parameter>unit</parameter>.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-buffer">
+      <title>gtksourceview2.PrintCompositor.get_buffer</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_buffer</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the <link linkend="class-gtksourcebuffer2"><classname>gtksourceview2.Buffer</classname></link>
+            associated with the compositor.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_buffer</methodname>() method gets the
+        <link linkend="class-gtksourcebuffer2"><classname>gtksourceview2.Buffer</classname></link>
+        associated with the compositor.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-footer-font-name">
+      <title>gtksourceview2.PrintCompositor.get_footer_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname></methodname>
+          <methodparam>get_footer_font_name</methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            a new string containing the name of the font used to print the page footer.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_footer_font_name</methodname>() method returns the name of
+        the font used to print the page footer.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-header-font-name">
+      <title>gtksourceview2.PrintCompositor.get_header_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_header_font_name</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            a new string containing the name of the font used to print the page header.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_header_font_name</methodname>() method Returns the name
+        of the font used to print the page header
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-highlight-syntax">
+      <title>gtksourceview2.PrintCompositor.get_highlight_syntax</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_highlight_syntax</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if the printed output will be highlighted.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_highlight_syntax</methodname>() method determines whether the
+        printed text will be highlighted according to the buffer rules. Note that highlighting
+        will happen only if the buffer to print has highlighting activated.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-left-margin">
+      <title>gtksourceview2.PrintCompositor.get_left_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_left_margin</methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>the unit for the return value.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the left margin
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_left_margin</methodname>() method gets the left margin
+        in units of <parameter>unit</parameter>.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-line-numbers-font-name">
+      <title>gtksourceview2.PrintCompositor.get_line_numbers_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_line_numbers_font_name</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            a new string containing the name of the font used to print line numbers on the left margin.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_line_numbers_font_name</methodname>() method returns the name
+        of the font used to print line numbers on the left margin.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-n-pages">
+      <title>gtksourceview2.PrintCompositor.get_n_pages</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_n_pages</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the number of pages in the document or -1 if the document has not been completely paginated.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_n_pages</methodname>() method returns the number of pages in
+        the document or -1 if the document has not been completely paginated.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-pagination-progress">
+      <title>gtksourceview2.PrintCompositor.get_pagination_progress</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_pagination_progress</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            a fraction from 0.0 to 1.0 inclusive
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_pagination_progress</methodname>() method returns the current
+        fraction of the document pagination that has been completed.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-print-footer">
+      <title>gtksourceview2.PrintCompositor.get_print_footer</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_print_footer</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if the footer is set to be printed.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_print_footer</methodname>() method determines if a footer is
+        set to be printed for each page. A footer will be printed if this function returns
+        <literal>True</literal> and some format strings have been specified with
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-footer-format">gtksourceview2.PrintCompositor.set_footer_format</link></methodname>().
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-print-header">
+      <title>gtksourceview2.PrintCompositor.get_print_header</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_print_header</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if the header is set to be printed.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_print_header</methodname>() method determines if a header is
+        set to be printed for each page. A header will be printed if this function returns
+        <literal>True</literal> and some format strings have been specified with
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-header-format">gtksourceview2.PrintCompositor.set_header_format</link></methodname>().
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get_print_line_numbers">
+      <title>gtksourceview2.PrintCompositor.get_print_line_numbers</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_print_line_numbers</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the interval of printed line numbers.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_print_line_numbers</methodname>() method returns the interval
+        used for line number printing. If the value is 0, no line numbers will be printed.
+        The default value is 1 (i.e. numbers printed in all lines).
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-right-margin">
+      <title>gtksourceview2.PrintCompositor.get_right_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_right_margin</methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>the unit for the return value.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the right margin
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_right_margin</methodname>() method gets the right
+        margin in units of <parameter>unit</parameter>.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-tab-width">
+      <title>gtksourceview2.PrintCompositor.get_tab_width</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_tab_width</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            width of tab.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_tab_width</methodname>() method returns the width of
+        tabulation in characters for printed text.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-top-margin">
+      <title>gtksourceview2.PrintCompositor.get_top_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_top_margin</methodname>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>the unit for the return value.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the top margin
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_top_margin</methodname>() method gets the top
+        margin in units of <parameter>unit</parameter>.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--get-wrap-mode">
+      <title>gtksourceview2.PrintCompositor.get_wrap_mode</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_wrap_mode</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            the line wrap mode.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_wrap_mode</methodname>() method gets the line wrapping
+        mode for the printed text.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--paginate">
+      <title>gtksourceview2.PrintCompositor.paginate</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>paginate</methodname>
+          <methodparam><parameter role="keyword">context</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">context</parameter>&nbsp;:</term>
+          <listitem><simpara>the <link linkend="class-gtkprintcontext"><classname>gtk.PrintContext</classname></link>
+          encapsulating the context information that is required when drawing the page for printing.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if the document has been completely paginated,
+            <literal>False</literal> otherwise.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>paginate</methodname>() method paginate the document associated with the compositor.
+      </para>
+      <para>
+        In order to support non-blocking pagination, document is paginated in small chunks. Each time
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>()
+        is invoked, a chunk of the document is paginated. To paginate the entire document,
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>()
+        must be invoked multiple times. It returns <literal>True</literal> if the document has been
+        completely paginated, otherwise it returns <literal>False</literal>.
+      </para>
+      <para>
+        This method has been designed to be invoked in the handler of the "paginate" signal, as shown in the following example:
+      </para>
+
+<programlisting><![CDATA[
+# Signal handler for the GtkPrintOperation::paginate signal
+
+def paginate(operation, context, compositor)
+    if compositor.paginate(context):
+        n_pages = compositor.get_n_pages()
+        operation.set_n_pages(n_pages)
+        return True
+    else:
+        return False
+]]></programlisting>
+
+      <para>
+        If you don't need to do pagination in chunks, you can simply do it all in the
+        "begin-print" handler, and set the number of pages from there, like in the following example:
+      </para>
+
+<programlisting><![CDATA[
+# Signal handler for the GtkPrintOperation::begin-print signal
+
+def begin_print(operation, context, compositor)
+    while compositor.paginate(context):
+        n_pages = compositor.get_n_pages()
+        operation.set_n_pages(n_pages)
+]]></programlisting>
+
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-body-font-name">
+      <title>gtksourceview2.PrintCompositor.set_body_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_body_font_name</methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">font_name</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the name of the default font for the body of text.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_body_font_name</methodname>() method sets the default font for the printed text.
+        <parameter>font_name</parameter> should be a string representation of a font description
+        Pango can understand. (e.g. "Monospace 10"). See
+        <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+        for a description of the format of the string representation.
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-bottom-margin">
+      <title>gtksourceview2.PrintCompositor.set_bottom_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_bottom_margin</methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">margin</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the new bottom margin in units of <parameter>unit</parameter>
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the units for margin
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_bottom_margin</methodname>() method sets the bottom margin used by compositor.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-footer-font-name">
+      <title>gtksourceview2.PrintCompositor.set_footer_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_footer_font_name</methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">font_name</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the name of the default font for the footer text. or <literal>None</literal>.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_footer_font_name</methodname>() method Sets the font for printing the page footer.
+        If <literal>None</literal> is supplied, the default font (i.e. the one being used for the text) will be used instead.
+        <parameter>font_name</parameter> should be a string representation of a font description
+        Pango can understand. (e.g. "Monospace 10"). See
+        <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+        for a description of the format of the string representation.
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-footer-format">
+      <title>gtksourceview2.PrintCompositor.set_footer_format</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_footer_format</methodname>
+          <methodparam><parameter role="keyword">separator</parameter></methodparam>
+          <methodparam><parameter role="keyword">left</parameter></methodparam>
+          <methodparam><parameter role="keyword">center</parameter></methodparam>
+          <methodparam><parameter role="keyword">right</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">separator</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if you want a separator line to be printed.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">left</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            a format string to print on the left of the footer.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">center</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            a format string to print on the center of the footer.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">right</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            a format string to print on the right of the footer.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_footer_format</methodname>() method sets strftime like header format strings,
+        to be printed on the left, center and right of the bottom of each page.
+        The strings may include strftime(3) codes which will be expanded at print time.
+        All strftime() codes are accepted, with the addition of N for the page number and Q for the page count.
+      </para>
+      <para>
+        separator specifies if a solid line should be drawn to separate the footer from the document text.
+      </para>
+      <para>
+        If <literal>None</literal> is given for any of the three arguments, that particular string will not be printed.
+      </para>
+      <para>
+        For the footer to be printed, in addition to specifying format strings, you need to enable footer printing with
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-footer"></link>gtksourceview2.PrintCompositor.set_print_footer</methodname>().
+      </para>
+      <para>
+        This method cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-header-font-name">
+      <title>gtksourceview2.PrintCompositor.set_header_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_header_font_name</methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">font_name</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the name of the default font for the footer text. or <literal>None</literal>.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_header_font_name</methodname>() method Sets the font for printing the page header.
+        If <literal>None</literal> is supplied, the default font (i.e. the one being used for the text) will be used instead.
+        <parameter>font_name</parameter> should be a string representation of a font description
+        Pango can understand. (e.g. "Monospace 10"). See
+        <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+        for a description of the format of the string representation.
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-header-format">
+      <title>gtksourceview2.PrintCompositor.set_header_format</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_header_format</methodname>
+          <methodparam><parameter role="keyword">separator</parameter></methodparam>
+          <methodparam><parameter role="keyword">left</parameter></methodparam>
+          <methodparam><parameter role="keyword">center</parameter></methodparam>
+          <methodparam><parameter role="keyword">right</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">separator</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if you want a separator line to be printed.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">left</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            a format string to print on the left of the header.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">center</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            a format string to print on the center of the header.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">right</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            a format string to print on the right of the header.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_header_format</methodname>() method sets strftime like header format strings,
+        to be printed on the left, center and right of the top of each page.
+        The strings may include strftime(3) codes which will be expanded at print time.
+        All strftime() codes are accepted, with the addition of N for the page number and Q for the page count.
+      </para>
+      <para>
+        separator specifies if a solid line should be drawn to separate the footer from the document text.
+      </para>
+      <para>
+        If <literal>None</literal> is given for any of the three arguments, that particular string will not be printed.
+      </para>
+      <para>
+        For the header to be printed, in addition to specifying format strings, you need to enable header printing with
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-header"></link>gtksourceview2.PrintCompositor.set_print_header</methodname>().
+      </para>
+      <para>
+        This method cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-highlight-syntax">
+      <title>gtksourceview2.PrintCompositor.set_highlight_syntax</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_highlight_syntax</methodname>
+          <methodparam><parameter role="keyword">highlight</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">highlight</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            whether syntax should be highlighted.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_highlight_syntax</methodname>() method sets whether the printed
+        text will be highlighted according to the buffer rules. Both color and font style are applied.
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-left-margin">
+      <title>gtksourceview2.PrintCompositor.set_left_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_left_margin</methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">margin</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the new left margin in units of <parameter>unit</parameter>
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the units for margin
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_left_margin</methodname>() method sets the left margin used by compositor.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-line-numbers-font-name">
+      <title>gtksourceview2.PrintCompositor.set_line_numbers_font_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_line_numbers_font_name</methodname>
+          <methodparam><parameter role="keyword">font_name</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">font_name</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the name of the default font for the line numbers. or <literal>None</literal>.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_line_numbers_font_name</methodname>() method sets the font for printing the line numbers.
+        If <literal>None</literal> is supplied, the default font (i.e. the one being used for the text) will be used instead.
+        <parameter>font_name</parameter> should be a string representation of a font description
+        Pango can understand. (e.g. "Monospace 10"). See
+        <methodname><link linkend="constructor-pangofontdescription">pango.FontDescription</link></methodname>()
+        for a description of the format of the string representation.
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-print-footer">
+      <title>gtksourceview2.PrintCompositor.set_print_footer</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_print_footer</methodname>
+          <methodparam><parameter role="keyword">print</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">print</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if you want the footer to be printed.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_print_footer</methodname>() method sets whether you want to
+        print a footer in each page. The footer consists of three pieces of text and an optional
+        line separator, configurable with
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-footer-format">gtksourceview2.PrintCompositor.set_footer_format</link></methodname>().
+      </para>
+      <para>
+        Note that by default the footer format is unspecified, and if it's empty it will not be printed, regardless of this setting.
+      </para>
+      <para>
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-print-header">
+      <title>gtksourceview2.PrintCompositor.set_print_header</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_print_header</methodname>
+          <methodparam><parameter role="keyword">print</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">print</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            <literal>True</literal> if you want the header to be printed.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_print_header</methodname>() method sets whether you want to
+        print a header in each page. The footer consists of three pieces of text and an optional
+        line separator, configurable with
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-header-format">gtksourceview2.PrintCompositor.set_header_format</link></methodname>().
+      </para>
+      <para>
+        Note that by default the header format is unspecified, and if it's empty it will not be printed, regardless of this setting.
+      </para>
+      <para>
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-print-line-numbers">
+      <title>gtksourceview2.PrintCompositor.set_print_line_numbers</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_print_line_numbers</methodname>
+          <methodparam><parameter role="keyword">interval</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">interval</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            interval for printed line numbers.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_print_line_numbers</methodname>() method sets the interval for printed line numbers.
+        If interval is 0 no numbers will be printed. If greater than 0, a number will be printed every
+        interval lines (i.e. 1 will print all line numbers).
+      </para>
+      <para>
+        Maximum accepted value for interval is 100.
+      </para>
+      <para>
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-right-margin">
+      <title>gtksourceview2.PrintCompositor.set_right_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_right_margin</methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">margin</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the new left margin in units of <parameter>unit</parameter>
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the units for margin
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_right_margin</methodname>() method sets the right margin used by compositor.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-tab-width">
+      <title>gtksourceview2.PrintCompositor.set_tab_width</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_tab_width</methodname>
+          <methodparam><parameter role="keyword">width</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">width</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            width of tab.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_right_margin</methodname>() method returns the width of tabulation in characters for printed text.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-top-margin">
+      <title>gtksourceview2.PrintCompositor.set_top_margin</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_top_margin</methodname>
+          <methodparam><parameter role="keyword">margin</parameter></methodparam>
+          <methodparam><parameter role="keyword">unit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">margin</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the new left margin in units of <parameter>unit</parameter>
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">unit</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            the units for margin
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_top_margin</methodname>() method sets the top margin used by compositor.
+      </para>
+    </refsect2>
+    
+    <refsect2 id="method-gtksourceprintcompositor2--set-wrap-mode">
+      <title>gtksourceview2.PrintCompositor.set_wrap_mode</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_wrap_mode</methodname>
+          <methodparam><parameter role="keyword">wrap_mode</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">wrap_mode</parameter>&nbsp;:</term>
+          <listitem><simpara>
+            one of gtk.WRAP_NONE, gtk.WRAP_CHAR, gtk.WRAP_WORD, gtk.WRAP_WORD_CHAR.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_right_margin</methodname>() method sets the line wrapping mode for the printed text.
+      </para>
+      <para>
+        This function cannot be called anymore after the first call to the
+        <methodname><link linkend="method-gtksourceprintcompositor2--paginate">gtksourceview2.PrintCompositor.paginate</link></methodname>() method.
+      </para>
+    </refsect2>    
+  </refsect1>
+</refentry>
