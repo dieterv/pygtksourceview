@@ -1107,7 +1107,7 @@ def begin_print(operation, context, compositor)
       </para>
       <para>
         For the footer to be printed, in addition to specifying format strings, you need to enable footer printing with
-        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-footer"></link>gtksourceview2.PrintCompositor.set_print_footer</methodname>().
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-footer">gtksourceview2.PrintCompositor.set_print_footer</link></methodname>().
       </para>
       <para>
         This method cannot be called anymore after the first call to the
@@ -1196,7 +1196,7 @@ def begin_print(operation, context, compositor)
       </para>
       <para>
         For the header to be printed, in addition to specifying format strings, you need to enable header printing with
-        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-header"></link>gtksourceview2.PrintCompositor.set_print_header</methodname>().
+        <methodname><link linkend="method-gtksourceprintcompositor2--set-print-header">gtksourceview2.PrintCompositor.set_print_header</link></methodname>().
       </para>
       <para>
         This method cannot be called anymore after the first call to the
@@ -1305,9 +1305,8 @@ def begin_print(operation, context, compositor)
       </variablelist>
 
       <para>
-        The <methodname>set_print_footer</methodname>() method sets whether you want to
-        print a footer in each page. The footer consists of three pieces of text and an optional
-        line separator, configurable with
+        The <methodname>set_print_footer</methodname> method sets whether you want to print a footer in each page.
+        The footer consists of three pieces of text and an optional line separator, configurable with
         <methodname><link linkend="method-gtksourceprintcompositor2--set-footer-format">gtksourceview2.PrintCompositor.set_footer_format</link></methodname>().
       </para>
       <para>

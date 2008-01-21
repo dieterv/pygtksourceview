@@ -1,3 +1,8 @@
+2008-01-21  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml:
+	fix a couple of links.
+
 2008-01-20  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml:
