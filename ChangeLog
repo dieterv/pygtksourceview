@@ -1,5 +1,13 @@
 2008-01-21  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* gtksourceview2.override: manual wrappers for iter_backward_search and
+	iter_forward_search.
+
+	* docs/reference/gtksourceview2-gtksourcebuffer.xml: document the above
+	functions
+
+2008-01-21  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml:
 	fix a couple of links.
 

@@ -147,6 +147,23 @@
     </methodsynopsis>
 </classsynopsis>
 
+<programlisting>
+<emphasis role="bold">Functions</emphasis>
+
+<methodsynopsis language="python">
+<methodname><link linkend="function-gtksourcebuffer2--iter-backward-search">gtksourceview2.iter_backward_search</link></methodname>
+<methodparam><parameter role="keyword">iter</parameter></methodparam>
+<methodparam><parameter role="keyword">str</parameter></methodparam>
+<methodparam><parameter role="keyword">flags</parameter></methodparam>
+<methodparam><parameter role="keyword">limit</parameter></methodparam>
+</methodsynopsis><methodsynopsis language="python">
+<methodname><link linkend="function-gtksourcebuffer2--iter-forward-search">gtksourceview2.iter_forward_search</link></methodname>
+<methodparam><parameter role="keyword">iter</parameter></methodparam>
+<methodparam><parameter role="keyword">str</parameter></methodparam>
+<methodparam><parameter role="keyword">flags</parameter></methodparam>
+<methodparam><parameter role="keyword">limit</parameter></methodparam>
+</methodsynopsis></programlisting>
+
 </refsect1>
 
 <!-- ********************************* -->
@@ -953,4 +970,127 @@ By default highlighting is enabled, but you can disable it with
     </para>
   </refsect2>
 </refsect1>
+
+<!-- ********************************** -->
+<!-- BEGIN OF GTKSOURCEBUFFER FUNCTIONS -->
+<!-- ********************************** -->
+
+<refsect1>
+    <title>Functions</title>
+
+  <refsect2 id="function-gtksourcebuffer2--iter-backward-search">
+    <title>gtksourceview2.iter_backward_search</title>
+    <programlisting><methodsynopsis language="python">
+  	  <methodname>gtksourceview2.iter_backward_search</methodname>
+      <methodparam><parameter role="keyword">iter</parameter></methodparam>
+	  <methodparam><parameter role="keyword">str</parameter></methodparam>
+	  <methodparam><parameter role="keyword">flags</parameter></methodparam>
+	  <methodparam><parameter role="keyword">limit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+    <variablelist>
+	  <varlistentry>
+		<term><emphasis>iter</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link> where the search begins.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+		<term><emphasis>str</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  search string.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+		<term><emphasis>flags</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  bitmask of flags affecting the search.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+		<term><emphasis>limit</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  location of last possible match_start, or <literal>None</literal> for start of buffer.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>
+			start of match and end of match
+		  </simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+      <para>
+        The <methodname>iter_backward_search</methodname>() function is the same as the
+		<methodname><link linkend="function-gtksourcebuffer2--iter-forward-search">gtksourceview2.iter_forward_search</link></methodname>()
+		function, except searches backward.
+      </para>
+  </refsect2>
+  
+  <refsect2 id="function-gtksourcebuffer2--iter-forward-search">
+    <title>gtksourceview2.iter_forward_search</title>
+    <programlisting><methodsynopsis language="python">
+  	  <methodname>gtksourceview2.iter_forward_search</methodname>
+      <methodparam><parameter role="keyword">iter</parameter></methodparam>
+	  <methodparam><parameter role="keyword">str</parameter></methodparam>
+	  <methodparam><parameter role="keyword">flags</parameter></methodparam>
+	  <methodparam><parameter role="keyword">limit</parameter></methodparam>
+      </methodsynopsis></programlisting>
+        
+    <variablelist>
+	  <varlistentry>
+		<term><emphasis>iter</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  a <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link> where the search begins.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+		<term><emphasis>str</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  search string.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+		<term><emphasis>flags</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  bitmask of flags affecting the search.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+		<term><emphasis>limit</emphasis>&nbsp;:</term>
+		<listitem><simpara>
+		  bound for the search, or <literal>None</literal> for the end of the buffer.
+		</simpara></listitem>
+      </varlistentry>
+	  <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>
+			start of match and end of match
+		  </simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+      <para>
+        The <methodname>iter_forward_search</methodname>() function searches forward for <parameter>str</parameter>
+		and returns a tuple containing <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link>
+		objects that point at the start and end locations of the match.
+		The search will not continue past limit. Note that a search is a linear or O(n) operation,
+		so you may wish to use limit to avoid locking up your UI on large buffers.
+      </para>
+	  <para>
+		If the gtksourceview2.SOURCE_SEARCH_VISIBLE_ONLY flag is present, the match may have invisible text
+		interspersed in str. i.e. str will be a possibly-noncontiguous subsequence of the matched range.
+		similarly, if you specify gtksourceview2.SOURCE_SEARCH_TEXT_ONLY, the match may have pixbufs or
+		child widgets mixed inside the matched range. If these flags are not given, the match must be exact;
+		the special 0xFFFC character in str will match embedded pixbufs or child widgets. If you specify the
+		gtksourceview2.SOURCE_SEARCH_CASE_INSENSITIVE flag, the text will be matched regardless of what case it is in.
+	  </para>
+	  <para>
+		Same as <methodname><link linkend="method-gtktextiter--forward-search">gtk.TextIter.forward_search</link></methodname>(),
+		but supports case insensitive searching.
+	  </para>
+  </refsect2>
+</refsect1>
+
 </refentry>
