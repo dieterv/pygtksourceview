@@ -1,5 +1,12 @@
 2008-01-20  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml:
+	add print_compositor_new_from_view function.
+	
+	* docs/reference/gtksourceview2-gtksourceview.xml: add virtuals.
+
+2008-01-20  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml: add.
 	
 	* docs/reference/gtksourceview2-ref.xml:

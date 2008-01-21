@@ -208,8 +208,15 @@
         <methodname><link linkend="method-gtksourceprintcompositor2--set-wrap-mode">set_wrap_mode</link></methodname>
           <methodparam><parameter role="keyword">wrap_mode</parameter></methodparam>
       </methodsynopsis>
-
 </classsynopsis>
+
+<programlisting>
+<emphasis role="bold">Functions</emphasis>
+
+<methodsynopsis language="python">
+<methodname><link linkend="function-gtksourceprintcompositor2--new-from-view">gtksourceview2.print_compositor_new_from_view</link></methodname>
+<methodparam><parameter role="keyword">view</parameter></methodparam>
+</methodsynopsis></programlisting>
   </refsect1>
 
 <!-- ****************************************** -->
@@ -1481,4 +1488,40 @@ def begin_print(operation, context, compositor)
       </para>
     </refsect2>    
   </refsect1>
+
+<!-- ******************************************* -->
+<!-- BEGIN OF GTKSOURCELANGUAGEMANAGER FUNCTIONS -->
+<!-- ******************************************* -->
+
+<refsect1>
+    <title>Functions</title>
+
+  <refsect2 id="function-gtksourceprintcompositor2--new-from-view">
+    <title>gtksourceview2.print_compositor_new_from_view</title>
+    <programlisting><methodsynopsis language="python">
+  	  <methodname>gtksourceview2.print_compositor_new_from_view</methodname>
+      <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+        
+    <variablelist>
+	    <varlistentry>
+        <term><parameter role="keyword">wrap_mode</parameter>&nbsp;:</term>
+        <listitem><simpara>
+          a <link linkend="class-gtksourceview2"><classname>gtksourceview2.View</classname></link> to get configuration from.
+        </simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+	      <listitem><simpara>a <link linkend="class-gtksourceprintcompositor2"><classname>gtksourceview2.PrintCompositor</classname></link>.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+      <para>
+        The <methodname>print_compositor_new_from_view</methodname>() function creates a new print
+        compositor that can be used to print the buffer associated with view. This constructor sets
+        some configuration properties to make the printed output match view as much as possible.
+        The properties set are "tab-width", "highlight-syntax", "wrap-mode", "body-font-name" and "print-line-numbers".
+      </para>
+  </refsect2>
+</refsect1> 
 </refentry>
