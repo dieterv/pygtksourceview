@@ -1,3 +1,11 @@
+News in 2.1.0
+=============
+
+    o adapted to API changes in GtkSourceView
+    o write the complete API reference
+    o prevent Language and Style Scheme from being constructed
+    o wrap Mark and PrintCompositor API
+
 News in 2.0.0
 =============
 
