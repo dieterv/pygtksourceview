@@ -212,9 +212,9 @@
   )
 )
 
-(define-method create_mark
+(define-method create_source_mark
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_create_mark")
+  (c-name "gtk_source_buffer_create_source_mark")
   (return-type "GtkSourceMark*")
   (parameters
     '("const-gchar*" "name" (null-ok))
@@ -223,9 +223,9 @@
   )
 )
 
-(define-method forward_iter_to_mark
+(define-method forward_iter_to_source_mark
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_forward_iter_to_mark")
+  (c-name "gtk_source_buffer_forward_iter_to_source_mark")
   (return-type "gboolean")
   (parameters
     '("GtkTextIter*" "iter")
@@ -233,9 +233,9 @@
   )
 )
 
-(define-method backward_iter_to_mark
+(define-method backward_iter_to_source_mark
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_backward_iter_to_mark")
+  (c-name "gtk_source_buffer_backward_iter_to_source_mark")
   (return-type "gboolean")
   (parameters
     '("GtkTextIter*" "iter")
@@ -243,9 +243,9 @@
   )
 )
 
-(define-method get_marks_at_iter
+(define-method get_source_marks_at_iter
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_get_marks_at_iter")
+  (c-name "gtk_source_buffer_get_source_marks_at_iter")
   (return-type "GSList*")
   (parameters
     '("GtkTextIter*" "iter")
@@ -253,9 +253,9 @@
   )
 )
 
-(define-method get_marks_at_line
+(define-method get_source_marks_at_line
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_get_marks_at_line")
+  (c-name "gtk_source_buffer_get_source_marks_at_line")
   (return-type "GSList*")
   (parameters
     '("gint" "line")
@@ -263,9 +263,9 @@
   )
 )
 
-(define-method remove_marks
+(define-method remove_source_marks
   (of-object "GtkSourceBuffer")
-  (c-name "gtk_source_buffer_remove_marks")
+  (c-name "gtk_source_buffer_remove_source_marks")
   (return-type "none")
   (parameters
     '("GtkTextIter*" "start")
