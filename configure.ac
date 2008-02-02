@@ -9,7 +9,7 @@ m4_define(pygtksourceview_version, pygtksourceview_major_version.pygtksourceview
 dnl versions of packages we require ...
 m4_define(pygobject_required_version, 2.8.0)
 m4_define(pygtk_required_version, 2.8.0)
-m4_define(gtksourceview_required_version, 2.1.0)
+m4_define(gtksourceview_required_version, 2.1.2)
 
 AC_INIT(pygtksourceview, pygtksourceview_version, [http://bugzilla.gnome.org/browse.cgi?product=gtksourceview/])
 

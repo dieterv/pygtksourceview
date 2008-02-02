@@ -1,5 +1,12 @@
 2008-02-01  Paolo Borelli  <pborelli@katamail.com>
 
+	* gtksourceview2.override: fix various issues with some of the marks
+	functions
+
+	* test/test-widget.py: make marks work in the test widget
+
+2008-02-01  Paolo Borelli  <pborelli@katamail.com>
+
 	* gtksourceview2.defs:
 
 	Adapt to Mark API changes

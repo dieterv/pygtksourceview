@@ -33,8 +33,8 @@ import pango
 ######################################################################
 ##### global vars
 windows = []    # this list contains all view windows
-MARKER_TYPE_1 = 'one'
-MARKER_TYPE_2 = 'two'
+MARK_TYPE_1 = 'one'
+MARK_TYPE_2 = 'two'
 DATADIR = '/usr/share'
 
 
@@ -51,11 +51,10 @@ def error_dialog(parent, msg):
 
 
 ######################################################################
-##### remove all markers
-def remove_all_markers(buffer):
+##### remove all source marks
+def remove_all_marks(buffer):
     begin, end = buffer.get_bounds()
-    markers = buffer.get_markers_in_region(begin, end)
-    map(buffer.delete_marker, markers)
+    marks = buffer.remove_source_marks(begin, end, None)
 
 
 ######################################################################
@@ -112,7 +111,7 @@ def open_file(buffer, filename):
 
     buffer.set_language(language)
     buffer.set_highlight_syntax(True)
-    remove_all_markers(buffer)
+    remove_all_marks(buffer)
     load_file(buffer, uri) # TODO: check return
     return True
 
@@ -123,8 +122,8 @@ def numbers_toggled_cb(action, sourceview):
     sourceview.set_show_line_numbers(action.get_active())
 
 
-def markers_toggled_cb(action, sourceview):
-    sourceview.set_show_line_markers(action.get_active())
+def marks_toggled_cb(action, sourceview):
+    sourceview.set_show_line_marks(action.get_active())
 
 
 def margin_toggled_cb(action, sourceview):
@@ -199,37 +198,30 @@ def window_deleted_cb(widget, ev, view):
 
 def button_press_cb(view, ev):
     buffer = view.get_buffer()
-    if not view.get_show_line_markers():
+    if not view.get_show_line_marks():
         return False
     # check that the click was on the left gutter
     if ev.window == view.get_window(gtk.TEXT_WINDOW_LEFT):
         if ev.button == 1:
-            marker_type = MARKER_TYPE_1
+            mark_type = MARK_TYPE_1
         else:
-            marker_type = MARKER_TYPE_2
+            mark_type = MARK_TYPE_2
         x_buf, y_buf = view.window_to_buffer_coords(gtk.TEXT_WINDOW_LEFT,
                                                     int(ev.x), int(ev.y))
         # get line bounds
         line_start = view.get_line_at_y(y_buf)[0]
-        line_end = line_start.copy()
-        line_end.forward_to_line_end()
 
         # get the markers already in the line
-        marker_list = buffer.get_markers_in_region(line_start, line_end)
-        # search for the marker corresponding to the button pressed
-        for m in marker_list:
-            if m.get_marker_type() == marker_type:
-                marker = m
-                break
-        else:
-            marker = None
+        mark_list = buffer.get_source_marks_at_line(line_start.get_line(),
+                                                    mark_type)
 
-        if marker:
-            # a marker was found, so delete it
-            buffer.delete_marker(marker)
+        if mark_list:
+            # just take the first and delete it
+            buffer.delete_mark (mark_list[0])
         else:
-            # no marker found, create one
-            marker = buffer.create_marker(None, marker_type, line_start)
+            # no mark found: create one
+            buffer.create_source_mark (None, mark_type, line_start)
+
     return False
 
 
@@ -249,7 +241,7 @@ view_actions = [
 
 toggle_actions = [
     ('ShowNumbers', None, 'Show _Line Numbers', None, 'Toggle visibility of line numbers in the left margin', numbers_toggled_cb, False),
-    ('ShowMarkers', None, 'Show _Markers', None, 'Toggle visibility of markers in the left margin', markers_toggled_cb, False),
+    ('ShowMarks', None, 'Show Line _Marks', None, 'Toggle visibility of marks in the left margin', marks_toggled_cb, False),
     ('ShowMargin', None, 'Show M_argin', None, 'Toggle visibility of right margin indicator', margin_toggled_cb, False),
     ('AutoIndent', None, 'Enable _Auto Indent', None, 'Toggle automatic auto indentation of text', auto_indent_toggled_cb, False),
     ('InsertSpaces', None, 'Insert _Spaces Instead of Tabs', None, 'Whether to insert space characters when inserting tabulations', insert_spaces_toggled_cb, False)
@@ -270,7 +262,7 @@ view_ui_description = """
       <menuitem action='NewView'/>
       <separator/>
       <menuitem action='ShowNumbers'/>
-      <menuitem action='ShowMarkers'/>
+      <menuitem action='ShowMarks'/>
       <menuitem action='ShowMargin'/>
       <separator/>
       <menuitem action='AutoIndent'/>
@@ -314,7 +306,7 @@ def create_view_window(buffer, sourceview = None):
 
     # view
     view = gtksourceview.View(buffer)
-    buffer.connect('mark_set', move_cursor_cb, view)
+    buffer.connect('mark-set', move_cursor_cb, view)
     buffer.connect('changed', update_cursor_position, view)
     view.connect('button-press-event', button_press_cb)
     window.connect('delete-event', window_deleted_cb, view)
@@ -357,8 +349,8 @@ def create_view_window(buffer, sourceview = None):
     if sourceview:
         action = action_group.get_action('ShowNumbers')
         action.set_active(sourceview.get_show_line_numbers())
-        action = action_group.get_action('ShowMarkers')
-        action.set_active(sourceview.get_show_line_markers())
+        action = action_group.get_action('ShowMarks')
+        action.set_active(sourceview.get_show_line_marks())
         action = action_group.get_action('ShowMargin')
         action.set_active(sourceview.get_show_right_margin())
         action = action_group.get_action('AutoIndent')
@@ -369,19 +361,22 @@ def create_view_window(buffer, sourceview = None):
         if action:
             action.set_active(True)
 
-    # add marker pixbufs
+    # add source mark pixbufs
     pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(DATADIR,
                                                        'pixmaps/apple-green.png'))
     if pixbuf:
-        view.set_marker_pixbuf(MARKER_TYPE_1, pixbuf)
+        view.set_mark_category_pixbuf (MARK_TYPE_1, pixbuf)
+        view.set_mark_category_priority (MARK_TYPE_1, 1)
     else:
-        print 'could not load marker 1 image.  Spurious messages might get triggered'
+        print 'could not load mark 1 image.  Spurious messages might get triggered'
+
     pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(DATADIR,
                                                        'pixmaps/apple-red.png'))
     if pixbuf:
-        view.set_marker_pixbuf(MARKER_TYPE_2, pixbuf)
+        view.set_mark_category_pixbuf (MARK_TYPE_2, pixbuf)
+        view.set_mark_category_priority (MARK_TYPE_2, 2)
     else:
-        print 'could not load marker 2 image.  Spurious messages might get triggered'
+        print 'could not load mark 2 image.  Spurious messages might get triggered'
 
     vbox.show_all()
 
@@ -407,7 +402,7 @@ def create_main_window(buffer):
     action_group = groups[0]
     action = action_group.get_action('ShowNumbers')
     action.set_active(True)
-    action = action_group.get_action('ShowMarkers')
+    action = action_group.get_action('ShowMarks')
     action.set_active(True)
     action = action_group.get_action('ShowMargin')
     action.set_active(True)
