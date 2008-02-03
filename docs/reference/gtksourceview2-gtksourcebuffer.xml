@@ -47,7 +47,7 @@
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcebuffer2--create-source-mark">create_source_mark</link></methodname>
       <methodparam><parameter role="keyword">name</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
       <methodparam><parameter role="keyword">where</parameter></methodparam>
     </methodsynopsis> 
 
@@ -428,7 +428,7 @@ By default highlighting is enabled, but you can disable it with
     <programlisting><methodsynopsis language="python">
 	  <methodname>create_source_mark</methodname>
       <methodparam><parameter role="keyword">name</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
+      <methodparam><parameter role="keyword">category</parameter></methodparam>
       <methodparam><parameter role="keyword">where</parameter></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>

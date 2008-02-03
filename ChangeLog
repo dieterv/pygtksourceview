@@ -1,5 +1,9 @@
 2008-02-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* docs/reference/gtksourceview2-gtksourcebuffer.xml: small fix.
+
+2008-02-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* gtksourceview2.defs: define NULL as default for catogory params.
 	
 	* docs/reference/gtksourceview2-gtksourcebuffer.xml: fix the docs.
