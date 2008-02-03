@@ -1,3 +1,11 @@
+=== pygtksourceview 2.1.1 ===
+
+2008-02-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* NEWS: updated
+
+	pygtksourceview 2.1.1 released
+
 2008-02-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* docs/reference/gtksourceview2-gtksourcebuffer.xml: small fix.
