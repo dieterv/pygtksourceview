@@ -229,7 +229,7 @@
   (return-type "gboolean")
   (parameters
     '("GtkTextIter*" "iter")
-    '("const-gchar*" "category" (null-ok))
+    '("const-gchar*" "category" (null-ok) (default "NULL"))
   )
 )
 
@@ -239,7 +239,7 @@
   (return-type "gboolean")
   (parameters
     '("GtkTextIter*" "iter")
-    '("const-gchar*" "category" (null-ok))
+    '("const-gchar*" "category" (null-ok) (default "NULL"))
   )
 )
 
@@ -249,7 +249,7 @@
   (return-type "GSList*")
   (parameters
     '("GtkTextIter*" "iter")
-    '("const-gchar*" "category" (null-ok))
+    '("const-gchar*" "category" (null-ok) (default "NULL"))
   )
 )
 
@@ -259,7 +259,7 @@
   (return-type "GSList*")
   (parameters
     '("gint" "line")
-    '("const-gchar*" "category" (null-ok))
+    '("const-gchar*" "category" (null-ok) (default "NULL"))
   )
 )
 
@@ -270,7 +270,7 @@
   (parameters
     '("GtkTextIter*" "start")
     '("GtkTextIter*" "end")
-    '("const-gchar*" "category" (null-ok))
+    '("const-gchar*" "category" (null-ok) (default "NULL"))
   )
 )
 

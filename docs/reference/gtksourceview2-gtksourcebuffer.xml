@@ -24,9 +24,9 @@
     </constructorsynopsis>
     
     <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourcebuffer2--backward-iter-to-mark">backward_iter_to_mark</link></methodname>
+        <methodname><link linkend="method-gtksourcebuffer2--backward-iter-to-source-mark">backward_iter_to_source_mark</link></methodname>
         <methodparam><parameter role="keyword">iter</parameter></methodparam>
-        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis>
 
     <methodsynopsis language="python">
@@ -45,9 +45,9 @@
     </methodsynopsis>
     
     <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2--create-mark">create_mark</link></methodname>
+      <methodname><link linkend="method-gtksourcebuffer2--create-source-mark">create_source_mark</link></methodname>
       <methodparam><parameter role="keyword">name</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
       <methodparam><parameter role="keyword">where</parameter></methodparam>
     </methodsynopsis> 
 
@@ -63,9 +63,9 @@
     </methodsynopsis>
     
     <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourcebuffer2--forward-iter-to-mark">forward_iter_to_mark</link></methodname>
+        <methodname><link linkend="method-gtksourcebuffer2--forward-iter-to-source-mark">forward_iter_to_source_mark</link></methodname>
         <methodparam><parameter role="keyword">iter</parameter></methodparam>
-        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis>
 
     <methodsynopsis language="python">
@@ -84,15 +84,15 @@
     </methodsynopsis>
 
     <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourcebuffer2--get-marks-at-iter">get_marks_at_iter</link></methodname>
+        <methodname><link linkend="method-gtksourcebuffer2--get-source-marks-at-iter">get_source_marks_at_iter</link></methodname>
         <methodparam><parameter role="keyword">iter</parameter></methodparam>
-        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis>
 	
     <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourcebuffer2--get-marks-at-line">get_marks_at_line</link></methodname>
+        <methodname><link linkend="method-gtksourcebuffer2--get-source-marks-at-line">get_source_marks_at_line</link></methodname>
         <methodparam><parameter role="keyword">line</parameter></methodparam>
-        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis>
     
     <methodsynopsis language="python">
@@ -111,10 +111,10 @@
     </methodsynopsis>
 
     <methodsynopsis language="python">
-      <methodname><link linkend="method-gtksourcebuffer2--remove-marks">remove_marks</link></methodname>
+      <methodname><link linkend="method-gtksourcebuffer2--remove-source-marks">remove_source_marks</link></methodname>
       <methodparam><parameter role="keyword">start</parameter></methodparam>
       <methodparam><parameter role="keyword">end</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis> 
     
     <methodsynopsis language="python">
@@ -340,12 +340,12 @@ By default highlighting is enabled, but you can disable it with
 <refsect1>
     <title>Methods</title>
 
-  <refsect2 id="method-gtksourcebuffer2--backward-iter-to-mark">
-    <title>gtksourceview2.Buffer.backward_iter_to_mark</title>
+  <refsect2 id="method-gtksourcebuffer2--backward-iter-to-source-mark">
+    <title>gtksourceview2.Buffer.backward_iter_to_source_mark</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>backward_iter_to_mark</methodname>
+	  <methodname>backward_iter_to_source_mark</methodname>
       <methodparam><parameter role="keyword">iter</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
       <varlistentry>
@@ -363,7 +363,7 @@ By default highlighting is enabled, but you can disable it with
     </variablelist>
 
     <para>
-      The <methodname>backward_iter_to_mark</methodname>() method moves iter to the
+      The <methodname>backward_iter_to_source_mark</methodname>() method moves iter to the
       position of the previous <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
       of the given category. Returns <literal>True</literal> if iter was moved.
       If category is <literal>None</literal>, the previous source mark can be of any category.
@@ -423,12 +423,12 @@ By default highlighting is enabled, but you can disable it with
     </para>
   </refsect2>
   
-  <refsect2 id="method-gtksourcebuffer2--create-mark">
-    <title>gtksourceview2.Buffer.create_marker</title>
+  <refsect2 id="method-gtksourcebuffer2--create-source-mark">
+    <title>gtksourceview2.Buffer.create_source_mark</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>create_marker</methodname>
+	  <methodname>create_source_mark</methodname>
       <methodparam><parameter role="keyword">name</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
       <methodparam><parameter role="keyword">where</parameter></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
@@ -453,7 +453,7 @@ By default highlighting is enabled, but you can disable it with
     </variablelist>
 
     <para>
-      The <methodname>create_mark</methodname>() method creates a mark in the 
+      The <methodname>create_source_mark</methodname>() method creates a mark in the 
       <methodname><link linkend="constructor-gtksourcebuffer2">gtksourceview2.Buffer</link></methodname> of category 
       <parameter>category</parameter>. A mark is semantically very similar to a 
       <classname><link linkend="class-gtktextmark">gtk.TextMark</link></classname>, but organised into categories.
@@ -513,12 +513,12 @@ By default highlighting is enabled, but you can disable it with
     </para>
     </refsect2>
 
-  <refsect2 id="method-gtksourcebuffer2--forward-iter-to-mark">
-    <title>gtksourceview2.Buffer.forward_iter_to_mark</title>
+  <refsect2 id="method-gtksourcebuffer2--forward-iter-to-source-mark">
+    <title>gtksourceview2.Buffer.forward_iter_to_source_mark</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>forward_iter_to_mark</methodname>
+	  <methodname>forward_iter_to_source_mark</methodname>
       <methodparam><parameter role="keyword">iter</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
       <varlistentry>
@@ -536,7 +536,7 @@ By default highlighting is enabled, but you can disable it with
     </variablelist>
 
     <para>
-      The <methodname>forward_iter_to_mark</methodname>() method moves iter to the
+      The <methodname>forward_iter_to_source_mark</methodname>() method moves iter to the
       position of the next <link linkend="class-gtksourcemark2"><classname>gtksourceview2.Mark</classname></link>
       of the given category. Returns <literal>True</literal> if iter was moved.
       If category is <literal>None</literal>, the previous source mark can be of any category.
@@ -605,12 +605,12 @@ By default highlighting is enabled, but you can disable it with
     </para>
   </refsect2>
 
-  <refsect2 id="method-gtksourcebuffer2--get-marks-at-iter">
-    <title>gtksourceview2.Buffer.get_marks_at_iter</title>
+  <refsect2 id="method-gtksourcebuffer2--get-source-marks-at-iter">
+    <title>gtksourceview2.Buffer.get_source_marks_at_iter</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>get_marks_at_iter</methodname>
+	  <methodname>get_source_marks_at_iter</methodname>
       <methodparam><parameter role="keyword">iter</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
       <varlistentry><term><parameter role="keyword">iter</parameter>&nbsp;:</term>
@@ -625,18 +625,18 @@ By default highlighting is enabled, but you can disable it with
     </variablelist>
 
     <para>
-      The <methodname>get_marks_at_iter</methodname>() method returns the list of marks
+      The <methodname>get_source_marks_at_iter</methodname>() method returns the list of marks
       of the given category at iter. If category is <literal>None</literal>
       it returns all marks at iter.
     </para>
   </refsect2>
 
-  <refsect2 id="method-gtksourcebuffer2--get-marks-at-line">
-    <title>gtksourceview2.Buffer.get_marks_at_line</title>
+  <refsect2 id="method-gtksourcebuffer2--get-source-marks-at-line">
+    <title>gtksourceview2.Buffer.get_source_marks_at_line</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>get_marks_at_line</methodname>
+	  <methodname>get_source_marks_at_line</methodname>
       <methodparam><parameter role="keyword">iter</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
       <varlistentry><term><parameter role="keyword">iter</parameter>&nbsp;:</term>
@@ -651,7 +651,7 @@ By default highlighting is enabled, but you can disable it with
     </variablelist>
 
     <para>
-      The <methodname>get_marks_at_line</methodname>() method returns the list of marks
+      The <methodname>get_source_marks_at_line</methodname>() method returns the list of marks
       of the given category at line. If category is <literal>None</literal>
       it returns all marks at line.
     </para>
@@ -710,13 +710,13 @@ By default highlighting is enabled, but you can disable it with
     </para>
   </refsect2>
 
-  <refsect2 id="method-gtksourcebuffer2--remove-marks">
-    <title>gtksourceview2.Buffer.remove_marks</title>
+  <refsect2 id="method-gtksourcebuffer2--remove-source-marks">
+    <title>gtksourceview2.Buffer.remove_source_marks</title>
     <programlisting><methodsynopsis language="python">
-	  <methodname>remove_marks</methodname>
+	  <methodname>remove_source_marks</methodname>
       <methodparam><parameter role="keyword">start</parameter></methodparam>
       <methodparam><parameter role="keyword">end</parameter></methodparam>
-      <methodparam><parameter role="keyword">category</parameter></methodparam>
+      <methodparam><parameter role="keyword">category</parameter><initializer>None</initializer></methodparam>
     </methodsynopsis></programlisting>
     <variablelist>
       <varlistentry>
@@ -734,7 +734,7 @@ By default highlighting is enabled, but you can disable it with
     </variablelist>
 
     <para>
-      The <methodname>remove_marks</methodname>() method remove all marks of category
+      The <methodname>remove_source_marks</methodname>() method remove all marks of category
       between start and end from the buffer. If category is <literal>None</literal>,
       all marks in the range will be removed.
     </para>
