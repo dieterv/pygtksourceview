@@ -54,7 +54,7 @@ def error_dialog(parent, msg):
 ##### remove all source marks
 def remove_all_marks(buffer):
     begin, end = buffer.get_bounds()
-    marks = buffer.remove_source_marks(begin, end, None)
+    marks = buffer.remove_source_marks(begin, end)
 
 
 ######################################################################
