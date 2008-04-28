@@ -1,3 +1,10 @@
+2008-04-28  Paolo Borelli  <pborelli@katamail.com>
+
+	* setup.py:
+	* pygtksourceview_postinstall.py:
+
+	add an unofficial distutils based buildsystem that alllows to create
+	win32 installers.
 
 === pygtksourceview 2.2.0 ===
 
