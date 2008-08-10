@@ -26,7 +26,7 @@ import os, os.path
 import sys
 import gtk
 import gtksourceview2 as gtksourceview
-import gnomevfs
+import gio
 import pango
 
 
@@ -59,15 +59,15 @@ def remove_all_marks(buffer):
 
 ######################################################################
 ##### load file
-def load_file(buffer, uri):
+def load_file(buffer, path):
     buffer.begin_not_undoable_action()
     # TODO: use g_io_channel when pygtk supports it
     try:
-        txt = open(uri.path).read()
+        txt = open(path).read()
     except:
         return False
     buffer.set_text(txt)
-    buffer.set_data('filename', uri.path)
+    buffer.set_data('filename', path)
     buffer.end_not_undoable_action()
 
     buffer.set_modified(False)
@@ -97,9 +97,13 @@ def open_file(buffer, filename):
         path = filename
     else:
         path = os.path.abspath(filename)
-    uri = gnomevfs.URI(path)
+    f = gio.File(path)
 
-    mime_type = gnomevfs.get_mime_type(path) # needs ASCII filename, not URI
+    path = f.get_path()
+
+    info = f.query_info("*")
+
+    mime_type = info.get_content_type()
     language = None
 
     if mime_type:
@@ -112,7 +116,7 @@ def open_file(buffer, filename):
     buffer.set_language(language)
     buffer.set_highlight_syntax(True)
     remove_all_marks(buffer)
-    load_file(buffer, uri) # TODO: check return
+    load_file(buffer, path) # TODO: check return
     return True
 
 

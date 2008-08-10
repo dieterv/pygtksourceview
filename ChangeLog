@@ -1,5 +1,11 @@
 2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* configure.ac: bump pygobject required version 2.15.2
+
+	* test/test-widget.py: remove gnomevfs dependency, use gio instead.
+
+2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* gtksourceview2.defs: Add some defaults and null-ok.
 
 	* gtksourceview2.override: Manually wrap

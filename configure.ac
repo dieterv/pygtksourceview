@@ -7,7 +7,7 @@ m4_define(pygtksourceview_micro_version, 0)
 m4_define(pygtksourceview_version, pygtksourceview_major_version.pygtksourceview_minor_version.pygtksourceview_micro_version)
 
 dnl versions of packages we require ...
-m4_define(pygobject_required_version, 2.8.0)
+m4_define(pygobject_required_version, 2.15.2)
 m4_define(pygtk_required_version, 2.8.0)
 m4_define(gtksourceview_required_version, 2.3.0)
 
