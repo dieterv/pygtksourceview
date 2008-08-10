@@ -1,3 +1,12 @@
+News in 2.3.0
+=============
+
+    o add an unofficial distutils based buildsystem that alllows to create
+      win32 installers. (Paolo)
+    o Add new 2.3.0 gtksourceview API. (Gian Mario)
+    o remove gnomevfs dependency, use gio instead. (Gian Mario)
+
+
 News in 2.2.0
 =============
 

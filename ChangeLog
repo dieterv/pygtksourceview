@@ -1,3 +1,11 @@
+=== pygtksourceview 2.3.0 ===
+
+2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* NEWS: updated
+
+	pygtksourceview 2.3.0 released
+
 2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* configure.ac: bump pygobject required version 2.15.2
