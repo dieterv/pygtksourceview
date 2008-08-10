@@ -1,3 +1,7 @@
+2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* configure.ac: bump version 2.3.1
+
 === pygtksourceview 2.3.0 ===
 
 2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
