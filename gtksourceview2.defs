@@ -78,6 +78,17 @@
   (gtype-id "GTK_TYPE_SOURCE_SMART_HOME_END_TYPE")
 )
 
+(define-flags DrawSpacesFlags
+  (in-module "Gtk")
+  (c-name "GtkSourceDrawSpacesFlags")
+  (gtype-id "GTK_TYPE_SOURCE_DRAW_SPACES_FLAGS")
+  (values
+    '("space" "GTK_SOURCE_DRAW_SPACES_SPACE")
+    '("tab" "GTK_SOURCE_DRAW_SPACES_TAB")
+    '("newline" "GTK_SOURCE_DRAW_SPACES_NEWLINE")
+    '("all" "GTK_SOURCE_DRAW_SPACES_ALL")
+  )
+)
 
 ;; From gtksourcebuffer.h
 
@@ -410,6 +421,16 @@
   (return-type "none")
   (parameters
     '("gchar**" "dirs")
+  )
+)
+
+(define-method guess_language
+  (of-object "GtkSourceLanguageManager")
+  (c-name "gtk_source_language_manager_guess_language")
+  (return-type "GtkSourceLanguage*")
+  (parameters
+    '("const-gchar*" "filename")
+    '("const-gchar*" "content_type")
   )
 )
 
@@ -753,6 +774,41 @@
   (of-object "GtkSourceView")
   (c-name "gtk_source_view_get_smart_home_end")
   (return-type "GtkSourceSmartHomeEndType")
+)
+
+(define-method set_draw_spaces
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_draw_spaces")
+  (return-type "none")
+  (parameters
+    '("GtkSourceDrawSpacesFlags" "flags")
+  )
+)
+
+(define-method get_draw_spaces
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_draw_spaces")
+  (return-type "GtkSourceDrawSpacesFlags")
+)
+
+(define-method set_mark_category_background
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_background")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("const-GdkColor*" "color")
+  )
+)
+
+(define-method get_mark_category_background
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_mark_category_background")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "category")
+    '("GdkColor*" "dest")
+  )
 )
 
 

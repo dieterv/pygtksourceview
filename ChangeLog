@@ -1,3 +1,9 @@
+2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* configure.ac: bump version 2.3.0
+
+	* gtksourceview2.defs: Add new gtksourceview API.
+
 2008-04-28  Paolo Borelli  <pborelli@katamail.com>
 
 	* setup.py:
@@ -30,7 +36,7 @@
 2008-02-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* gtksourceview2.defs: define NULL as default for catogory params.
-	
+
 	* docs/reference/gtksourceview2-gtksourcebuffer.xml: fix the docs.
 
 2008-02-01  Paolo Borelli  <pborelli@katamail.com>
@@ -75,18 +81,18 @@
 
 	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml:
 	add print_compositor_new_from_view function.
-	
+
 	* docs/reference/gtksourceview2-gtksourceview.xml: add virtuals.
 
 2008-01-20  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* docs/reference/gtksourceview2-gtksourceprintcompositor.xml: add.
-	
+
 	* docs/reference/gtksourceview2-ref.xml:
 	* docs/Makefile.am: add gtksourceprintcompositor docs.
-	
+
 	* configure.ac: bump to version 2.1.0 and require gtksourceview 2.1.0.
-	
+
 	* gtksourceview2.defs: fix NULL in parameters.
 
 2008-01-16  Gian Mario Tagliaretti  <gianmt@gnome.org>
@@ -101,15 +107,15 @@
 2008-01-06  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* gtksourceview2.defs: Fix null-ok in parameters.
-	
+
 	* docs/reference/gtksourceview2-gtksourcemarker.xml: remove old docs.
-	
+
 	* docs/reference/gtksourceview2-gtksourcemark.xml: add new mark docs.
-	
+
 	* docs/Makefile.am:
 	* docs/reference/gtksourceview2-gtksourcebuffer.xml:
 	* docs/reference/gtksourceview2-gtksourceview.xml:
-	* docs/reference/gtksourceview2-ref.xml: New mark API documented.	
+	* docs/reference/gtksourceview2-ref.xml: New mark API documented.
 
 2008-01-05  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
@@ -174,7 +180,7 @@
 
 	* gtksourceview2.defs: add gtk_source_language_get_style_ids and
 	gtk_source_language_get_style_name.
-	
+
 	* gtksourceview2.override: wrap gtk_source_language_get_style_ids.
 
 2007-12-30  Gian Mario Tagliaretti  <gianmt@gnome.org>
@@ -317,7 +323,7 @@
 
 2007-06-20  Paolo Borelli  <pborelli@katamail.com>
 
-	* gtksourceview2.defs: remove Buffer signals which are not 
+	* gtksourceview2.defs: remove Buffer signals which are not
 	there anymore.
 
 2007-06-18  Yevgen Muntyan  <muntyan@tamu.edu>
@@ -359,7 +365,7 @@
 	pygtksourceview 2.18.1 released
 
 2007-06-03  Gian Mario Tagliaretti  <gianmt@gnome.org>
-	
+
 	* configure.ac: bump version to 1.90.0
 	* Makefile.am: clean build, distcheck now works.
 	* docs/reference/builddate.xml: deleted, it's a generated file.
@@ -384,7 +390,7 @@
 2007-05-12  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* gtksourceview2.defs: added new enum type GtkSourceViewSmartHomeEndType
-	
+
 	* configure.ac: fix project link
 
 2007-05-02  Gian Mario Tagliaretti  <gianmt@gnome.org>
