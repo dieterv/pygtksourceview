@@ -13,7 +13,7 @@
 
 <refsect1>
   <title>Synopsis</title>
-  
+
   <classsynopsis language="python">
     <ooclass><classname>gtksourceview2.LanguageManager</classname></ooclass>
     <ooclass><classname><link linkend="class-gobject">gobject.GObject</link></classname></ooclass>
@@ -21,23 +21,29 @@
     <constructorsynopsis language="python">
       <methodname><link linkend="constructor-gtksourcelanguagemanager2">gtksourceview2.LanguageManager</link></methodname>
       <methodparam></methodparam>
-    </constructorsynopsis>    
+    </constructorsynopsis>
 
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcelanguagemanager2--get-language">get_language</link></methodname>
       <methodparam><parameter role="keyword">id</parameter></methodparam>
     </methodsynopsis>
-    
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcelanguagemanager2--get-language-ids">get_language_ids</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
-    
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcelanguagemanager2--get-search-path">get_search_path</link></methodname>
       <methodparam></methodparam>
     </methodsynopsis>
-    
+
+    <methodsynopsis language="python">
+      <methodname><link linkend="method-gtksourcelanguagemanager2--guess-language">guess_language</link></methodname>
+      <methodparam><parameter role="keyword">filename</parameter><initializer>None</initializer></methodparam>
+      <methodparam><parameter role="keyword">content_type</parameter><initializer>None</initializer></methodparam>
+    </methodsynopsis>
+
     <methodsynopsis language="python">
       <methodname><link linkend="method-gtksourcelanguagemanager2--set-search-path">set_search_path</link></methodname>
       <methodparam></methodparam>
@@ -85,13 +91,13 @@
         <entry>Read</entry>
         <entry>List of the ids of the available languages.</entry>
       </row>
-      
+
       <row valign="top">
         <entry>"search-path"</entry>
         <entry>Read-Write</entry>
         <entry>List of directories where the language specification files (.lang) are located.</entry>
       </row>
-      
+
       </tbody>
       </tgroup>
     </informaltable>
@@ -123,7 +129,7 @@
     <methodname>gtksourceview2.LanguageManager</methodname>
     <methodparam><parameter role="keyword"></parameter></methodparam>
   </constructorsynopsis></programlisting>
-    
+
   <variablelist>
     <varlistentry>
       <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -149,7 +155,7 @@
     <methodname>get_language</methodname>
     <methodparam><parameter role="keyword">id</parameter></methodparam>
     </methodsynopsis></programlisting>
-      
+
     <variablelist>
       <varlistentry>
         <term><emphasis>id</emphasis>&nbsp;:</term>
@@ -176,7 +182,7 @@
     <methodname>get_language_ids</methodname>
     <methodparam></methodparam>
     </methodsynopsis></programlisting>
-      
+
     <variablelist>
       <varlistentry>
         <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -197,7 +203,7 @@
     <methodname>get_search_path</methodname>
     <methodparam></methodparam>
     </methodsynopsis></programlisting>
-      
+
     <variablelist>
       <varlistentry>
         <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -210,14 +216,49 @@
       gets the list directories where @lm looks for language files.
     </para>
   </refsect2>
-  
+
+  <refsect2 id="method-gtksourcelanguagemanager2--guess-language">
+    <title>gtksourceview2.LanguageManager.guess_language</title>
+    <programlisting><methodsynopsis language="python">
+    <methodname>guess_language</methodname>
+    <methodparam><parameter role="keyword">filename</parameter><initializer>None</initializer></methodparam>
+    <methodparam><parameter role="keyword">content_type</parameter><initializer>None</initializer></methodparam>
+    </methodsynopsis></programlisting>
+
+    <variablelist>
+      <varlistentry>
+        <term><emphasis>filename</emphasis>&nbsp;:</term>
+        <listitem><simpara>a filename in Glib filename encoding, or
+        <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>content_type</emphasis>&nbsp;:</term>
+        <listitem><simpara>a content type (as in GIO API), or
+        <literal>None</literal>.</simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><emphasis>Returns</emphasis>&nbsp;:</term>
+        <listitem><simpara>a
+        <link linkend="class-gtksourcelanguage2"><classname>gtksourceview2.Language</classname></link>
+        or <literal>None</literal> if there is no suitable language for given filename
+        and/or content_type.</simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>set_search_path</methodname>() method sets the list of directories
+      where the lm looks for language files.
+      If dirs is <literal>None</literal>, the search path is reset to default.
+    </para>
+  </refsect2>
+
   <refsect2 id="method-gtksourcelanguagemanager2--set-search-path">
     <title>gtksourceview2.LanguageManager.set_search_path</title>
     <programlisting><methodsynopsis language="python">
     <methodname>set_search_path</methodname>
     <methodparam><parameter role="keyword">dirs</parameter></methodparam>
     </methodsynopsis></programlisting>
-      
+
     <variablelist>
       <varlistentry>
         <term><emphasis>dirs</emphasis>&nbsp;:</term>
@@ -247,7 +288,7 @@
   	  <methodname>gtksourceview2.language_manager_get_default</methodname>
       <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
     <variablelist>
 	    <varlistentry>
         <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -260,5 +301,5 @@
         <link linkend="class-gtksourcelanguagemanager2"><classname>gtksourceview2.LanguageManager</classname></link> instance.
       </para>
   </refsect2>
-</refsect1> 
+</refsect1>
 </refentry>

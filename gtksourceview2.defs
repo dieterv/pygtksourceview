@@ -429,8 +429,8 @@
   (c-name "gtk_source_language_manager_guess_language")
   (return-type "GtkSourceLanguage*")
   (parameters
-    '("const-gchar*" "filename")
-    '("const-gchar*" "content_type")
+    '("const-gchar*" "filename" (null-ok) (default "NULL"))
+    '("const-gchar*" "content_type" (null-ok) (default "NULL"))
   )
 )
 
@@ -797,7 +797,7 @@
   (return-type "none")
   (parameters
     '("const-gchar*" "category")
-    '("const-GdkColor*" "color")
+    '("const-GdkColor*" "color" (null-ok))
   )
 )
 

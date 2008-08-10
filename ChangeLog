@@ -1,5 +1,16 @@
 2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* gtksourceview2.defs: Add some defaults and null-ok.
+
+	* gtksourceview2.override: Manually wrap
+	gtk_source_view_get_mark_category_background
+
+	* docs/reference/gtksourceview2-gtksourceview.xml:
+	* docs/reference/gtksourceview2-gtksourcelanguagesmanager.xml:
+	Update with the new API.
+
+2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* configure.ac: bump gtksourceview required version 2.3.0
 
 2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>

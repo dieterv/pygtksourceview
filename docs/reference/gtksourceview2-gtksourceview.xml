@@ -27,129 +27,150 @@
         <methodname><link linkend="method-gtksourceview2--get-auto-indent">get_auto_indent</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--get-draw-spaces">get_draw_spaces</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-highlight-current-line">get_highlight_current_line</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-indent-on-tab">get_indent_on_tab</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-indent-width">get_indent_width</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-insert-spaces-instead-of-tabs">get_insert_spaces_instead_of_tabs</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--get-mark-category-background">get_mark_category_background</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+      </methodsynopsis>
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-mark-category-pixbuf">get_mark_category_pixbuf</link></methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-mark-category-priority">get_mark_category_priority</link></methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-right-margin-position">get_right_margin_position</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-show-line-marks">get_show_line_marks</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-show-line-numbers">get_show_line_numbers</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-show-right-margin">get_show_right_margin</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-smart-home-end">get_smart_home_end</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-tab-width">get_tab_width</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-auto-indent">set_auto_indent</link></methodname>
           <methodparam><parameter role="keyword">enable</parameter></methodparam>
       </methodsynopsis>
-      
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-draw-spaces">set_draw_spaces</link></methodname>
+          <methodparam><parameter role="keyword">flags</parameter></methodparam>
+      </methodsynopsis>
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-highlight-current-line">set_highlight_current_line</link></methodname>
           <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-indent-on-tab">set_indent_on_tab</link></methodname>
           <methodparam><parameter role="keyword">enable</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-indent-width">set_indent_width</link></methodname>
           <methodparam><parameter role="keyword">width</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-insert-spaces-instead-of-tabs">set_insert_spaces_instead_of_tabs</link></methodname>
           <methodparam><parameter role="keyword">enable</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-mark-category-pixbuf">set_mark_category_pixbuf</link></methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
           <methodparam><parameter role="keyword">pixbuf</parameter></methodparam>
       </methodsynopsis>
-      
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-background">set_mark_category_background</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+          <methodparam><parameter role="keyword">dest</parameter></methodparam>
+      </methodsynopsis>
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-mark-category-priority">set_mark_category_priority</link></methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
           <methodparam><parameter role="keyword">priority</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-right-margin-position">set_right_margin_position</link></methodname>
           <methodparam><parameter role="keyword">pos</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-show-line-marks">set_show_line_marks</link></methodname>
           <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-show-line-numbers">set_show_line_numbers</link></methodname>
           <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-show-right-margin">set_show_right_margin</link></methodname>
           <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-smart-home-end">set_smart_home_end</link></methodname>
           <methodparam><parameter role="keyword">smart_he</parameter></methodparam>
       </methodsynopsis>
-      
+
       <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-tab-width">set_tab_width</link></methodname>
           <methodparam><parameter role="keyword">width</parameter></methodparam>
@@ -187,12 +208,12 @@
         <colspec column="1" colwidth="1in"/>
         <colspec column="2" colwidth="4in"/>
           <tbody>
-      
+
             <row valign="top">
               <entry><methodname>do_redo</methodname></entry>
               <entry>Method that can be overridden to implement a custom redo.</entry>
             </row>
-            
+
             <row valign="top">
               <entry><methodname>do_undo</methodname></entry>
               <entry>Method that can be overridden to implement a custom undo.</entry>
@@ -224,61 +245,61 @@
               <entry>Read-Write</entry>
               <entry>If <literal>True</literal> enable auto indentation. Default value: False.</entry>
             </row>
-            
+
             <row valign="top">
               <entry>"highlight-current-line"</entry>
               <entry>Read-Write</entry>
               <entry>Whether to highlight the current line. Default value: False.</entry>
             </row>
-            
+
             <row valign="top">
               <entry>"indent-on-tab"</entry>
               <entry>Read-Write</entry>
               <entry>Whether to indent the selected text when the tab key is pressed. Default value: True.</entry>
             </row>
-            
+
             <row valign="top">
               <entry>"indent-width"</entry>
               <entry>Read-Write</entry>
               <entry>Width of an indentation step expressed in number of spaces. Allowed values: [-1,32]. Default value: -1.</entry>
             </row>
-      
+
             <row valign="top">
               <entry>"insert-spaces-instead-of-tabs"</entry>
               <entry>Read-Write</entry>
               <entry>If <literal>True</literal> spaces will be inserted instead of tabs. Default value: False</entry>
             </row>
-      
+
             <row valign="top">
               <entry>"right-margin-position"</entry>
               <entry>Read-Write</entry>
               <entry>Position of the right margin. Allowed values: [1,200]. Default value: 80</entry>
             </row>
-      
+
             <row valign="top">
               <entry>"show-line-marks"</entry>
               <entry>Read-Write</entry>
               <entry>If <literal>True</literal>, the display line marks pixbufs will be shown. Default value: False.</entry>
             </row>
-      
+
             <row valign="top">
               <entry>"show-line-numbers"</entry>
               <entry>Read-Write</entry>
               <entry>If <literal>True</literal>, the line numbers will be shown. Default value: False.</entry>
             </row>
-      
+
             <row valign="top">
               <entry>"show-right-margin"</entry>
               <entry>Read-Write</entry>
               <entry>If <literal>True</literal>, the right margin will be shown. Default value: False.</entry>
             </row>
-      
+
             <row valign="top">
               <entry>"smart-home-end"</entry>
               <entry>Read-Write</entry>
               <entry>Set the behavior of the <keycap>HOME</keycap> and <keycap>END</keycap> keys. Default value: gtksourceview2.SMART_HOME_END_DISABLED.</entry>
             </row>
-      
+
             <row valign="top">
               <entry>"tabs-width"</entry>
               <entry>Read-Write</entry>
@@ -385,11 +406,11 @@
         <methodname>get_auto_indent</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
-          <listitem><simpara><literal>True</literal> if auto indentation is enabled, 
+          <listitem><simpara><literal>True</literal> if auto indentation is enabled,
           <literal>False</literal> otherwise.</simpara></listitem>
         </varlistentry>
       </variablelist>
@@ -400,6 +421,29 @@
       </para>
     </refsect2>
 
+    <refsect2 id="method-gtksourceview2--get-draw-spaces">
+      <title>gtksourceview2.View.get_draw_spaces</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_draw_spaces</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>One of gtksourceview2.DRAW_SPACES_SPACE, gtksourceview2.DRAW_SPACES_TAB
+          gtksourceview2.DRAW_SPACES_NEWLINE or gtksourceview2.DRAW_SPACES_ALL.</simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_draw_spaces</methodname>() method returns one of the flags
+        specifying if and how spaces should be displayed for this view.
+      </para>
+    </refsect2>
+
+
     <refsect2 id="method-gtksourceview2--get-highlight-current-line">
       <title>gtksourceview2.View.get_highlight_current_line</title>
 
@@ -407,11 +451,11 @@
         <methodname>get_highlight_current_line</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
-          <listitem><simpara><literal>True</literal> if the current line is highlighted, 
+          <listitem><simpara><literal>True</literal> if the current line is highlighted,
           <literal>False</literal> otherwise.</simpara></listitem>
         </varlistentry>
       </variablelist>
@@ -429,7 +473,7 @@
         <methodname>get_indent_on_tab</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -452,7 +496,7 @@
         <methodname>get_indent_width</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -475,7 +519,7 @@
         <methodname>get_insert_spaces_instead_of_tabs</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -491,6 +535,32 @@
       </para>
     </refsect2>
 
+    <refsect2 id="method-gtksourceview2--get-mark-category-background">
+      <title>gtksourceview2.View.get_mark_category_background</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_mark_category_background</methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>a <link linkend="class-gdkcolor"><classname>gtk.gdk.Color</classname></link>
+          if found, or <literal>None</literal> if not found.</simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_marker_category_pixbuf</methodname>() method gets the pixbuf which
+        is associated with the given category.
+      </para>
+    </refsect2>
+
     <refsect2 id="method-gtksourceview2--get-mark-category-pixbuf">
       <title>gtksourceview2.View.get_mark_category_pixbuf</title>
 
@@ -498,7 +568,7 @@
         <methodname>get_mark_category_pixbuf</methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">category</parameter>&nbsp;:</term>
@@ -516,7 +586,7 @@
         is associated with the given category.
       </para>
     </refsect2>
-    
+
     <refsect2 id="method-gtksourceview2--get-mark-category-priority">
       <title>gtksourceview2.View.get_mark_category_priority</title>
 
@@ -524,7 +594,7 @@
         <methodname>get_mark_category_priority</methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">category</parameter>&nbsp;:</term>
@@ -550,7 +620,7 @@
         <methodname>get_right_margin_position</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -571,7 +641,7 @@
         <methodname>get_show_line_marks</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -593,7 +663,7 @@
         <methodname>get_show_line_numbers</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -615,7 +685,7 @@
         <methodname>get_show_right_margin</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -637,7 +707,7 @@
         <methodname>get_smart_home_end</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -650,7 +720,7 @@
       <para>
         The <methodname>get_smart_home_end</methodname>() method returns
         a value specifying how the cursor will move when <keycap>HOME</keycap>
-        and <keycap>END</keycap> keys are pressed. 
+        and <keycap>END</keycap> keys are pressed.
       </para>
     </refsect2>
 
@@ -661,7 +731,7 @@
         <methodname>get_tab_width</methodname>
           <methodparam></methodparam>
       </methodsynopsis></programlisting>
-        
+
       <variablelist>
         <varlistentry>
           <term><emphasis>Returns</emphasis>&nbsp;:</term>
@@ -682,7 +752,7 @@
         <methodname>set_auto_indent</methodname>
         <methodparam><parameter role="keyword">enabled</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">enabled</parameter>&nbsp;:</term>
@@ -695,6 +765,29 @@
       </para>
     </refsect2>
 
+    <refsect2 id="method-gtksourceview2--set-draw-spaces">
+      <title>gtksourceview2.View.set_draw_spaces</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_draw_spaces</methodname>
+        <methodparam><parameter role="keyword">flags</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">flags</parameter>&nbsp;:</term>
+          <listitem><simpara>one of gtksourceview2.DRAW_SPACES_SPACE, gtksourceview2.DRAW_SPACES_TAB
+          gtksourceview2.DRAW_SPACES_NEWLINE or gtksourceview2.DRAW_SPACES_ALL,
+          specifing how white spaces should be displayed.</simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_draw_spaces</methodname>() method set if and how the
+        spaces should be visualized. Specifying flags as 0 will disable display of spaces.
+      </para>
+    </refsect2>
+
     <refsect2 id="method-gtksourceview2--set-highlight-current-line">
       <title>gtksourceview2.View.set_highlight_current_line</title>
 
@@ -702,7 +795,7 @@
         <methodname>set_highlight_current_line</methodname>
         <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">show</parameter>&nbsp;:</term>
@@ -715,7 +808,7 @@
         whether to highlight the current line.
       </para>
     </refsect2>
-    
+
     <refsect2 id="method-gtksourceview2--set-indent-on-tab">
       <title>gtksourceview2.View.set_indent_on_tab</title>
 
@@ -723,7 +816,7 @@
         <methodname>set_indent_on_tab</methodname>
         <methodparam><parameter role="keyword">enabled</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">enabled</parameter>&nbsp;:</term>
@@ -746,7 +839,7 @@
         <methodname>set_indent_width</methodname>
         <methodparam><parameter role="keyword">width</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">width</parameter>&nbsp;:</term>
@@ -768,7 +861,7 @@
         <methodname>set_insert_spaces_instead_of_tabs</methodname>
         <methodparam><parameter role="keyword">enabled</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">enabled</parameter>&nbsp;:</term>
@@ -782,6 +875,34 @@
       </para>
     </refsect2>
 
+    <refsect2 id="method-gtksourceview2--set-mark-category-background">
+      <title>gtksourceview2.View.set_mark_category_background</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_mark_category_background</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">color</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">color</parameter>&nbsp;:</term>
+          <listitem><simpara>a <link linkend="class-gdkcolor"><classname>gtk.gdk.Color</classname></link>
+          or <literal>None</literal>.</simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_mark_category_priority</methodname>() method
+        sets given background color for mark category.
+        If color is <literal>None</literal>, the background color is unset.
+      </para>
+    </refsect2>
+
     <refsect2 id="method-gtksourceview2--set-mark-category-pixbuf">
       <title>gtksourceview2.View.set_mark_category_pixbuf</title>
 
@@ -790,7 +911,7 @@
         <methodparam><parameter role="keyword">category</parameter></methodparam>
         <methodparam><parameter role="keyword">pixbuf</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">category</parameter>&nbsp;:</term>
@@ -819,7 +940,7 @@
         <methodparam><parameter role="keyword">category</parameter></methodparam>
         <methodparam><parameter role="keyword">priority</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">category</parameter>&nbsp;:</term>
@@ -845,7 +966,7 @@
         <methodname>set_right_margin_position</methodname>
         <methodparam><parameter role="keyword">pos</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">pos</parameter>&nbsp;:</term>
@@ -866,7 +987,7 @@
         <methodname>set_show_line_marks</methodname>
         <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">show</parameter>&nbsp;:</term>
@@ -888,7 +1009,7 @@
         <methodname>set_show_line_numbers</methodname>
         <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">show</parameter>&nbsp;:</term>
@@ -910,7 +1031,7 @@
         <methodname>set_show_right_margin</methodname>
         <methodparam><parameter role="keyword">show</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">show</parameter>&nbsp;:</term>
@@ -932,7 +1053,7 @@
         <methodname>set_smart_home_end</methodname>
         <methodparam><parameter role="keyword">smart_he</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">smart_he</parameter>&nbsp;:</term>
@@ -953,7 +1074,7 @@
         <methodname>set_tab_width</methodname>
         <methodparam><parameter role="keyword">width</parameter></methodparam>
       </methodsynopsis></programlisting>
-      
+
       <variablelist>
         <varlistentry>
           <term><parameter role="keyword">width</parameter>&nbsp;:</term>
@@ -973,8 +1094,8 @@
 
 <!-- ****************************** -->
 <!-- BEGIN OF GTKSOURCEVIEW SIGNALS -->
-<!-- ****************************** --> 
- 
+<!-- ****************************** -->
+
 <refsect1>
     <title>Signals</title>
 
