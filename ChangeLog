@@ -1,3 +1,12 @@
+=== pygtksourceview 2.4.0 ===
+
+2008-09-20  Paolo Borelli  <pborelli@katamail.com>
+
+	* NEWS: updated
+	* configure.ac: bump version 2.4.0
+
+	pygtksourceview 2.4.0 released
+
 2008-08-10  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
 	* configure.ac: bump version 2.3.1
