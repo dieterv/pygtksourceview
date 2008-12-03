@@ -1,3 +1,8 @@
+2008-12-03  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* gtksourceview2.defs:
+	Added NBSP to draw spaces.
+
 === pygtksourceview 2.4.0 ===
 
 2008-09-20  Paolo Borelli  <pborelli@katamail.com>

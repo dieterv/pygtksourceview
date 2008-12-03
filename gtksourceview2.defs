@@ -86,6 +86,7 @@
     '("space" "GTK_SOURCE_DRAW_SPACES_SPACE")
     '("tab" "GTK_SOURCE_DRAW_SPACES_TAB")
     '("newline" "GTK_SOURCE_DRAW_SPACES_NEWLINE")
+    '("nbsp" "GTK_SOURCE_DRAW_SPACES_NBSP")
     '("all" "GTK_SOURCE_DRAW_SPACES_ALL")
   )
 )
