@@ -1,3 +1,10 @@
+2009-03-04  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
+	* NEWS: updated
+	* configure.ac: bump version 2.5.0
+
+	pygtksourceview 2.5.0 released
+
 2008-12-03  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
 	* gtksourceview2.defs:
