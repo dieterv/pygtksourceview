@@ -1,5 +1,11 @@
 2009-03-04  Gian Mario Tagliaretti  <gianmt@gnome.org>
 
+	* configure.ac: bump version 2.5.1
+
+=== pygtksourceview 2.5.0 ===
+
+2009-03-04  Gian Mario Tagliaretti  <gianmt@gnome.org>
+
 	* NEWS: updated
 	* configure.ac: bump version 2.5.0
 
