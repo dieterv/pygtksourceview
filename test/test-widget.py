@@ -28,6 +28,7 @@ import gtk
 import gtksourceview2 as gtksourceview
 import gio
 import pango
+import gobject
 
 
 ######################################################################
@@ -298,6 +299,31 @@ buffer_ui_description = """
 </ui>
 """
 
+class TestProvider(gobject.GObject, gtksourceview.CompletionProvider):
+    def __init__(self, name):
+        gobject.GObject.__init__(self)
+        
+        self.name = name
+    
+    def do_get_name(self):
+        return self.name
+    
+    def do_get_proposals(self):
+        return [
+            gtksourceview.CompletionItem("Proposal 1", None, None),
+            gtksourceview.CompletionItem("Proposal 2", None, None),
+            gtksourceview.CompletionItem("Proposal 3", None, None),
+        ]
+
+gobject.type_register(TestProvider)
+
+######################################################################
+##### initialize completion
+def initialize_completion(view):
+    completion = view.get_completion()
+    
+    completion.add_provider(TestProvider('Provider 1'))
+    completion.add_provider(TestProvider('Provider 2'))
 
 ######################################################################
 ##### create view window
@@ -314,6 +340,8 @@ def create_view_window(buffer, sourceview = None):
     buffer.connect('changed', update_cursor_position, view)
     view.connect('button-press-event', button_press_cb)
     window.connect('delete-event', window_deleted_cb, view)
+    
+    initialize_completion(view)
 
     # action group and UI manager
     action_group = gtk.ActionGroup('ViewActions')
