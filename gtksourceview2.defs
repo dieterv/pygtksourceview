@@ -859,9 +859,6 @@
   )
 )
 
-
-
-
 ;; From gtksourcemark.h
 
 (define-function gtk_source_mark_new
@@ -1218,6 +1215,14 @@
   (return-type "GType")
 )
 
+(define-function completion_get_from_provider
+  (c-name "gtk_source_completion_get_from_provider")
+  (return-type "GtkSourceCompletion*")
+  (parameters
+    '("GtkSourceCompletionProvider*" "provider")
+  )
+)
+
 (define-method add_provider
   (of-object "GtkSourceCompletion")
   (c-name "gtk_source_completion_add_provider")
@@ -1258,6 +1263,11 @@
   (return-type "GtkSourceCompletionInfo*")
 )
 
+(define-method get_view
+  (of-object "GtkSourceCompletion")
+  (c-name "gtk_source_completion_get_view")
+  (return-type "GtkSourceView*")
+)
 
 
 ;; From gtksourcecompletioninfo.h
@@ -1365,16 +1375,6 @@
   (return-type "const-gchar*")
 )
 
-(define-method activate
-  (of-object "GtkSourceCompletionProposal")
-  (c-name "gtk_source_completion_proposal_activate")
-  (return-type "gboolean")
-  (parameters
-    '("GtkSourceBuffer*" "buffer")
-  )
-)
-
-
 
 ;; From gtksourcecompletionprovider.h
 
@@ -1442,6 +1442,14 @@
   )
 )
 
+(define-method activate_proposal
+  (of-object "GtkSourceCompletionProvider")
+  (c-name "gtk_source_completion_provider_activate_proposal")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionProposal*" "proposal")
+  )
+)
 
 ;; virtuals
 
@@ -1517,5 +1525,13 @@
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
     '("GtkSourceCompletionInfo*" "info")
+  )
+)
+
+(define-virtual activate_proposal
+  (of-object "GtkSourceCompletionProvider")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionProposal*" "proposal")
   )
 )
