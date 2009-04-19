@@ -672,3 +672,76 @@ _wrap_GtkSourceCompletionProvider__proxy_do_get_proposals(GtkSourceCompletionPro
     
     return retval;
 }
+
+%%
+override GtkSourceCompletionProvider__proxy_do_get_info_widget
+
+static GtkWidget*
+_wrap_GtkSourceCompletionProvider__proxy_do_get_info_widget(GtkSourceCompletionProvider *self, GtkSourceCompletionProposal*proposal)
+{
+    PyGILState_STATE __py_state;
+    PyObject *py_self;
+    PyObject *py_proposal = NULL;
+    GtkWidget* retval;
+    PyObject *py_retval;
+    PyObject *py_args;
+    PyObject *py_method;
+    
+    __py_state = pyg_gil_state_ensure();
+    py_self = pygobject_new((GObject *) self);
+    if (!py_self) {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        pyg_gil_state_release(__py_state);
+        return NULL;
+    }
+    if (proposal)
+        py_proposal = pygobject_new((GObject *) proposal);
+    else {
+        Py_INCREF(Py_None);
+        py_proposal = Py_None;
+    }
+    
+    py_args = PyTuple_New(1);
+    PyTuple_SET_ITEM(py_args, 0, py_proposal);
+    
+    py_method = PyObject_GetAttrString(py_self, "do_get_info_widget");
+    if (!py_method) {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        Py_DECREF(py_args);
+        Py_DECREF(py_self);
+        pyg_gil_state_release(__py_state);
+        return NULL;
+    }
+    py_retval = PyObject_CallObject(py_method, py_args);
+    if (!py_retval) {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        Py_XDECREF(py_retval);
+        Py_DECREF(py_method);
+        Py_DECREF(py_args);
+        Py_DECREF(py_self);
+        pyg_gil_state_release(__py_state);
+        return NULL;
+    }
+    if (!PyObject_TypeCheck(py_retval, &PyGObject_Type)) {
+        PyErr_SetString(PyExc_TypeError, "retval should be a GObject");
+        PyErr_Print();
+        Py_XDECREF(py_retval);
+        Py_DECREF(py_method);
+        Py_DECREF(py_args);
+        Py_DECREF(py_self);
+        pyg_gil_state_release(__py_state);
+        return NULL;
+    }
+    retval = (GtkWidget*) pygobject_get(py_retval);    
+    
+    Py_XDECREF(py_retval);
+    Py_DECREF(py_method);
+    Py_DECREF(py_args);
+    Py_DECREF(py_self);
+    pyg_gil_state_release(__py_state);
+    
+    return retval;
+}

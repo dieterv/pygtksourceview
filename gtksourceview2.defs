@@ -1427,6 +1427,7 @@
   (of-object "GtkSourceCompletionProvider")
   (c-name "gtk_source_completion_provider_get_info_widget")
   (return-type "GtkWidget*")
+  (caller-owns-return #t)
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
   )
@@ -1514,6 +1515,7 @@
 (define-virtual get_info_widget
   (of-object "GtkSourceCompletionProvider")
   (return-type "GtkWidget*")
+  (caller-owns-return #t)
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
   )
