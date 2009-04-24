@@ -126,6 +126,7 @@ import gtk.TextMark as PyGtkTextMark_Type
 import gtk.PrintContext as PyGtkPrintContext_Type
 import gtk.Widget as PyGtkWidget_Type
 import gtk.Window as PyGtkWindow_Type
+import gtk.TextIter as PyGtkTextIter_Type
 %%
 ignore-glob
 *_get_type
@@ -549,21 +550,22 @@ _wrap_gtk_source_view_show_completion (PyGObject *self,
 }
 
 %%
-override gtk_source_completion_popup kwargs
+override gtk_source_completion_show kwargs
 static PyObject *
-_wrap_gtk_source_completion_popup(PyGObject *self,
+_wrap_gtk_source_completion_show(PyGObject *self,
                                   PyObject  *args,
                                   PyObject  *kwargs)
 {
-    static char *kwlist[] = { "providers", "criteria", NULL };
+    static char *kwlist[] = { "providers", "criteria", "place", NULL };
     PyObject *providers;
     const char *criteria;
     GList *items;
+    PyGBoxed *iter;
     
     if (!PyArg_ParseTupleAndKeywords(args,
                                          kwargs,
-                                         "|Oz:GtkSourceCompletion.popup",
-                                         kwlist, &providers, &criteria));
+                                         "|OzO!:GtkSourceCompletion.show",
+                                         kwlist, &providers, &criteria, &PyGtkTextIter_Type, &iter));
 
     if (providers != Py_None && !PySequence_Check(providers)) {
         PyErr_SetString(PyExc_TypeError, "providers must be a list");
@@ -571,7 +573,7 @@ _wrap_gtk_source_completion_popup(PyGObject *self,
     }
     
     items = pylist_to_glist_gobjs (providers, GTK_TYPE_SOURCE_COMPLETION_PROVIDER);
-    gtk_source_completion_popup (GTK_SOURCE_COMPLETION(self), items, criteria);
+    gtk_source_completion_show (GTK_SOURCE_COMPLETION(self), items, criteria, pyg_boxed_get (iter, GtkTextIter));
     
     g_list_foreach (items, (GFunc)g_object_unref, NULL);
     g_list_free (items);
@@ -587,15 +589,16 @@ _wrap_GtkSourceCompletionProvider__do_get_proposals(PyObject *cls,
                                                     PyObject *kwargs)
 {
     GtkSourceCompletionProviderIface *iface;
-    static char *kwlist[] = { "self", NULL };
+    static char *kwlist[] = { "self", "iter", NULL };
     PyGObject *self;
+    PyGBoxed *iter;
     GList *ret;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs,"O!:GtkSourceCompletionProvider.get_proposals", kwlist, &PyGtkSourceCompletionProvider_Type, &self))
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs,"O!O!:GtkSourceCompletionProvider.get_proposals", kwlist, &PyGtkSourceCompletionProvider_Type, &self, &PyGtkTextIter_Type, &iter))
         return NULL;
     iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)), GTK_TYPE_SOURCE_COMPLETION_PROVIDER);
     if (iface->get_proposals)
-        ret = iface->get_proposals(GTK_SOURCE_COMPLETION_PROVIDER(self->obj));
+        ret = iface->get_proposals(GTK_SOURCE_COMPLETION_PROVIDER(self->obj), pyg_boxed_get(iter, GtkTextIter));
     else {
         PyErr_SetString(PyExc_NotImplementedError, "interface method GtkSourceCompletionProvider.get_proposals not implemented");
         return NULL;
@@ -612,21 +615,29 @@ _wrap_gtk_source_completion_provider_get_proposals(PyGObject *self,
                                                    PyObject  *kwargs)
 {
 	GList *proposals;
+	static char *kwlist[] = { "iter", NULL };
+	PyGBoxed *iter;
 	
-	proposals = gtk_source_completion_provider_get_proposals (GTK_SOURCE_COMPLETION_PROVIDER (self));
+	if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O!:GtkSourceCompletionProvider.get_proposals", kwlist,  &PyGtkTextIter_Type, &iter))
+        return NULL;
+	
+	proposals = gtk_source_completion_provider_get_proposals (GTK_SOURCE_COMPLETION_PROVIDER (self),
+	                                                          pyg_boxed_get(iter, GtkTextIter));
 	
 	return glist_to_pylist_objs (proposals);
 }
 %%
 override GtkSourceCompletionProvider__proxy_do_get_proposals
 static GList *
-_wrap_GtkSourceCompletionProvider__proxy_do_get_proposals(GtkSourceCompletionProvider *self)
+_wrap_GtkSourceCompletionProvider__proxy_do_get_proposals(GtkSourceCompletionProvider *self, GtkTextIter *iter)
 {
     PyGILState_STATE __py_state;
     PyObject *py_self;
     GList *retval;
     PyObject *py_retval;
     PyObject *py_method;
+    PyObject *py_iter;
+    PyObject *py_args;
     
     __py_state = pyg_gil_state_ensure();
     py_self = pygobject_new((GObject *) self);
@@ -646,7 +657,14 @@ _wrap_GtkSourceCompletionProvider__proxy_do_get_proposals(GtkSourceCompletionPro
         pyg_gil_state_release(__py_state);
         return FALSE;
     }
-    py_retval = PyObject_CallObject(py_method, NULL);
+    
+    py_iter = pyg_boxed_new (GTK_TYPE_TEXT_ITER, iter, FALSE, FALSE);
+    py_args = PyTuple_New(1);
+    PyTuple_SET_ITEM(py_args, 0, py_iter);
+    
+    py_retval = PyObject_CallObject(py_method, py_args);
+    Py_XDECREF(py_args);
+
     if (!py_retval) {
         if (PyErr_Occurred())
             PyErr_Print();

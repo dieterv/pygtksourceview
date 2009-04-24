@@ -1215,20 +1215,13 @@
   (return-type "GType")
 )
 
-(define-function completion_get_from_provider
-  (c-name "gtk_source_completion_get_from_provider")
-  (return-type "GtkSourceCompletion*")
-  (parameters
-    '("GtkSourceCompletionProvider*" "provider")
-  )
-)
-
 (define-method add_provider
   (of-object "GtkSourceCompletion")
   (c-name "gtk_source_completion_add_provider")
   (return-type "gboolean")
   (parameters
     '("GtkSourceCompletionProvider*" "provider")
+    '("GError**" "error")
   )
 )
 
@@ -1238,22 +1231,24 @@
   (return-type "gboolean")
   (parameters
     '("GtkSourceCompletionProvider*" "provider")
+    '("GError**" "error")
   )
 )
 
-(define-method popup
+(define-method show
   (of-object "GtkSourceCompletion")
   (c-name "gtk_source_completion_popup")
   (return-type "gboolean")
   (parameters
     '("GList*" "providers")
     '("const-gchar*" "criteria")
+    '("GtkTextIter*" "place")
   )
 )
 
-(define-method finish
+(define-method hide
   (of-object "GtkSourceCompletion")
-  (c-name "gtk_source_completion_finish")
+  (c-name "gtk_source_completion_hide")
   (return-type "none")
 )
 
@@ -1375,6 +1370,12 @@
   (return-type "const-gchar*")
 )
 
+(define-method changed
+  (of-object "GtkSourceCompletionProposal")
+  (c-name "gtk_source_completion_proposal_changed")
+  (return-type "none")
+)
+
 
 ;; From gtksourcecompletionprovider.h
 
@@ -1399,6 +1400,9 @@
   (of-object "GtkSourceCompletionProvider")
   (c-name "gtk_source_completion_provider_get_proposals")
   (return-type "GList*")
+  (parameters
+    '("GtkTextIter*" "iter")
+  )
 )
 
 (define-method filter_proposal
@@ -1407,6 +1411,7 @@
   (return-type "gboolean")
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
+    '("GtkTextIter*" "iter")
     '("const-gchar*" "criteria")
   )
 )
@@ -1449,6 +1454,7 @@
   (return-type "gboolean")
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
+    '("GtkTextIter*" "iter")
   )
 )
 
@@ -1478,6 +1484,11 @@
   (return-type "const-gchar*")
 )
 
+(define-virtual changed
+  (of-object "GtkSourceCompletionProposal")
+  (return-type "none")
+)
+
 (define-virtual get_name
   (of-object "GtkSourceCompletionProvider")
   (return-type "const-gchar*")
@@ -1491,6 +1502,9 @@
 (define-virtual get_proposals
   (of-object "GtkSourceCompletionProvider")
   (return-type "GList*")
+  (parameters
+    '("GtkTextIter*" "iter")
+  )
 )
 
 (define-virtual filter_proposal
@@ -1498,6 +1512,7 @@
   (return-type "gboolean")
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
+    '("GtkTextIter*" "iter")
     '("const-gchar*" "criteria")
   )
 )
@@ -1535,5 +1550,6 @@
   (return-type "gboolean")
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
+    '("GtkTextIter*" "iter")
   )
 )
