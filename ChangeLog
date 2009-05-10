@@ -1,3 +1,6 @@
+=== ChangeLog discontinued ===
+ChangeLog has been discontinued, we autogenerate the ChangeLog from git logs
+
 === pygtksourceview 2.6.0 ===
 
 2009-03-04  Gian Mario Tagliaretti  <gianmt@gnome.org>
