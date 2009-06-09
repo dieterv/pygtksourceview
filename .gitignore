@@ -38,5 +38,10 @@ entities.docbook
 .libs
 
 # Codegen output.
-goocanvas.c
+gtksourceview2.c
+
+# Docs generated files
+docs/build_stamp
+docs/html/
+docs/reference/builddate.xml
 
