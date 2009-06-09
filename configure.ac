@@ -55,6 +55,9 @@ AC_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
+dnl when using libtool 2.x create libtool early, because it's used in configure
+m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
+
 if test "x$os_win32" = xyes -a "x$cross_compiling" = xyes; then
 MOO_AM_PYTHON_DEVEL_CROSS_MINGW(,[AC_MSG_ERROR(could not find Python headers)])
 else
