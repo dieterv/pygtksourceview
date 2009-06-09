@@ -72,7 +72,7 @@ build_stamp: $(REFERENCE_DEPS)reference/builddate.xml
                  --stringparam gtkdoc.bookname "pygtksourceview2" \
                  --stringparam gtkdoc.version ${REF_VERSION} \
                  $(HTML_STYLE) $(srcdir)/reference/gtksourceview2-ref.xml
-	$(PYGOBJECT_FIXXREF) -i /usr/share/gtk-doc/html/pygtk/ $(BUILDDIR)/html 
+	$(PYGOBJECT_FIXXREF) -i $(PYGOBJECT_PYGDOCS) $(BUILDDIR)/html 
 	touch $@
 
 pdf: $(REFERENCE_DEPS) reference/builddate.xml
