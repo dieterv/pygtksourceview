@@ -23,6 +23,8 @@ pkgconfig_DATA = pygtksourceview-2.0.pc
 
 if PLATFORM_WIN32
 no_undefined = -no-undefined
+endif
+if OS_WIN32
 pyd_ext = -shrext ".pyd"
 endif
 
