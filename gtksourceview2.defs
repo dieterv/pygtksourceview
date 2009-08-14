@@ -7,6 +7,13 @@
   (gtype-id "GTK_TYPE_SOURCE_BUFFER")
 )
 
+(define-object Gutter
+  (in-module "Gtk")
+  (parent "GObject")
+  (c-name "GtkSourceGutter")
+  (gtype-id "GTK_TYPE_SOURCE_GUTTER")
+)
+
 (define-object Language
   (in-module "GtkSourceView")
   (parent "GObject")
@@ -284,6 +291,80 @@
     '("GtkTextIter*" "end")
     '("const-gchar*" "category" (null-ok) (default "NULL"))
   )
+)
+
+
+
+;; From gtksourcegutter.h
+
+(define-function gtk_source_gutter_get_type
+  (c-name "gtk_source_gutter_get_type")
+  (return-type "GType")
+)
+
+(define-method get_window
+  (of-object "GtkSourceGutter")
+  (c-name "gtk_source_gutter_get_window")
+  (return-type "GdkWindow*")
+)
+
+(define-method insert
+  (of-object "GtkSourceGutter")
+  (c-name "gtk_source_gutter_insert")
+  (return-type "none")
+  (parameters
+    '("GtkCellRenderer*" "renderer")
+    '("gint" "position")
+  )
+)
+
+(define-method reorder
+  (of-object "GtkSourceGutter")
+  (c-name "gtk_source_gutter_reorder")
+  (return-type "none")
+  (parameters
+    '("GtkCellRenderer*" "renderer")
+    '("gint" "position")
+  )
+)
+
+(define-method remove
+  (of-object "GtkSourceGutter")
+  (c-name "gtk_source_gutter_remove")
+  (return-type "none")
+  (parameters
+    '("GtkCellRenderer*" "renderer")
+  )
+)
+
+(define-method set_cell_data_func
+  (of-object "GtkSourceGutter")
+  (c-name "gtk_source_gutter_set_cell_data_func")
+  (return-type "none")
+  (parameters
+    '("GtkCellRenderer*" "renderer")
+    '("GtkSourceGutterDataFunc" "func")
+    '("gpointer" "func_data")
+    '("GDestroyNotify" "destroy")
+  )
+)
+
+(define-method set_cell_size_func
+  (of-object "GtkSourceGutter")
+  (c-name "gtk_source_gutter_set_cell_size_func")
+  (return-type "none")
+  (parameters
+    '("GtkCellRenderer*" "renderer")
+    '("GtkSourceGutterSizeFunc" "func")
+    '("gpointer" "func_data")
+    '("GDestroyNotify" "destroy")
+  )
+)
+
+(define-method queue_draw
+  (of-object "GtkSourceGutter")
+  (c-name "gtk_source_gutter_queue_draw")
+  (return-type "none")
 )
 
 
@@ -812,6 +893,69 @@
   )
 )
 
+(define-method get_gutter
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_get_gutter")
+  (return-type "GtkSourceGutter*")
+  (parameters
+    '("GtkTextWindowType" "window_type")
+  )
+)
+
+(define-method set_mark_category_icon_from_pixbuf
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_icon_from_pixbuf")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("GdkPixbuf*" "pixbuf")
+  )
+)
+
+(define-method set_mark_category_icon_from_stock
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_icon_from_stock")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("const-gchar*" "stock_id")
+  )
+)
+
+(define-method set_mark_category_icon_from_icon_name
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_icon_from_icon_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method set_mark_category_tooltip_func
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_tooltip_func")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("GtkSourceViewMarkTooltipFunc" "func")
+    '("gpointer" "user_data")
+    '("GDestroyNotify" "user_data_notify")
+  )
+)
+
+(define-method set_mark_category_tooltip_markup_func
+  (of-object "GtkSourceView")
+  (c-name "gtk_source_view_set_mark_category_tooltip_markup_func")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "category")
+    '("GtkSourceViewMarkTooltipFunc" "markup_func")
+    '("gpointer" "user_data")
+    '("GDestroyNotify" "user_data_notify")
+  )
+)
+
 
 
 ;; From gtksourcemark.h
@@ -1173,4 +1317,30 @@
 (define-virtual redo
   (of-object "GtkSourceView")
   (return-type "none")
+)
+(define-virtual cell_activated
+  (of-object "GtkSourceGutter")
+  (return-type "none")
+  (parameters
+    '("GtkCellRenderer*" "renderer")
+    '("GtkTextIter*" "iter")
+    '("GdkEvent*" "event")
+  )
+)
+(define-virtual query_tooltip
+  (of-object "GtkSourceGutter")
+  (return-type "gboolean")
+  (parameters
+    '("GtkCellRenderer*" "renderer")
+    '("GtkTextIter*" "iter")
+    '("GtkTooltip*" "tooltip")
+  )
+)
+(define-virtual line_mark_activated
+  (of-object "GtkSourceView")
+  (return-type "none")
+  (parameters
+    '("GtkTextIter*" "iter")
+    '("GdkEvent*" "event")
+  )
 )

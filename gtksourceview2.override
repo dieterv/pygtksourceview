@@ -11,6 +11,7 @@ headers
 #include <gtksourceview/gtksourcestyle.h>
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcelanguage.h>
+
 #include <gtksourceview/gtksourceiter.h>
 #include <gtksourceview/gtksourcebuffer.h>
 #include <gtksourceview/gtksourceprintcompositor.h>
@@ -106,6 +107,8 @@ import gtk.TextView as PyGtkTextView_Type
 import gtk.TextBuffer as PyGtkTextBuffer_Type
 import gtk.TextMark as PyGtkTextMark_Type
 import gtk.PrintContext as PyGtkPrintContext_Type
+import gtk.CellRenderer as PyGtkCellRenderer_Type
+import gtk.Tooltip as PyGtkTooltip_Type
 
 %%
 ignore-glob
