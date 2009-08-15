@@ -491,10 +491,10 @@ _wrap_gtk_source_view_get_mark_category_background(PyGObject *self,
 override gtk_source_gutter_set_cell_data_func kwargs
 static void
 pygtksourceview_cell_data_func_marshal (GtkSourceGutter *gutter,
-					GtkCellRenderer *cell,
-					gint line_number,
-					gboolean current_line,
-					gpointer data)
+                                        GtkCellRenderer *cell,
+                                        gint line_number,
+                                        gboolean current_line,
+                                        gpointer data)
 {
     PyGILState_STATE state;
     PyGtkSourceViewCustomNotify *cunote = data;
@@ -527,7 +527,7 @@ pygtksourceview_cell_data_func_marshal (GtkSourceGutter *gutter,
 
 static PyObject *
 _wrap_gtk_source_gutter_set_cell_data_func (PyGObject *self,
-					    PyObject *args,
+                                            PyObject *args,
                                             PyObject *kwargs)
 {
     PyObject *pycell, *pyfunc, *pyarg = NULL;
@@ -547,17 +547,17 @@ _wrap_gtk_source_gutter_set_cell_data_func (PyGObject *self,
     }
 
     if (pyfunc == Py_None) {
-	PyErr_SetString(PyExc_TypeError,
+        PyErr_SetString(PyExc_TypeError,
                         "Function can't be None");
     } else {
-	cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
-	cunote->func = pyfunc;
-	cunote->data = pyarg;
-	Py_INCREF(cunote->func);
-	Py_XINCREF(cunote->data);
+        cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
+        cunote->func = pyfunc;
+        cunote->data = pyarg;
+        Py_INCREF(cunote->func);
+        Py_XINCREF(cunote->data);
 
-	gtk_source_gutter_set_cell_data_func(GTK_SOURCE_GUTTER(self->obj), cell,
-					pygtksourceview_cell_data_func_marshal,
+        gtk_source_gutter_set_cell_data_func(GTK_SOURCE_GUTTER(self->obj), cell,
+                                        pygtksourceview_cell_data_func_marshal,
                                         cunote,
                                         pygtksourceview_custom_destroy_notify);
     }
@@ -570,8 +570,8 @@ _wrap_gtk_source_gutter_set_cell_data_func (PyGObject *self,
 override gtk_source_gutter_set_cell_size_func kwargs
 static void
 pygtksourceview_cell_size_func_marshal (GtkSourceGutter *gutter,
-					GtkCellRenderer *cell,
-					gpointer data)
+                                        GtkCellRenderer *cell,
+                                        gpointer data)
 {
     PyGILState_STATE state;
     PyGtkSourceViewCustomNotify *cunote = data;
@@ -603,7 +603,7 @@ pygtksourceview_cell_size_func_marshal (GtkSourceGutter *gutter,
 
 static PyObject *
 _wrap_gtk_source_gutter_set_cell_size_func (PyGObject *self,
-					    PyObject *args,
+                                            PyObject *args,
                                             PyObject *kwargs)
 {
     PyObject *pycell, *pyfunc, *pyarg = NULL;
@@ -623,17 +623,124 @@ _wrap_gtk_source_gutter_set_cell_size_func (PyGObject *self,
     }
 
     if (pyfunc == Py_None) {
-	PyErr_SetString(PyExc_TypeError,
+        PyErr_SetString(PyExc_TypeError,
                         "func must be a callable object");
     } else {
-	cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
-	cunote->func = pyfunc;
-	cunote->data = pyarg;
-	Py_INCREF(cunote->func);
-	Py_XINCREF(cunote->data);
+        cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
+        cunote->func = pyfunc;
+        cunote->data = pyarg;
+        Py_INCREF(cunote->func);
+        Py_XINCREF(cunote->data);
 
-	gtk_source_gutter_set_cell_size_func(GTK_SOURCE_GUTTER(self->obj), cell,
-					pygtksourceview_cell_size_func_marshal,
+        gtk_source_gutter_set_cell_size_func(GTK_SOURCE_GUTTER(self->obj), cell,
+                                        pygtksourceview_cell_size_func_marshal,
+                                        cunote,
+                                        pygtksourceview_custom_destroy_notify);
+    }
+
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+
+%%
+override gtk_source_view_set_mark_category_tooltip_func kwargs
+static gchar *
+pygtksourceview_mark_tooltip_func_marshal (GtkSourceMark *mark,
+                                           gpointer data)
+{
+    PyGILState_STATE state;
+    PyGtkSourceViewCustomNotify *cunote = data;
+    PyObject *retobj;
+    PyObject *pymark;
+    gchar *retval = NULL;
+
+    g_assert (cunote->func);
+
+    state = pyg_gil_state_ensure();
+
+    pymark = pygobject_new((GObject *)mark);
+    
+    if (cunote->data)
+        retobj = PyEval_CallFunction(cunote->func, "(NO)",
+                                     pymark,
+                                     cunote->data);
+    else
+        retobj = PyEval_CallFunction(cunote->func, "(N)",
+                                     pymark);
+
+    if (retobj == NULL) {
+        PyErr_Print();
+    } else
+        retval = PyString_AsString(retobj);
+        Py_DECREF(retobj);
+
+    pyg_gil_state_release(state);
+    
+    return retval;
+}
+
+static PyObject *
+_wrap_gtk_source_view_set_mark_category_tooltip_func (PyGObject *self,
+                                                      PyObject *args,
+                                                      PyObject *kwargs)
+{
+    PyObject *pyfunc, *pyarg = NULL;
+    PyGtkSourceViewCustomNotify *cunote;
+    gchar *category;
+
+    if (!PyArg_ParseTuple(args, "sO|O:GtkSourceView.set_mark_category_tooltip_func",
+                          &category, &pyfunc, &pyarg))
+        return NULL;
+
+    if (pyfunc == Py_None) {
+        gtk_source_view_set_mark_category_tooltip_func(GTK_SOURCE_VIEW(self->obj),
+                                        category, NULL, NULL, NULL);
+    } else {
+        cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
+        cunote->func = pyfunc;
+        cunote->data = pyarg;
+        Py_INCREF(cunote->func);
+        Py_XINCREF(cunote->data);
+
+        gtk_source_view_set_mark_category_tooltip_func(GTK_SOURCE_VIEW(self->obj),
+                                        category,
+                                        pygtksourceview_mark_tooltip_func_marshal,
+                                        cunote,
+                                        pygtksourceview_custom_destroy_notify);
+    }
+
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+
+%%
+override gtk_source_view_set_mark_category_tooltip_markup_func kwargs
+static PyObject *
+_wrap_gtk_source_view_set_mark_category_tooltip_markup_func (PyGObject *self,
+                                                             PyObject *args,
+                                                             PyObject *kwargs)
+{
+    PyObject *pyfunc, *pyarg = NULL;
+    PyGtkSourceViewCustomNotify *cunote;
+    gchar *category;
+
+    if (!PyArg_ParseTuple(args, "sO|O:GtkSourceView.set_mark_category_tooltip_markup_func",
+                          &category, &pyfunc, &pyarg))
+        return NULL;
+
+    if (pyfunc == Py_None) {
+        gtk_source_view_set_mark_category_tooltip_markup_func(GTK_SOURCE_VIEW(self->obj),
+                                        category, NULL, NULL, NULL);
+    } else {
+        cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
+        cunote->func = pyfunc;
+        cunote->data = pyarg;
+        Py_INCREF(cunote->func);
+        Py_XINCREF(cunote->data);
+
+        gtk_source_view_set_mark_category_tooltip_markup_func(GTK_SOURCE_VIEW(self->obj),
+                                        category,
+                                        pygtksourceview_mark_tooltip_func_marshal,
                                         cunote,
                                         pygtksourceview_custom_destroy_notify);
     }
