@@ -33,7 +33,7 @@ pyexec_LTLIBRARIES = gtksourceview2.la
 gtksourceview2_la_LDFLAGS = -module -avoid-version -export-symbols-regex initgtksourceview2 $(no_undefined) $(pyd_ext)
 gtksourceview2_la_CFLAGS = $(PYGTKSOURCEVIEW_CFLAGS)
 gtksourceview2_la_LIBADD = $(PYGTKSOURCEVIEW_LIBS) $(PYTHON_LIBS)
-gtksourceview2_la_SOURCES = gtksourceview2module.c 
+gtksourceview2_la_SOURCES = gtksourceview2module.c pygtksourceview-private.h
 nodist_gtksourceview2_la_SOURCES = gtksourceview2.c
 gtksourceview2.c: gtksourceview2.defs gtksourceview2.override
 CLEANFILES = gtksourceview2.c

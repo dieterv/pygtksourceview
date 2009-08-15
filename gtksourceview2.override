@@ -4,6 +4,8 @@ headers
 #define NO_IMPORT_PYGOBJECT
 #include "pygobject.h"
 
+#include "pygtksourceview-private.h"
+
 #include <gtksourceview/gtksourceview.h>
 #include <gtksourceview/gtksourceview-typebuiltins.h>
 #include <gtksourceview/gtksourcelanguagemanager.h>
@@ -94,6 +96,21 @@ pylist_to_strv (PyObject *list,
 
     *strvp = ret;
     return TRUE;
+}
+
+void
+pygtksourceview_custom_destroy_notify(gpointer user_data)
+{
+    PyGtkSourceViewCustomNotify *cunote = user_data;
+    PyGILState_STATE state;
+
+    g_return_if_fail(user_data);
+    state = pyg_gil_state_ensure();
+    Py_XDECREF(cunote->func);
+    Py_XDECREF(cunote->data);
+    pyg_gil_state_release(state);
+    
+    g_free(cunote);
 }
 
 %%
@@ -468,4 +485,159 @@ _wrap_gtk_source_view_get_mark_category_background(PyGObject *self,
         Py_INCREF(Py_None);
         return(Py_None);
     }
+}
+
+%%
+override gtk_source_gutter_set_cell_data_func kwargs
+static void
+pygtksourceview_cell_data_func_marshal (GtkSourceGutter *gutter,
+					GtkCellRenderer *cell,
+					gint line_number,
+					gboolean current_line,
+					gpointer data)
+{
+    PyGILState_STATE state;
+    PyGtkSourceViewCustomNotify *cunote = data;
+    PyObject *retobj;
+    PyObject *pygutter, *pycell;
+
+    g_assert (cunote->func);
+
+    state = pyg_gil_state_ensure();
+
+    pygutter = pygobject_new((GObject *)gutter);
+    pycell = pygobject_new((GObject *)cell);
+    
+    if (cunote->data)
+        retobj = PyEval_CallFunction(cunote->func, "(NNiiO)",
+                                     pygutter, pycell,
+                                     line_number, current_line, cunote->data);
+    else
+        retobj = PyEval_CallFunction(cunote->func, "(NNii)",
+                                     pygutter, pycell,
+                                     line_number, current_line);
+
+    if (retobj == NULL) {
+        PyErr_Print();
+    } else
+        Py_DECREF(retobj);
+
+    pyg_gil_state_release(state);
+}
+
+static PyObject *
+_wrap_gtk_source_gutter_set_cell_data_func (PyGObject *self,
+					    PyObject *args,
+                                            PyObject *kwargs)
+{
+    PyObject *pycell, *pyfunc, *pyarg = NULL;
+    GtkCellRenderer *cell;
+    PyGtkSourceViewCustomNotify *cunote;
+
+    if (!PyArg_ParseTuple(args, "OO|O:GtkSourceGutter.set_cell_data_func",
+                          &pycell, &pyfunc, &pyarg))
+        return NULL;
+
+    if (pygobject_check(pycell, &PyGtkCellRenderer_Type))
+        cell = GTK_CELL_RENDERER(pygobject_get(pycell));
+    else {
+        PyErr_SetString(PyExc_TypeError,
+                        "first argument must be a GtkCellRenderer");
+        return NULL;
+    }
+
+    if (pyfunc == Py_None) {
+	PyErr_SetString(PyExc_TypeError,
+                        "Function can't be None");
+    } else {
+	cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
+	cunote->func = pyfunc;
+	cunote->data = pyarg;
+	Py_INCREF(cunote->func);
+	Py_XINCREF(cunote->data);
+
+	gtk_source_gutter_set_cell_data_func(GTK_SOURCE_GUTTER(self->obj), cell,
+					pygtksourceview_cell_data_func_marshal,
+                                        cunote,
+                                        pygtksourceview_custom_destroy_notify);
+    }
+
+    Py_INCREF(Py_None);
+    return Py_None;
+}
+
+%%
+override gtk_source_gutter_set_cell_size_func kwargs
+static void
+pygtksourceview_cell_size_func_marshal (GtkSourceGutter *gutter,
+					GtkCellRenderer *cell,
+					gpointer data)
+{
+    PyGILState_STATE state;
+    PyGtkSourceViewCustomNotify *cunote = data;
+    PyObject *retobj;
+    PyObject *pygutter, *pycell;
+
+    g_assert (cunote->func);
+
+    state = pyg_gil_state_ensure();
+
+    pygutter = pygobject_new((GObject *)gutter);
+    pycell = pygobject_new((GObject *)cell);
+    
+    if (cunote->data)
+        retobj = PyEval_CallFunction(cunote->func, "(NNO)",
+                                     pygutter, pycell,
+                                     cunote->data);
+    else
+        retobj = PyEval_CallFunction(cunote->func, "(NN)",
+                                     pygutter, pycell);
+
+    if (retobj == NULL) {
+        PyErr_Print();
+    } else
+        Py_DECREF(retobj);
+
+    pyg_gil_state_release(state);
+}
+
+static PyObject *
+_wrap_gtk_source_gutter_set_cell_size_func (PyGObject *self,
+					    PyObject *args,
+                                            PyObject *kwargs)
+{
+    PyObject *pycell, *pyfunc, *pyarg = NULL;
+    GtkCellRenderer *cell;
+    PyGtkSourceViewCustomNotify *cunote;
+
+    if (!PyArg_ParseTuple(args, "OO|O:GtkSourceGutter.set_cell_size_func",
+                          &pycell, &pyfunc, &pyarg))
+        return NULL;
+
+    if (pygobject_check(pycell, &PyGtkCellRenderer_Type))
+        cell = GTK_CELL_RENDERER(pygobject_get(pycell));
+    else {
+        PyErr_SetString(PyExc_TypeError,
+                        "first argument must be a GtkCellRenderer");
+        return NULL;
+    }
+
+    if (pyfunc == Py_None) {
+	PyErr_SetString(PyExc_TypeError,
+                        "func must be a callable object");
+    } else {
+	cunote = g_new0(PyGtkSourceViewCustomNotify, 1);
+	cunote->func = pyfunc;
+	cunote->data = pyarg;
+	Py_INCREF(cunote->func);
+	Py_XINCREF(cunote->data);
+
+	gtk_source_gutter_set_cell_size_func(GTK_SOURCE_GUTTER(self->obj), cell,
+					pygtksourceview_cell_size_func_marshal,
+                                        cunote,
+                                        pygtksourceview_custom_destroy_notify);
+    }
+
+    Py_INCREF(Py_None);
+    return Py_None;
 }
