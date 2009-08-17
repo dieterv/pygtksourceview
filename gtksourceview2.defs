@@ -928,7 +928,7 @@
   (return-type "none")
   (parameters
     '("const-gchar*" "category")
-    '("const-gchar*" "name")
+    '("const-gchar*" "name" (null-ok))
   )
 )
 
