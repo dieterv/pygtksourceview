@@ -34,6 +34,11 @@
       </methodsynopsis>
 
       <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--get-gutter">get_gutter</link></methodname>
+          <methodparam></methodparam>
+      </methodsynopsis>
+
+      <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--get-highlight-current-line">get_highlight_current_line</link></methodname>
           <methodparam></methodparam>
       </methodsynopsis>
@@ -129,9 +134,21 @@
       </methodsynopsis>
 
       <methodsynopsis language="python">
-        <methodname><link linkend="method-gtksourceview2--set-mark-category-pixbuf">set_mark_category_pixbuf</link></methodname>
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-pixbuf">set_mark_category_icon_from_icon_name</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+          <methodparam><parameter role="keyword">name</parameter></methodparam>
+      </methodsynopsis>
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-pixbuf">set_mark_category_icon_from_pixbuf</link></methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
           <methodparam><parameter role="keyword">pixbuf</parameter></methodparam>
+      </methodsynopsis>
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-pixbuf">set_mark_category_icon_from_stock</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+          <methodparam><parameter role="keyword">stock_id</parameter></methodparam>
       </methodsynopsis>
 
       <methodsynopsis language="python">
@@ -141,9 +158,29 @@
       </methodsynopsis>
 
       <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-pixbuf">set_mark_category_pixbuf</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+          <methodparam><parameter role="keyword">pixbuf</parameter></methodparam>
+      </methodsynopsis>
+
+      <methodsynopsis language="python">
         <methodname><link linkend="method-gtksourceview2--set-mark-category-priority">set_mark_category_priority</link></methodname>
           <methodparam><parameter role="keyword">category</parameter></methodparam>
           <methodparam><parameter role="keyword">priority</parameter></methodparam>
+      </methodsynopsis>
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-tooltip-func">set_mark_category_tooltip_func</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+          <methodparam><parameter role="keyword">func</parameter></methodparam>
+          <methodparam><parameter role="keyword">user_data</parameter></methodparam>
+      </methodsynopsis>
+
+      <methodsynopsis language="python">
+        <methodname><link linkend="method-gtksourceview2--set-mark-category-tooltip-markup-func">set_mark_category_tooltip_markup_func</link></methodname>
+          <methodparam><parameter role="keyword">category</parameter></methodparam>
+          <methodparam><parameter role="keyword">markup_func</parameter></methodparam>
+          <methodparam><parameter role="keyword">user_data</parameter></methodparam>
       </methodsynopsis>
 
       <methodsynopsis language="python">
@@ -217,6 +254,11 @@
             <row valign="top">
               <entry><methodname>do_undo</methodname></entry>
               <entry>Method that can be overridden to implement a custom undo.</entry>
+            </row>
+
+            <row valign="top">
+              <entry><methodname>do_line_mark_activated</methodname></entry>
+              <entry>Method that can be overridden to implement a custom line number activation.</entry>
             </row>
 
           </tbody>
@@ -340,6 +382,18 @@
           </methodsynopsis>
         </listitem>
       </varlistentry>
+      <varlistentry>
+        <term><link linkend="signal-gtksourceview--line-mark-activated">"line-mark-activated"</link></term>
+        <listitem>
+          <methodsynopsis language="python"><methodname>callback</methodname>
+            <methodparam><parameter>sourceview</parameter></methodparam>
+            <methodparam><parameter>iter</parameter></methodparam>
+            <methodparam><parameter>event</parameter></methodparam>
+            <methodparam><parameter>user_param1</parameter></methodparam>
+            <methodparam><parameter>...</parameter></methodparam>
+          </methodsynopsis>
+        </listitem>
+      </varlistentry>
     </variablelist>
 
   </refsect1>
@@ -443,6 +497,30 @@
       </para>
     </refsect2>
 
+    <refsect2 id="method-gtksourceview2--get-gutter">
+      <title>gtksourceview2.View.get_gutter</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>get_gutter</methodname>
+          <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>the <link linkend="class-gtksourcegutter2">gtksourceview2.Gutter</link>. 
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>get_gutter</methodname>() method returns the
+        <link linkend="class-gtksourcegutter2">gtksourceview2.Gutter</link> object
+        associated with window_type for view. Only gtk.TEXT_WINDOW_LEFT and gtk.TEXT_WINDOW_RIGHT
+        are supported, respectively corresponding to the left and right gutter. The line numbers
+        and mark category icons are rendered in the gutter corresponding to gtk.TEXT_WINDOW_LEFT.
+      </para>
+    </refsect2>
 
     <refsect2 id="method-gtksourceview2--get-highlight-current-line">
       <title>gtksourceview2.View.get_highlight_current_line</title>
@@ -903,6 +981,91 @@
       </para>
     </refsect2>
 
+    <refsect2 id="method-gtksourceview2--set-mark-category-icon-from-icon-name">
+      <title>gtksourceview2.View.set_mark_category_icon_from_icon_name</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_mark_category_icon_from_icon_name</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">name</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">name</parameter>&nbsp;:</term>
+          <listitem><simpara>the themed icon name or <literal>None</literal>. 
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_mark_category_icon_from_icon_name</methodname>() method
+        sets the icon to be used for category to the named theme item name.
+        If name is <literal>None</literal>, the icon is unset.
+      </para>
+    </refsect2>
+
+    <refsect2 id="method-gtksourceview2--set-mark-category-icon-from-pixbuf">
+      <title>gtksourceview2.View.set_mark_category_icon_from_pixbuf</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_mark_category_icon_from_pixbuf</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">pixbuf</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">pixbuf</parameter>&nbsp;:</term>
+          <listitem><simpara>a <link linkend="class-gdkpixbuf"><classname>gtk.gdk.Pixbuf</classname></link>
+          or <literal>None</literal>.
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_mark_category_icon_from_pixbuf</methodname>() method
+        sets the icon to be used for category to pixbuf. If pixbuf is <literal>None</literal>,
+        the icon is unset.
+      </para>
+    </refsect2>
+
+    <refsect2 id="method-gtksourceview2--set-mark-category-icon-from-stock">
+      <title>gtksourceview2.View.set_mark_category_icon_from_stock</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_mark_category_icon_from_stock</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">stock</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">simpara</parameter>&nbsp;:</term>
+          <listitem><simpara>the stock id or <literal>None</literal>. 
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_mark_category_icon_from_stock</methodname>() method
+        sets the icon to be used for category to the stock item stock_id. If stock_id
+        is <literal>None</literal>, the icon is unset.
+      </para>
+    </refsect2>
+
     <refsect2 id="method-gtksourceview2--set-mark-category-pixbuf">
       <title>gtksourceview2.View.set_mark_category_pixbuf</title>
 
@@ -957,6 +1120,91 @@
         Set the priority for the given mark category. When there are multiple marks
         on the same line, marks of categories with higher priorities will be drawn on top.
       </para>
+    </refsect2>
+
+    <refsect2 id="method-gtksourceview2--set-mark-category-tooltip-func">
+      <title>gtksourceview2.View.set_mark_category_tooltip_func</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_mark_category_tooltip_func</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">func</parameter></methodparam>
+        <methodparam><parameter role="keyword">user_data</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">func</parameter>&nbsp;:</term>
+          <listitem><simpara>a function or <literal>None</literal>.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">user_data</parameter>&nbsp;:</term>
+          <listitem><simpara>user data which will be passed to func. 
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        The <methodname>set_mark_category_tooltip_func</methodname>() method
+        sets a func used to set tooltip on marks from the given mark category.
+        If func is <literal>None</literal> and markup_func is <literal>None</literal>
+        then tooltips will not be shown for marks from category. If markup_func is not
+        <literal>None</literal> markup_func is going to be used instead of func. 
+      </para>
+    
+<programlisting>
+    def markuptooltipfunc(mark, user_data)</programlisting>
+
+    <para>
+        Where mark is the <link linkend="class-gtksourcemark2">gtksourceview2.Mark</link> to use,
+        user_data is the data passed to set_mark_category_tooltip_func().
+    </para>
+    </refsect2>
+
+    <refsect2 id="method-gtksourceview2--set-mark-category-tooltip-markup_func">
+      <title>gtksourceview2.View.set_mark_category_tooltip_markup_func</title>
+
+      <programlisting><methodsynopsis language="python">
+        <methodname>set_mark_category_tooltip_markup_func</methodname>
+        <methodparam><parameter role="keyword">category</parameter></methodparam>
+        <methodparam><parameter role="keyword">markup_func</parameter></methodparam>
+        <methodparam><parameter role="keyword">user_data</parameter></methodparam>
+      </methodsynopsis></programlisting>
+
+      <variablelist>
+        <varlistentry>
+          <term><parameter role="keyword">category</parameter>&nbsp;:</term>
+          <listitem><simpara>a marker category.</simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">marker</parameter>&nbsp;:</term>
+          <listitem><simpara>a function or <literal>None</literal>.
+          </simpara></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter role="keyword">user_data</parameter>&nbsp;:</term>
+          <listitem><simpara>user data which will be passed to func. 
+          </simpara></listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        See <methodname><link linkend="method-gtksourceview2--set-mark-category-tooltip-func">gtksourceview2.View.set_mark_category_tooltip_func</link></methodname>
+        for more information.
+      </para>
+    
+<programlisting>
+    def markuptooltipfunc(mark, user_data)</programlisting>
+
+    <para>
+        Where mark is the <link linkend="class-gtksourcemark2">gtksourceview2.Mark</link> to use,
+        user_data is the data passed to set_mark_category_tooltip_func().
+    </para>
     </refsect2>
 
     <refsect2 id="method-gtksourceview2--set-right-margin-position">
@@ -1098,6 +1346,57 @@
 
 <refsect1>
     <title>Signals</title>
+
+    <refsect2 id="signal-gtksourceview--line-number-activated">
+      <title>The "line-number-activated" gtksourceview2.View Signal</title>
+
+      <programlisting><methodsynopsis language="python">
+	  <methodname>callback</methodname>
+	  <methodparam><parameter>sourceview</parameter></methodparam>
+          <methodparam><parameter>iter</parameter></methodparam>
+          <methodparam><parameter>event</parameter></methodparam>
+	  <methodparam><parameter>user_param1</parameter></methodparam>
+	  <methodparam><parameter>...</parameter></methodparam>
+	</methodsynopsis></programlisting>
+
+      <variablelist>
+	<varlistentry>
+	  <term><parameter>sourceview</parameter>&nbsp;:</term>
+	  <listitem><simpara>the sourceview that received the
+signal</simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>iter</parameter>&nbsp;:</term>
+	  <listitem><simpara>a
+          <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link>.
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>event</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gdkevent"><classname>gtk.gdk.Event</classname></link>
+          that activated the event.
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>user_param1</parameter>&nbsp;:</term>
+          <listitem><simpara>the first user parameter (if any) specified
+with the <link
+linkend="method-gobject--connect"><methodname>connect</methodname>()</link>
+method</simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>...</parameter>&nbsp;:</term>
+	  <listitem><simpara>additional user parameters (if
+any)</simpara></listitem>
+	</varlistentry>
+      </variablelist>
+
+      <para>The "line-number-activated" signal is emitted when a line mark has been activated
+      (for instance when there was a button press in the line marks gutter).
+      You can use iter to determine on which line the activation took place.
+      </para>
+
+    </refsect2>
 
     <refsect2 id="signal-gtksourceview--redo">
       <title>The "redo" gtksourceview2.View Signal</title>
