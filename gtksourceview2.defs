@@ -918,7 +918,7 @@
   (return-type "none")
   (parameters
     '("const-gchar*" "category")
-    '("const-gchar*" "stock_id")
+    '("const-gchar*" "stock_id" (null-ok))
   )
 )
 
