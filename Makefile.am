@@ -15,6 +15,8 @@ EXTRA_DIST =				\
 	pygtksourceview-2.0.pc.in	\
 	ChangeLog-pre-git
 
+BUILT_EXTRA_DIST = ChangeLog
+
 defsdir = $(datadir)/pygtk/2.0/defs
 defs_DATA = gtksourceview2.defs
 
