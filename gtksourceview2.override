@@ -621,7 +621,9 @@ _wrap_gtk_source_completion_context_add_proposals(PyGObject *self,
 	                                            ret,
 	                                            py_finished == NULL ? TRUE : PyObject_IsTrue (py_finished));
 
-    
+    g_list_foreach(ret, (GFunc)g_object_unref, NULL);
+    g_list_free(ret);
+
 	Py_INCREF(Py_None);
     return Py_None;
 }
