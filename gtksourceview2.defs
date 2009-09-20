@@ -103,6 +103,13 @@
   (gtype-id "GTK_TYPE_SOURCE_COMPLETION_PROVIDER")
 )
 
+(define-object CompletionContext
+  (in-module "GtkSourceView")
+  (parent "GInitiallyUnowned")
+  (c-name "GtkSourceCompletionContext")
+  (gtype-id "GTK_TYPE_SOURCE_COMPLETION_CONTEXT")
+)
+
 ;; Enumerations and flags ...
 
 (define-flags SearchFlags
@@ -127,6 +134,16 @@
     '("newline" "GTK_SOURCE_DRAW_SPACES_NEWLINE")
     '("nbsp" "GTK_SOURCE_DRAW_SPACES_NBSP")
     '("all" "GTK_SOURCE_DRAW_SPACES_ALL")
+  )
+)
+
+(define-enum CompletionError
+  (in-module "GtkSourceView")
+  (c-name "GtkSourceCompletionError")
+  (gtype-id "GTK_TYPE_SOURCE_COMPLETION_ERROR")
+  (values
+    '("already-bound" "GTK_SOURCE_COMPLETION_ERROR_ALREADY_BOUND")
+    '("not-bound" "GTK_SOURCE_COMPLETION_ERROR_NOT_BOUND")
   )
 )
 
@@ -994,15 +1011,6 @@
   )
 )
 
-(define-method show_completion
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_show_completion")
-  (return-type "none")
-  (parameters
-    '("GList*" "providers")
-  )
-)
-
 ;; From gtksourcemark.h
 
 (define-function gtk_source_mark_new
@@ -1379,14 +1387,19 @@
   )
 )
 
+(define-method get_providers
+  (of-object "GtkSourceCompletion")
+  (c-name "gtk_source_completion_get_providers")
+  (return-type "GList*")
+)
+
 (define-method show
   (of-object "GtkSourceCompletion")
-  (c-name "gtk_source_completion_popup")
+  (c-name "gtk_source_completion_show")
   (return-type "gboolean")
   (parameters
     '("GList*" "providers")
-    '("const-gchar*" "criteria")
-    '("GtkTextIter*" "place")
+    '("GtkSourceCompletionContext*" "context")
   )
 )
 
@@ -1402,10 +1415,13 @@
   (return-type "GtkSourceCompletionInfo*")
 )
 
-(define-method get_view
+(define-method create_context
   (of-object "GtkSourceCompletion")
-  (c-name "gtk_source_completion_get_view")
-  (return-type "GtkSourceView*")
+  (c-name "gtk_source_completion_create_context")
+  (return-type "GtkSourceCompletionContext*")
+  (parameters
+    '("GtkTextIter*" "position")
+  )
 )
 
 
@@ -1459,6 +1475,12 @@
   (return-type "GtkWidget*")
 )
 
+(define-method process_resize
+  (of-object "GtkSourceCompletionInfo")
+  (c-name "gtk_source_completion_info_process_resize")
+  (return-type "none")
+)
+
 
 
 ;; From gtksourcecompletionitem.h
@@ -1472,18 +1494,31 @@
   (c-name "gtk_source_completion_item_new")
   (is-constructor-of "GtkSourceCompletionItem")
   (return-type "GtkSourceCompletionItem*")
-  (properties
-    '("label" (argname "label"))
-    '("icon" (argname "icon") (optional))
-    '("info" (argname "info") (optional))
+  (parameters
+    '("const-gchar*" "label")
+    '("const-gchar*" "text")
+    '("GdkPixbuf*" "icon")
+    '("const-gchar*" "info")
   )
 )
 
-(define-function gtk_source_completion_item_new_from_stock
+(define-function completion_item_new_with_markup
+  (c-name "gtk_source_completion_item_new_with_markup")
+  (return-type "GtkSourceCompletionItem*")
+  (parameters
+    '("const-gchar*" "markup")
+    '("const-gchar*" "text")
+    '("GdkPixbuf*" "icon")
+    '("const-gchar*" "info")
+  )
+)
+
+(define-function completion_item_new_from_stock
   (c-name "gtk_source_completion_item_new_from_stock")
   (return-type "GtkSourceCompletionItem*")
   (parameters
     '("const-gchar*" "label")
+    '("const-gchar*" "text")
     '("const-gchar*" "stock")
     '("const-gchar*" "info")
   )
@@ -1499,6 +1534,18 @@
 (define-method get_label
   (of-object "GtkSourceCompletionProposal")
   (c-name "gtk_source_completion_proposal_get_label")
+  (return-type "const-gchar*")
+)
+
+(define-method get_markup
+  (of-object "GtkSourceCompletionProposal")
+  (c-name "gtk_source_completion_proposal_get_markup")
+  (return-type "const-gchar*")
+)
+
+(define-method get_text
+  (of-object "GtkSourceCompletionProposal")
+  (c-name "gtk_source_completion_proposal_get_text")
   (return-type "const-gchar*")
 )
 
@@ -1518,6 +1565,21 @@
   (of-object "GtkSourceCompletionProposal")
   (c-name "gtk_source_completion_proposal_changed")
   (return-type "none")
+)
+
+(define-method hash
+  (of-object "GtkSourceCompletionProposal")
+  (c-name "gtk_source_completion_proposal_hash")
+  (return-type "guint")
+)
+
+(define-method equal
+  (of-object "GtkSourceCompletionProposal")
+  (c-name "gtk_source_completion_proposal_equal")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionProposal*" "other")
+  )
 )
 
 
@@ -1540,30 +1602,13 @@
   (return-type "GdkPixbuf*")
 )
 
-(define-method get_proposals
+(define-method populate
   (of-object "GtkSourceCompletionProvider")
-  (c-name "gtk_source_completion_provider_get_proposals")
-  (return-type "GList*")
+  (c-name "gtk_source_completion_provider_populate")
+  (return-type "none")
   (parameters
-    '("GtkTextIter*" "iter")
+    '("GtkSourceCompletionContext*" "context")
   )
-)
-
-(define-method filter_proposal
-  (of-object "GtkSourceCompletionProvider")
-  (c-name "gtk_source_completion_provider_filter_proposal")
-  (return-type "gboolean")
-  (parameters
-    '("GtkSourceCompletionProposal*" "proposal")
-    '("GtkTextIter*" "iter")
-    '("const-gchar*" "criteria")
-  )
-)
-
-(define-method get_automatic
-  (of-object "GtkSourceCompletionProvider")
-  (c-name "gtk_source_completion_provider_get_automatic")
-  (return-type "gboolean")
 )
 
 (define-method get_interactive
@@ -1572,11 +1617,25 @@
   (return-type "gboolean")
 )
 
+(define-method get_default
+  (of-object "GtkSourceCompletionProvider")
+  (c-name "gtk_source_completion_provider_get_default")
+  (return-type "gboolean")
+)
+
+(define-method match
+  (of-object "GtkSourceCompletionProvider")
+  (c-name "gtk_source_completion_provider_match")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionContext*" "context")
+  )
+)
+
 (define-method get_info_widget
   (of-object "GtkSourceCompletionProvider")
   (c-name "gtk_source_completion_provider_get_info_widget")
   (return-type "GtkWidget*")
-  (caller-owns-return #t)
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
   )
@@ -1592,6 +1651,16 @@
   )
 )
 
+(define-method get_start_iter
+  (of-object "GtkSourceCompletionProvider")
+  (c-name "gtk_source_completion_provider_get_start_iter")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionProposal*" "proposal")
+    '("GtkTextIter*" "iter")
+  )
+)
+
 (define-method activate_proposal
   (of-object "GtkSourceCompletionProvider")
   (c-name "gtk_source_completion_provider_activate_proposal")
@@ -1602,18 +1671,80 @@
   )
 )
 
+
+;; From gtksourcecompletioncontext.h
+
+(define-function gtk_source_completion_context_get_type
+  (c-name "gtk_source_completion_context_get_type")
+  (return-type "GType")
+)
+
+(define-method add_proposals
+  (of-object "GtkSourceCompletionContext")
+  (c-name "gtk_source_completion_context_add_proposals")
+  (return-type "none")
+  (parameters
+    '("GtkSourceCompletionProvider*" "provider")
+    '("GList*" "proposals")
+    '("gboolean" "finished")
+  )
+)
+
+(define-method get_iter
+  (of-object "GtkSourceCompletionContext")
+  (c-name "gtk_source_completion_context_get_iter")
+  (return-type "none")
+  (parameters
+    '("GtkTextIter*" "iter")
+  )
+)
+
+(define-method get_interactive
+  (of-object "GtkSourceCompletionContext")
+  (c-name "gtk_source_completion_context_get_interactive")
+  (return-type "gboolean")
+)
+
+(define-method get_default
+  (of-object "GtkSourceCompletionContext")
+  (c-name "gtk_source_completion_context_get_default")
+  (return-type "gboolean")
+)
+
+(define-method move_window
+  (of-object "GtkSourceCompletionContext")
+  (c-name "gtk_source_completion_context_move_window")
+  (return-type "none")
+  (parameters
+    '("GtkTextIter*" "iter")
+  )
+)
+
+
 ;; virtuals
 
 (define-virtual undo
   (of-object "GtkSourceView")
   (return-type "none")
 )
+
 (define-virtual redo
   (of-object "GtkSourceView")
   (return-type "none")
 )
 
+;; GtkSourceCompletionProposal virtuals
 (define-virtual get_label
+  (of-object "GtkSourceCompletionProposal")
+  (return-type "const-gchar*")
+)
+
+(define-virtual get_markup
+  (of-object "GtkSourceCompletionProposal")
+  (return-type "const-gchar*")
+)
+
+(define-virtual get_text
   (of-object "GtkSourceCompletionProposal")
   (return-type "const-gchar*")
 )
@@ -1633,6 +1764,20 @@
   (return-type "none")
 )
 
+(define-virtual hash
+  (of-object "GtkSourceCompletionProposal")
+  (return-type "guint")
+)
+
+(define-virtual equal
+  (of-object "GtkSourceCompletionProposal")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionProposal*" "other")
+  )
+)
+
+;; GtkSourceCompletionProvider virtuals
 (define-virtual get_name
   (of-object "GtkSourceCompletionProvider")
   (return-type "const-gchar*")
@@ -1643,25 +1788,15 @@
   (return-type "GdkPixbuf*")
 )
 
-(define-virtual get_proposals
+(define-virtual populate
   (of-object "GtkSourceCompletionProvider")
-  (return-type "GList*")
+  (return-type "none")
   (parameters
-    '("GtkTextIter*" "iter")
+    '("GtkSourceCompletionContext*" "context")
   )
 )
 
-(define-virtual filter_proposal
-  (of-object "GtkSourceCompletionProvider")
-  (return-type "gboolean")
-  (parameters
-    '("GtkSourceCompletionProposal*" "proposal")
-    '("GtkTextIter*" "iter")
-    '("const-gchar*" "criteria")
-  )
-)
-
-(define-virtual get_automatic
+(define-virtual get_default
   (of-object "GtkSourceCompletionProvider")
   (return-type "gboolean")
 )
@@ -1669,6 +1804,14 @@
 (define-virtual get_interactive
   (of-object "GtkSourceCompletionProvider")
   (return-type "gboolean")
+)
+
+(define-virtual match
+  (of-object "GtkSourceCompletionProvider")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionContext*" "context")
+  )
 )
 
 (define-virtual get_info_widget
@@ -1689,13 +1832,25 @@
   )
 )
 
+(define-virtual get_start_iter
+  (of-object "GtkSourceCompletionProvider")
+  (return-type "gboolean")
+  (parameters
+    '("GtkSourceCompletionProposal*" "proposal")
+    '("GtkTextIter*" "iter")
+  )
+)
+
 (define-virtual activate_proposal
   (of-object "GtkSourceCompletionProvider")
   (return-type "gboolean")
   (parameters
     '("GtkSourceCompletionProposal*" "proposal")
     '("GtkTextIter*" "iter")
+  )
+)
 
+;; GtkSourceGutter virtuals
 (define-virtual cell_activated
   (of-object "GtkSourceGutter")
   (return-type "none")
