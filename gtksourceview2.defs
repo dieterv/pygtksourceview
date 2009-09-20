@@ -1424,6 +1424,15 @@
   )
 )
 
+(define-method move_window
+  (of-object "GtkSourceCompletion")
+  (c-name "gtk_source_completion_move_window")
+  (return-type "none")
+  (parameters
+    '("GtkTextIter*" "iter")
+  )
+)
+
 
 ;; From gtksourcecompletioninfo.h
 
@@ -1709,15 +1718,6 @@
   (of-object "GtkSourceCompletionContext")
   (c-name "gtk_source_completion_context_get_default")
   (return-type "gboolean")
-)
-
-(define-method move_window
-  (of-object "GtkSourceCompletionContext")
-  (c-name "gtk_source_completion_context_move_window")
-  (return-type "none")
-  (parameters
-    '("GtkTextIter*" "iter")
-  )
 )
 
 
