@@ -713,6 +713,164 @@ _wrap_gtk_source_completion_show(PyGObject *self,
 }
 
 %%
+override gtk_source_completion_context_get_iter noargs
+static PyObject *
+_wrap_gtk_source_completion_context_get_iter(PyGObject *self)
+{
+	GtkTextIter iter;
+    gtk_source_completion_context_get_iter(GTK_SOURCE_COMPLETION_CONTEXT(self->obj), &iter);
+    
+    return pyg_boxed_new(GTK_TYPE_TEXT_ITER, &iter, TRUE, TRUE);
+}
+
+%%
+override GtkSourceCompletionProvider__do_get_start_iter kwargs
+static PyObject *
+_wrap_GtkSourceCompletionProvider__do_get_start_iter(PyObject *cls,
+                                                     PyObject *args,
+                                                     PyObject *kwargs)
+{
+    GtkSourceCompletionProviderIface *iface;
+    static char *kwlist[] = { "self", "proposal", NULL };
+    PyGObject *self;
+    PyGObject *proposal;
+    gboolean ret;
+    GtkTextIter iter;
+
+    if (!PyArg_ParseTupleAndKeywords(args, 
+                                     kwargs, 
+                                     "O!O!:GtkSourceCompletionProvider.get_start_iter", kwlist, 
+                                     &PyGtkSourceCompletionProvider_Type, &self, 
+                                     &PyGtkSourceCompletionProposal_Type, &proposal))
+        return NULL;
+
+    iface = g_type_interface_peek(g_type_class_peek(pyg_type_from_object(cls)), GTK_TYPE_SOURCE_COMPLETION_PROVIDER);
+
+    if (iface->get_start_iter)
+        ret = iface->get_start_iter(GTK_SOURCE_COMPLETION_PROVIDER(self->obj), 
+                                    GTK_SOURCE_COMPLETION_PROPOSAL(proposal->obj),
+                                    &iter);
+    else{
+        PyErr_SetString(PyExc_NotImplementedError, "interface method GtkSourceCompletionProvider.get_start_iter not implemented");
+        return NULL;
+    }
+    
+    if (ret)
+    {
+	    return pyg_boxed_new(GTK_TYPE_TEXT_ITER, &iter, TRUE, TRUE);
+	}
+	else
+	{
+		Py_INCREF(Py_None);
+		return Py_None;
+	}
+}
+
+%%
+override gtk_source_completion_provider_get_start_iter kwargs
+static PyObject *
+_wrap_gtk_source_completion_provider_get_start_iter(PyGObject *self,
+                                                    PyObject  *args,
+                                                    PyObject  *kwargs)
+{
+    static char *kwlist[] = { "proposal", NULL };
+    PyGObject *proposal;
+	gboolean ret;
+	GtkTextIter iter;
+	
+	if (!PyArg_ParseTupleAndKeywords(args,
+                                         kwargs,
+                                         "|O!:GtkSourceCompletionProvider.get_start_iter",
+                                         kwlist, 
+                                         &PyGtkSourceCompletionProposal_Type, &proposal));
+
+	ret = gtk_source_completion_provider_get_start_iter (GTK_SOURCE_COMPLETION_PROVIDER (self->obj),
+	                                                     GTK_SOURCE_COMPLETION_PROPOSAL (proposal->obj),
+	                                                     &iter);
+
+	if (!ret)
+	{
+		Py_INCREF(Py_None);
+		return Py_None;
+	}
+	else
+	{
+		return pyg_boxed_new(GTK_TYPE_TEXT_ITER, &iter, TRUE, TRUE);
+	}
+}
+%%
+override GtkSourceCompletionProvider__proxy_do_get_start_iter
+static gboolean
+_wrap_GtkSourceCompletionProvider__proxy_do_get_start_iter(GtkSourceCompletionProvider *self, GtkSourceCompletionProposal*proposal, GtkTextIter*iter)
+{
+    PyGILState_STATE __py_state;
+    PyObject *py_self;
+    PyObject *py_proposal = NULL;
+    PyObject *py_retval;
+    PyObject *py_args;
+    PyObject *py_method;
+    
+    __py_state = pyg_gil_state_ensure();
+    py_self = pygobject_new((GObject *) self);
+    if (!py_self) {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        pyg_gil_state_release(__py_state);
+        return FALSE;
+    }
+    if (proposal)
+        py_proposal = pygobject_new((GObject *) proposal);
+    else {
+        Py_INCREF(Py_None);
+        py_proposal = Py_None;
+    }
+    
+    py_args = PyTuple_New(1);
+    PyTuple_SET_ITEM(py_args, 0, py_proposal);
+    
+    py_method = PyObject_GetAttrString(py_self, "do_get_start_iter");
+    if (!py_method) {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        Py_DECREF(py_args);
+        Py_DECREF(py_self);
+        pyg_gil_state_release(__py_state);
+        return FALSE;
+    }
+    py_retval = PyObject_CallObject(py_method, py_args);
+    if (!py_retval || py_retval == Py_None) {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        Py_XDECREF(py_retval);
+        Py_DECREF(py_method);
+        Py_DECREF(py_args);
+        Py_DECREF(py_self);
+        pyg_gil_state_release(__py_state);
+        return FALSE;
+    }
+
+    if (!pyg_boxed_check(py_retval, GTK_TYPE_TEXT_ITER)) {
+        PyErr_SetString(PyExc_TypeError, "retval should be a GtkTextIter");
+        PyErr_Print();
+        Py_XDECREF(py_retval);
+        Py_DECREF(py_method);
+        Py_DECREF(py_args);
+        Py_DECREF(py_self);
+        pyg_gil_state_release(__py_state);
+        return FALSE;
+    }
+    
+    *iter = *pyg_boxed_get(py_retval, GtkTextIter);
+    
+    Py_XDECREF(py_retval);
+    Py_DECREF(py_method);
+    Py_DECREF(py_args);
+    Py_DECREF(py_self);
+    pyg_gil_state_release(__py_state);
+    
+    return TRUE;
+}
+%%
 override GtkSourceCompletionProvider__proxy_do_get_info_widget
 
 static GtkWidget*
@@ -783,6 +941,67 @@ _wrap_GtkSourceCompletionProvider__proxy_do_get_info_widget(GtkSourceCompletionP
     pyg_gil_state_release(__py_state);
     
     return retval;
+}
+
+%%
+override gtk_source_completion_item_new kwargs
+static int
+_wrap_gtk_source_completion_item_new(PyGObject *self, PyObject *args, PyObject *kwargs)
+{
+    static char *kwlist[] = { "label", "text", "icon", "info", NULL };
+    char *label, *text = NULL, *info = NULL;
+    PyGObject *icon = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, 
+                                     kwargs, "s|sO!s:GtkSourceCompletionItem.__init__", 
+                                     kwlist, 
+                                     &label, 
+                                     &text, 
+                                     &PyGdkPixbuf_Type, &icon, 
+                                     &info))
+        return -1;
+
+    self->obj = (GObject *)gtk_source_completion_item_new(label, text, icon ? GDK_PIXBUF(icon->obj) : NULL, info);
+
+    if (!self->obj) {
+        PyErr_SetString(PyExc_RuntimeError, "could not create GtkSourceCompletionItem object");
+        return -1;
+    }
+    pygobject_register_wrapper((PyObject *)self);
+    return 0;
+}
+
+%%
+override gtk_source_completion_create_context kwargs
+static PyObject *
+_wrap_gtk_source_completion_create_context(PyGObject *self, PyObject *args, PyObject *kwargs)
+{
+    static char *kwlist[] = { "position", NULL };
+    PyObject *py_position = NULL;
+    GtkSourceCompletionContext *ret;
+    GtkTextIter *position = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, 
+                                     kwargs,
+                                     "|O!:GtkSourceCompletion.create_context", 
+                                     kwlist, 
+                                     &PyGtkTextIter_Type, &py_position))
+        return NULL;
+
+	if (py_position != NULL)
+	{
+		if (pyg_boxed_check(py_position, GTK_TYPE_TEXT_ITER))
+		    position = pyg_boxed_get(py_position, GtkTextIter);
+		else {
+		    PyErr_SetString(PyExc_TypeError, "position should be a GtkTextIter");
+		    return NULL;
+	    }
+	}
+    
+    ret = gtk_source_completion_create_context(GTK_SOURCE_COMPLETION(self->obj), position);
+    
+    /* pygobject_new handles NULL checking */
+    return pygobject_new((GObject *)ret);
 }
 
 %%
