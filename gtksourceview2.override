@@ -605,7 +605,7 @@ _wrap_gtk_source_completion_context_add_proposals(PyGObject *self,
     if (!PyArg_ParseTupleAndKeywords(args, kwargs,
                                      "O!O|O:GtkSourceCompletionContext.add_proposals",
                                      kwlist, 
-                                     PyGtkSourceCompletionProvider_Type, &py_provider, 
+                                     &PyGtkSourceCompletionProvider_Type, &py_provider, 
                                      &py_proposals, 
                                      &py_finished))
         return NULL;
