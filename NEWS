@@ -1,3 +1,11 @@
+News in 2.7.0
+=============
+
+    o Add new 2.8.0 gtksourceview API. (Gian Mario)
+    o Some misc bug fix (Gian Mario)
+    o Fix build with libtool 2.x. (Gian Mario)
+    o Autogenerate Changelog from git logs (Gian Mario)
+
 News in 2.6.0
 =============
 

@@ -1,0 +1,511 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="class-gtksourcegutter2">
+  <refnamediv>
+    <refname>gtksourceview2.Gutter</refname>
+    <refpurpose>Mark object for <link linkend="class-gtksourceview">gtksourceview.SourceView</link></refpurpose>
+  </refnamediv>
+
+<!-- ********************************* -->
+<!-- BEGIN OF GTKSOURCEGUTTER SYNOPSIS -->
+<!-- ********************************* -->
+
+<refsect1>
+        <title>Synopsis</title>
+        
+          <classsynopsis language="python">
+          <ooclass><classname>gtksourceview2.Gutter</classname></ooclass>
+          <ooclass><classname><link linkend="class-gobject">gobject.GObject</link></classname></ooclass>
+      
+          <methodsynopsis language="python">
+              <methodname><link linkend="method-gtksourcemark2--get-window">get_window</link></methodname>
+              <methodparam></methodparam>
+          </methodsynopsis>
+      
+          <methodsynopsis language="python">
+              <methodname><link linkend="method-gtksourcemark2--insert">insert</link></methodname>
+              <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+              <methodparam><parameter role="keyword">position</parameter></methodparam>
+          </methodsynopsis>  
+      
+          <methodsynopsis language="python">
+              <methodname><link linkend="method-gtksourcemark2--queue-draw">queue_draw</link></methodname>
+              <methodparam></methodparam>
+          </methodsynopsis>
+      
+          <methodsynopsis language="python">
+              <methodname><link linkend="method-gtksourcemark2--remove">remove</link></methodname>
+              <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+          </methodsynopsis>  
+      
+          <methodsynopsis language="python">
+              <methodname><link linkend="method-gtksourcemark2--reorder">reorder</link></methodname>
+              <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+              <methodparam><parameter role="keyword">position</parameter></methodparam>
+          </methodsynopsis>  
+      
+          <methodsynopsis language="python">
+              <methodname><link linkend="method-gtksourcemark2--set-cell-data-func">set_cell_data_func</link></methodname>
+              <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+              <methodparam><parameter role="keyword">func</parameter></methodparam>
+              <methodparam><parameter role="keyword">func_data</parameter><initializer>None</initializer></methodparam>
+          </methodsynopsis>
+      
+          <methodsynopsis language="python">
+              <methodname><link linkend="method-gtksourcemark2--set-cell-size-func">set_cell_size_func</link></methodname>
+              <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+              <methodparam><parameter role="keyword">func</parameter></methodparam>
+              <methodparam><parameter role="keyword">func_data</parameter><initializer>None</initializer></methodparam>
+          </methodsynopsis>
+    </classsynopsis>
+</refsect1>
+
+<!-- ********************************* -->
+<!-- BEGIN OF GTKSOURCEGUTTER ANCESTRY -->
+<!-- ********************************* -->
+
+<refsect1>
+    <title>Ancestry</title>
+
+<synopsis>+-- <link linkend="class-gobject">gobject.GObject</link>
+    +-- <link linkend="class-gtksourcegutter2">gtksourceview2.Gutter</link>
+</synopsis>
+</refsect1>
+
+<!-- *********************************** -->
+<!-- BEGIN OF GTKSOURCEGUTTER PROPERTIES -->
+<!-- *********************************** -->
+
+  <refsect1>
+    <title>Properties</title>
+
+    <blockquote role="properties">
+      <informaltable pgwide="1" frame="none">
+        <tgroup cols="3">
+          <colspec column="1" colwidth="1in"/>
+          <colspec column="2" colwidth="1in"/>
+          <colspec column="3" colwidth="4in"/>
+          <tbody>
+
+            <row valign="top">
+              <entry>"view"</entry>
+              <entry>Read-Write-Construct Only</entry>
+              <entry>
+                The <link linkend="class-gtksourceview2"><classname>gtksourceview2.View</classname></link> of the gutter.
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>"window-type"</entry>
+              <entry>Read-Write-Construct Only</entry>
+              <entry>
+                The text window type on which the window is placed. Default value: gtk.TEXT_WINDOW_PRIVATE.
+              </entry>
+            </row>
+
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </blockquote>
+
+  </refsect1>
+
+<!-- ****************************************** -->
+<!-- BEGIN OF GTKSOURCEGUTTER SIGNAL PROTOTYPES -->
+<!-- ****************************************** -->
+
+  <refsect1>
+    <title>Signal Prototypes</title>
+
+    <variablelist>
+      <varlistentry>
+        <term><link linkend="signal-gtksourcegutter--cell-activated">"cell-activated"</link></term>
+        <listitem>
+          <methodsynopsis language="python"><methodname>callback</methodname>
+            <methodparam><parameter>gutter</parameter></methodparam>
+            <methodparam><parameter>renderer</parameter></methodparam>
+            <methodparam><parameter>iter</parameter></methodparam>
+            <methodparam><parameter>event</parameter></methodparam>
+            <methodparam><parameter>user_param1</parameter></methodparam>
+            <methodparam><parameter>...</parameter></methodparam>
+          </methodsynopsis>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><link linkend="signal-gtksourcegutter--query-tooltip">"query-tooltip"</link></term>
+        <listitem>
+          <methodsynopsis language="python"><methodname>callback</methodname>
+            <methodparam><parameter>gutter</parameter></methodparam>
+            <methodparam><parameter>renderer</parameter></methodparam>
+            <methodparam><parameter>iter</parameter></methodparam>
+            <methodparam><parameter>tooltip</parameter></methodparam>
+            <methodparam><parameter>user_param1</parameter></methodparam>
+            <methodparam><parameter>...</parameter></methodparam>
+          </methodsynopsis>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1>
+
+<!-- ************************************ -->
+<!-- BEGIN OF GTKSOURCEGUTTER DESCRIPTION -->
+<!-- ************************************ -->
+
+<refsect1 id="description-gtktextgutter">
+    <title>Description</title>
+
+  <para>
+    The <link linkend="class-gtksourcegutter2"><classname>gtksourceview2.Gutter</classname></link>
+    object represents the left and right gutters of the text view. It is used by
+    <link linkend="class-gtksourceview2"><classname>gtksourceview2.View</classname></link>
+    to draw the line numbers and category marks that might be present on a line.
+    By packing additional
+    <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link>
+    objects in the gutter, you can extend the gutter by your own custom drawings. 
+    
+  </para>
+  <para>
+    The gutter works very much the same way as cells rendered in a
+    <link linkend="class-gtktreeview"><classname>gtk.TreeView</classname></link>.
+    The concept is similar, with the exception that the gutter does not have an
+    underlying <link linkend="class-gtktreemodel"><classname>gtk.TreeModel</classname></link>.
+    Instead, you should use
+    <methodname><link linkend="method-gtksourcemark2--set-cell-data-func">gtksourceview2.Gutter.set_cell_data_func</link></methodname>()
+    to set a callback to fill in any of the cell renderers properties, given the
+    line for which the cell is to be rendered. Renderers are inserted into the gutter
+    at a certain position. The builtin line number renderer is at position
+    GTK_SOURCE_VIEW_GUTTER_POSITION_LINES (-30) and the marks renderer is at
+    GTK_SOURCE_VIEW_GUTTER_POSITION_MARKS (-20). You can use these values to position
+    custom renderers accordingly. 
+  </para>
+  <para>
+    The width of a cell renderer can be specified as either fixed (using
+    <methodname><link linkend="method-gtkcellrenderer--set-fixed-size">gtk.CellRenderer.set_fixed_size</link></methodname>()
+    ) or dynamic, in which case you MUST set
+    <methodname><link linkend="method-gtksourcemark2--set-cell-size-func">gtksourceview2.Gutter.set_cell_size_func</link></methodname>().
+    This callback is used to set the properties of the renderer such that
+    <methodname><link linkend="method-gtkcellrenderer--get-size">gtk.CellRenderer.get_size</link></methodname>()
+    yields the maximum width of the cell. 
+  </para>
+</refsect1>
+
+<!-- ******************************** -->
+<!-- BEGIN OF GTKSOURCEGUTTER METHODS -->
+<!-- ******************************** -->
+
+<refsect1>
+  <title>Methods</title>
+
+  <refsect2 id="method-gtksourcemark2--get-window">
+    <title>gtksourceview2.Gutter.get_window</title>
+    <programlisting><methodsynopsis language="python">
+      <methodname>get_window</methodname>
+      <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+      
+    <variablelist>
+        <varlistentry>
+          <term><emphasis>Returns</emphasis>&nbsp;:</term>
+          <listitem><simpara>the <link linkend="class-gdkwindow"><classname>gtk.gdk.Window</classname></link>
+          of the gutter, or <literal>None</literal> if the gutter has no window.</simpara></listitem>
+        </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>get_window</methodname>() method returns the
+      <link linkend="class-gdkwindow"><classname>gtk.gdk.Window</classname></link>
+      of the gutter. The window will only be available when the gutter has at
+      least one, non-zero width, cell renderer packed.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--insert">
+    <title>gtksourceview2.Gutter.insert</title>
+    <programlisting><methodsynopsis language="python">
+      <methodname>insert</methodname>
+      <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+      <methodparam><parameter role="keyword">position</parameter></methodparam>
+      </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">renderer</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link>
+        </simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">position</parameter>&nbsp;:</term>
+        <listitem><simpara>the renderers position.
+        </simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>insert</methodname>() method inserts renderer into gutter at position.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--queue-draw">
+    <title>gtksourceview2.Gutter.queue_draw</title>
+    <programlisting><methodsynopsis language="python">
+      <methodname>queue_draw</methodname>
+      <methodparam></methodparam>
+      </methodsynopsis></programlisting>
+      
+    <variablelist>
+    </variablelist>
+
+    <para>
+      The <methodname>queue_draw</methodname>() method invalidates the drawable area of
+      the gutter. You can use this to force a redraw of the gutter if something has
+      changed and needs to be redrawn.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--remove">
+    <title>gtksourceview2.Gutter.remove</title>
+    <programlisting><methodsynopsis language="python">
+      <methodname>remove</methodname>
+      <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+      </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">renderer</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link>
+        </simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>renderer</methodname>() method removes renderer from gutter.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--reorder">
+    <title>gtksourceview2.Gutter.reorder</title>
+    <programlisting><methodsynopsis language="python">
+      <methodname>reorder</methodname>
+      <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+      <methodparam><parameter role="keyword">position</parameter></methodparam>
+      </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">renderer</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link>
+        </simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">position</parameter>&nbsp;:</term>
+        <listitem><simpara>the new renderer position.
+        </simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>renderer</methodname>() method reorders renderer in gutter to new position.
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--set-cell-data-func">
+    <title>gtksourceview2.Gutter.set_cell_data_func</title>
+    <programlisting><methodsynopsis language="python">
+      <methodname>set_cell_data_func</methodname>
+      <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+      <methodparam><parameter role="keyword">func</parameter></methodparam>
+      <methodparam><parameter role="keyword">func_data</parameter></methodparam>
+      </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">renderer</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link>
+        </simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">func</parameter>&nbsp;:</term>
+        <listitem><simpara>the function.
+        </simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">func_data</parameter>&nbsp;:</term>
+        <listitem><simpara>the data to pass whitin func.
+        </simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>set_cell_data_func</methodname>() method sets the func to use for renderer.
+      This function is used to setup the cell renderer properties for rendering the current cell.
+    </para>
+    
+<programlisting>
+    def gutterdatafunc(cell, line_number, current_line, user_data)</programlisting>
+
+    <para>
+        Where cell is the <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link> to use,
+        line_number is the line number for the gutter and current_line is a boolean indicating if it's the current line,
+        user_data is the data passed to set_cell_data_func().
+    </para>
+  </refsect2>
+
+  <refsect2 id="method-gtksourcemark2--set-cell-size-func">
+    <title>gtksourceview2.Gutter.set_cell_size_func</title>
+    <programlisting><methodsynopsis language="python">
+      <methodname>set_cell_data_func</methodname>
+      <methodparam><parameter role="keyword">renderer</parameter></methodparam>
+      <methodparam><parameter role="keyword">func</parameter></methodparam>
+      <methodparam><parameter role="keyword">func_data</parameter></methodparam>
+      </methodsynopsis></programlisting>
+      
+    <variablelist>
+      <varlistentry>
+        <term><parameter role="keyword">renderer</parameter>&nbsp;:</term>
+        <listitem><simpara>a <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link>
+        </simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">func</parameter>&nbsp;:</term>
+        <listitem><simpara>the function.
+        </simpara></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter role="keyword">func_data</parameter>&nbsp;:</term>
+        <listitem><simpara>the data to pass whitin func.
+        </simpara></listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The <methodname>set_cell_size_func</methodname>() method sets the func to use for renderer.
+      This function is used to setup the cell renderer properties for measuring the maximum size of the cell.
+    </para>
+    
+<programlisting>
+    def guttersizefunc(cell, user_data)</programlisting>
+
+    <para>
+        Where cell is the <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link> to use,
+        and user_data is the data passed to set_cell_data_func().
+    </para>
+  </refsect2>
+
+</refsect1>
+
+<!-- ******************************** -->
+<!-- BEGIN OF GTKSOURCEGUTTER SIGNALS -->
+<!-- ******************************** -->
+
+<refsect1>
+    <title>Signals</title>
+
+    <refsect2 id="signal-gtksourcegutter--cell-activated">
+      <title>The "cell-activated" gtksourceview2.Gutter Signal</title>
+
+      <programlisting><methodsynopsis language="python">
+	  <methodname>callback</methodname>
+	  <methodparam><parameter>gutter</parameter></methodparam>
+          <methodparam><parameter>renderer</parameter></methodparam>
+          <methodparam><parameter>iter</parameter></methodparam>
+          <methodparam><parameter>event</parameter></methodparam>
+	  <methodparam><parameter>user_param1</parameter></methodparam>
+	  <methodparam><parameter>...</parameter></methodparam>
+	</methodsynopsis></programlisting>
+
+      <variablelist>
+	<varlistentry>
+	  <term><parameter>gutter</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gtksourcegutter2">gtksourceview2.Gutter</link>
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>renderer</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link> which was activated.
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>iter</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link> at which the cell was activated 
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>event</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gdkevent"><classname>gtk.gdk.Event</classname></link> with which the cell was activated 
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>user_param1</parameter>&nbsp;:</term>
+          <listitem><simpara>the first user parameter (if any) specified with the
+          <link linkend="method-gobject--connect"><methodname>connect</methodname>()</link>
+          method</simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>...</parameter>&nbsp;:</term>
+	  <listitem><simpara>additional user parameters (if any)</simpara></listitem>
+	</varlistentry>
+      </variablelist>
+
+      <para>
+        The "cell-activated" signal is emitted when a cell has been activated (for instance
+        when there was a button press on the cell). The signal is only emitted for cells
+        that have the activatable property set to <literal>True</literal>.
+      </para>
+
+    </refsect2>
+
+    <refsect2 id="signal-gtksourcegutter--query-tooltip">
+      <title>The "query-tooltip" gtksourceview2.Gutter Signal</title>
+
+      <programlisting><methodsynopsis language="python">
+	  <methodname>callback</methodname>
+	  <methodparam><parameter>gutter</parameter></methodparam>
+          <methodparam><parameter>renderer</parameter></methodparam>
+          <methodparam><parameter>iter</parameter></methodparam>
+          <methodparam><parameter>tooltip</parameter></methodparam>
+	  <methodparam><parameter>user_param1</parameter></methodparam>
+	  <methodparam><parameter>...</parameter></methodparam>
+	</methodsynopsis></programlisting>
+
+      <variablelist>
+	<varlistentry>
+	  <term><parameter>gutter</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gtksourcegutter2">gtksourceview2.Gutter</link>
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>renderer</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gtkcellrenderer"><classname>gtk.CellRenderer</classname></link> which was activated.
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>iter</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gtktextiter"><classname>gtk.TextIter</classname></link> at which the cell was activated 
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>tooltip</parameter>&nbsp;:</term>
+	  <listitem><simpara>the <link linkend="class-gtktooltip"><classname>gtk.Tooltip</classname></link>
+          </simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>user_param1</parameter>&nbsp;:</term>
+          <listitem><simpara>the first user parameter (if any) specified with the
+          <link linkend="method-gobject--connect"><methodname>connect</methodname>()</link>
+          method</simpara></listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><parameter>...</parameter>&nbsp;:</term>
+	  <listitem><simpara>additional user parameters (if any)</simpara></listitem>
+	</varlistentry>
+      </variablelist>
+
+      <para>
+        The "query-tooltip" signal is emitted when a tooltip is requested for a specific cell.
+        Signal handlers can return <literal>True</literal> to notify the tooltip has been handled.
+      </para>
+
+    </refsect2>
+  </refsect1>
+</refentry>

@@ -2,8 +2,8 @@ AC_PREREQ(2.52)
 
 dnl the pygtksourceview version number
 m4_define(pygtksourceview_major_version, 2)
-m4_define(pygtksourceview_minor_version, 6)
-m4_define(pygtksourceview_micro_version, 0)
+m4_define(pygtksourceview_minor_version, 7)
+m4_define(pygtksourceview_micro_version, 1)
 m4_define(pygtksourceview_version, pygtksourceview_major_version.pygtksourceview_minor_version.pygtksourceview_micro_version)
 
 dnl versions of packages we require ...
@@ -55,6 +55,9 @@ AC_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
+dnl when using libtool 2.x create libtool early, because it's used in configure
+m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
+
 if test "x$os_win32" = xyes -a "x$cross_compiling" = xyes; then
 MOO_AM_PYTHON_DEVEL_CROSS_MINGW(,[AC_MSG_ERROR(could not find Python headers)])
 else
@@ -89,7 +92,7 @@ if test "${enable_docs}" != no; then
   fi
 fi
 
-if test x$enable_docs == xyes; then
+if test x$enable_docs = xyes; then
    if ! $PKG_CONFIG "pygobject-2.0 >= 2.11.3"; then
        AC_MSG_WARN([pygobject-2.0 < 2.11.3; disabling generation of docs])
        enable_docs=no
