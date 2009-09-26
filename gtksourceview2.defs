@@ -110,6 +110,12 @@
   (gtype-id "GTK_TYPE_SOURCE_COMPLETION_CONTEXT")
 )
 
+(define-object CompletionWords
+  (in-module "GtkSourceView")
+  (c-name "GtkSourceCompletionWords")
+  (gtype-id "GTK_TYPE_SOURCE_COMPLETION_WORDS")
+)
+
 ;; Enumerations and flags ...
 
 (define-flags SearchFlags
@@ -1680,6 +1686,40 @@
   )
 )
 
+;; From gtksourcecompletionwords.h
+
+(define-function gtk_source_completion_words_get_type
+  (c-name "gtk_source_completion_words_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_source_completion_words_new
+  (c-name "gtk_source_completion_words_new")
+  (is-constructor-of "GtkSourceCompletionWords")
+  (return-type "GtkSourceCompletionWords*")
+  (parameters
+    '("const-gchar*" "name")
+    '("GdkPixbuf*" "icon")
+  )
+)
+
+(define-method register
+  (of-object "GtkSourceCompletionWords")
+  (c-name "gtk_source_completion_words_register")
+  (return-type "none")
+  (parameters
+    '("GtkTextBuffer*" "buffer")
+  )
+)
+
+(define-method unregister
+  (of-object "GtkSourceCompletionWords")
+  (c-name "gtk_source_completion_words_unregister")
+  (return-type "none")
+  (parameters
+    '("GtkTextBuffer*" "buffer")
+  )
+)
 
 ;; From gtksourcecompletioncontext.h
 
