@@ -153,6 +153,16 @@
   )
 )
 
+(define-flags CompletionActivation
+  (in-module "GtkSourceView")
+  (c-name "GtkSourceCompletionActivation")
+  (gtype-id "GTK_TYPE_SOURCE_COMPLETION_ACTIVATION")
+  (values
+    '("interactive" "GTK_SOURCE_COMPLETION_ACTIVATION_INTERACTIVE")
+    '("user-requested" "GTK_SOURCE_COMPLETION_ACTIVATION_USER_REQUESTED")
+  )
+)
+
 ;; From gtksourcebuffer.h
 
 (define-function gtk_source_buffer_new
@@ -1626,16 +1636,10 @@
   )
 )
 
-(define-method get_interactive
+(define-method get_activation
   (of-object "GtkSourceCompletionProvider")
-  (c-name "gtk_source_completion_provider_get_interactive")
-  (return-type "gboolean")
-)
-
-(define-method get_default
-  (of-object "GtkSourceCompletionProvider")
-  (c-name "gtk_source_completion_provider_get_default")
-  (return-type "gboolean")
+  (c-name "gtk_source_completion_provider_get_activation")
+  (return-type "GtkSourceCompletionActivation")
 )
 
 (define-method match
@@ -1748,16 +1752,10 @@
   )
 )
 
-(define-method get_interactive
+(define-method get_activation
   (of-object "GtkSourceCompletionContext")
-  (c-name "gtk_source_completion_context_get_interactive")
-  (return-type "gboolean")
-)
-
-(define-method get_default
-  (of-object "GtkSourceCompletionContext")
-  (c-name "gtk_source_completion_context_get_default")
-  (return-type "gboolean")
+  (c-name "gtk_source_completion_context_get_activation")
+  (return-type "GtkSourceCompletionActivation")
 )
 
 
@@ -1836,14 +1834,9 @@
   )
 )
 
-(define-virtual get_default
+(define-virtual get_activation
   (of-object "GtkSourceCompletionProvider")
-  (return-type "gboolean")
-)
-
-(define-virtual get_interactive
-  (of-object "GtkSourceCompletionProvider")
-  (return-type "gboolean")
+  (return-type "GtkSourceCompletionActivation")
 )
 
 (define-virtual match
