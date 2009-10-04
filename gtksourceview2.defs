@@ -1675,6 +1675,7 @@
   (c-name "gtk_source_completion_provider_get_start_iter")
   (return-type "gboolean")
   (parameters
+    '("GtkSourceCompletionContext*" "context")
     '("GtkSourceCompletionProposal*" "proposal")
     '("GtkTextIter*" "iter")
   )
