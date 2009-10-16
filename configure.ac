@@ -2,14 +2,14 @@ AC_PREREQ(2.52)
 
 dnl the pygtksourceview version number
 m4_define(pygtksourceview_major_version, 2)
-m4_define(pygtksourceview_minor_version, 8)
+m4_define(pygtksourceview_minor_version, 9)
 m4_define(pygtksourceview_micro_version, 1)
 m4_define(pygtksourceview_version, pygtksourceview_major_version.pygtksourceview_minor_version.pygtksourceview_micro_version)
 
 dnl versions of packages we require ...
 m4_define(pygobject_required_version, 2.15.2)
 m4_define(pygtk_required_version, 2.8.0)
-m4_define(gtksourceview_required_version, 2.3.0)
+m4_define(gtksourceview_required_version, 2.9.1)
 
 AC_INIT([pygtksourceview], [pygtksourceview_version], [http://bugzilla.gnome.org/browse.cgi?product=gtksourceview/])
 
