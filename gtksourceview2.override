@@ -1234,3 +1234,40 @@ _wrap_gtk_source_completion_words_new(PyGObject *self, PyObject *args, PyObject 
     pygobject_register_wrapper((PyObject *)self);
     return 0;
 }
+
+%%
+override gtk_source_buffer_get_context_classes_at_iter kwargs
+static PyObject *
+_wrap_gtk_source_buffer_get_context_classes_at_iter(PyGObject *self, PyObject *args, PyObject *kwargs)
+{
+    static char *kwlist[] = { "iter", NULL };
+    PyObject *py_iter;
+    GtkTextIter *iter = NULL;
+    gchar **context_classes;
+
+    PyObject *ret;
+
+    if (!PyArg_ParseTupleAndKeywords(args,
+                                     kwargs,
+                                     "Os:GtkSourceBuffer.get_context_classes_at_iter",
+                                     kwlist,
+                                     &py_iter))
+        return NULL;
+
+    if (pyg_boxed_check(py_iter, GTK_TYPE_TEXT_ITER))
+    {
+        iter = pyg_boxed_get(py_iter, GtkTextIter);
+    }
+    else
+    {
+        PyErr_SetString(PyExc_TypeError, "iter should be a GtkTextIter");
+        return NULL;
+    }
+
+    context_classes = gtk_source_buffer_get_context_classes_at_iter (GTK_SOURCE_BUFFER (self->obj),
+                                                                     iter);
+    ret = strv_to_pylist (context_classes);
+    g_strfreev (context_classes);
+
+    return ret;
+}

@@ -382,7 +382,44 @@
   )
 )
 
+(define-method iter_has_context_class
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_iter_has_context_class")
+  (return-type "gboolean")
+  (parameters
+    '("GtkTextIter*" "iter")
+    '("const-gchar*" "context_class")
+  )
+)
 
+(define-method get_context_classes_at_iter
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_get_context_classes_at_iter")
+  (return-type "gchar**")
+  (parameters
+    '("GtkTextIter*" "iter")
+  )
+)
+
+(define-method iter_forward_to_context_class_toggle
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_iter_forward_to_context_class_toggle")
+  (return-type "gboolean")
+  (parameters
+    '("GtkTextIter*" "iter")
+    '("const-gchar*" "context_class")
+  )
+)
+
+(define-method iter_backward_to_context_class_toggle
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_iter_backward_to_context_class_toggle")
+  (return-type "gboolean")
+  (parameters
+    '("GtkTextIter*" "iter")
+    '("const-gchar*" "context_class")
+  )
+)
 
 ;; From gtksourcegutter.h
 
