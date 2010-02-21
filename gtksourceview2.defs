@@ -1562,19 +1562,19 @@
 (define-method get_label
   (of-object "GtkSourceCompletionProposal")
   (c-name "gtk_source_completion_proposal_get_label")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method get_markup
   (of-object "GtkSourceCompletionProposal")
   (c-name "gtk_source_completion_proposal_get_markup")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method get_text
   (of-object "GtkSourceCompletionProposal")
   (c-name "gtk_source_completion_proposal_get_text")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method get_icon
@@ -1586,7 +1586,7 @@
 (define-method get_info
   (of-object "GtkSourceCompletionProposal")
   (c-name "gtk_source_completion_proposal_get_info")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method changed
@@ -1621,7 +1621,7 @@
 (define-method get_name
   (of-object "GtkSourceCompletionProvider")
   (c-name "gtk_source_completion_provider_get_name")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-method get_icon
@@ -1778,17 +1778,17 @@
 ;; GtkSourceCompletionProposal virtuals
 (define-virtual get_label
   (of-object "GtkSourceCompletionProposal")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-virtual get_markup
   (of-object "GtkSourceCompletionProposal")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-virtual get_text
   (of-object "GtkSourceCompletionProposal")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-virtual get_icon
@@ -1798,7 +1798,7 @@
 
 (define-virtual get_info
   (of-object "GtkSourceCompletionProposal")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-virtual changed
@@ -1822,7 +1822,7 @@
 ;; GtkSourceCompletionProvider virtuals
 (define-virtual get_name
   (of-object "GtkSourceCompletionProvider")
-  (return-type "const-gchar*")
+  (return-type "gchar*")
 )
 
 (define-virtual get_icon
