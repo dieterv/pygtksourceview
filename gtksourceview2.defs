@@ -116,6 +116,12 @@
   (gtype-id "GTK_TYPE_SOURCE_COMPLETION_WORDS")
 )
 
+(define-interface UndoManager
+  (in-module "GtkSourceView")
+  (c-name "GtkSourceUndoManager")
+  (gtype-id "GTK_TYPE_SOURCE_UNDO_MANAGER")
+)
+
 ;; Enumerations and flags ...
 
 (define-flags SearchFlags
@@ -358,6 +364,21 @@
     '("GtkTextIter*" "start")
     '("GtkTextIter*" "end")
     '("const-gchar*" "category" (null-ok) (default "NULL"))
+  )
+)
+
+(define-method get_undo_manager
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_get_undo_manager")
+  (return-type "GtkSourceUndoManager*")
+)
+
+(define-method set_undo_manager
+  (of-object "GtkSourceBuffer")
+  (c-name "gtk_source_buffer_set_undo_manager")
+  (return-type "none")
+  (parameters
+    '("GtkSourceUndoManager*" "manager" (null-ok))
   )
 )
 
@@ -1379,6 +1400,7 @@
   )
 )
 
+
 ;; From gtksourcecompletion.h
 
 (define-function gtk_source_completion_get_type
@@ -1763,6 +1785,62 @@
 )
 
 
+;; From gtksourceundomanager.h
+
+(define-function gtk_source_undo_manager_get_type
+  (c-name "gtk_source_undo_manager_get_type")
+  (return-type "GType")
+)
+
+(define-method can_undo
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_can_undo")
+  (return-type "gboolean")
+)
+
+(define-method can_redo
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_can_redo")
+  (return-type "gboolean")
+)
+
+(define-method undo
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_undo")
+  (return-type "none")
+)
+
+(define-method redo
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_redo")
+  (return-type "none")
+)
+
+(define-method begin_not_undoable_action
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_begin_not_undoable_action")
+  (return-type "none")
+)
+
+(define-method end_not_undoable_action
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_end_not_undoable_action")
+  (return-type "none")
+)
+
+(define-method can_redo_changed
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_can_redo_changed")
+  (return-type "none")
+)
+
+(define-method can_undo_changed
+  (of-object "GtkSourceUndoManager")
+  (c-name "gtk_source_undo_manager_can_undo_changed")
+  (return-type "none")
+)
+
+
 ;; virtuals
 
 (define-virtual undo
@@ -1897,6 +1975,7 @@
     '("GdkEvent*" "event")
   )
 )
+
 (define-virtual query_tooltip
   (of-object "GtkSourceGutter")
   (return-type "gboolean")
@@ -1906,6 +1985,7 @@
     '("GtkTooltip*" "tooltip")
   )
 )
+
 (define-virtual line_mark_activated
   (of-object "GtkSourceView")
   (return-type "none")
@@ -1914,3 +1994,45 @@
     '("GdkEvent*" "event")
   )
 )
+
+;; GtkSourceUndoManager virtuals
+(define-virtual can_undo
+  (of-object "GtkSourceUndoManager")
+  (return-type "gboolean")
+)
+
+(define-virtual can_redo
+  (of-object "GtkSourceUndoManager")
+  (return-type "gboolean")
+)
+
+(define-virtual undo
+  (of-object "GtkSourceUndoManager")
+  (return-type "none")
+)
+
+(define-virtual redo
+  (of-object "GtkSourceUndoManager")
+  (return-type "none")
+)
+
+(define-virtual begin_not_undoable_action
+  (of-object "GtkSourceUndoManager")
+  (return-type "none")
+)
+
+(define-virtual end_not_undoable_action
+  (of-object "GtkSourceUndoManager")
+  (return-type "none")
+)
+
+(define-virtual can_redo_changed
+  (of-object "GtkSourceUndoManager")
+  (return-type "none")
+)
+
+(define-virtual can_undo_changed
+  (of-object "GtkSourceUndoManager")
+  (return-type "none")
+)
+
