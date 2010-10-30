@@ -47,3 +47,7 @@ docs/build_stamp
 docs/html/
 docs/reference/builddate.xml
 
+# Eclipse files.
+.settings
+.project
+.pydevproject
