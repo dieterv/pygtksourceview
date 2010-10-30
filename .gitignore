@@ -36,6 +36,8 @@ entities.docbook
 *.so
 .deps
 .libs
+build
+dist
 
 # Codegen output.
 gtksourceview2.c
