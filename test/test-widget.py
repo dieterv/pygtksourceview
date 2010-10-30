@@ -36,7 +36,6 @@ import gobject
 windows = []    # this list contains all view windows
 MARK_TYPE_1 = 'one'
 MARK_TYPE_2 = 'two'
-DATADIR = '/usr/share'
 
 
 ######################################################################
@@ -46,7 +45,7 @@ def error_dialog(parent, msg):
                                gtk.DIALOG_DESTROY_WITH_PARENT,
                                gtk.MESSAGE_ERROR,
                                gtk.BUTTONS_OK,
-			       msg)
+                               msg)
     dialog.run()
     dialog.destroy()
 
@@ -394,16 +393,14 @@ def create_view_window(buffer, sourceview = None):
             action.set_active(True)
 
     # add source mark pixbufs
-    pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(DATADIR,
-                                                       'pixmaps/apple-green.png'))
+    pixbuf = gtk.gdk.pixbuf_new_from_file('pixmaps/apple-green.png')
     if pixbuf:
         view.set_mark_category_pixbuf (MARK_TYPE_1, pixbuf)
         view.set_mark_category_priority (MARK_TYPE_1, 1)
     else:
         print 'could not load mark 1 image.  Spurious messages might get triggered'
 
-    pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(DATADIR,
-                                                       'pixmaps/apple-red.png'))
+    pixbuf = gtk.gdk.pixbuf_new_from_file('pixmaps/apple-red.png')
     if pixbuf:
         view.set_mark_category_pixbuf (MARK_TYPE_2, pixbuf)
         view.set_mark_category_priority (MARK_TYPE_2, 2)
