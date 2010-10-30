@@ -86,6 +86,9 @@ def get_language_for_mime_type(mime):
         for m in lang.get_mime_types():
             if m == mime:
                 return lang
+        for m in lang.get_globs():
+            if mime in m:
+                return lang
     return None
 
 ######################################################################
