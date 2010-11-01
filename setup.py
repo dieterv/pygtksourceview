@@ -53,14 +53,14 @@ PYGTK_SUFFIX = '2.0'
 PYGTK_SUFFIX_LONG = 'gtk-' + PYGTK_SUFFIX
 PYGTK_DEFS_DIR = pkgc_get_defs_dir('pygtk-%s' % PYGTK_SUFFIX)
 
+GTKSOURCEVIEW_REQUIRED = get_m4_define('gtksourceview_required_version')
+PYGOBJECT_REQUIRED     = get_m4_define('pygobject_required_version')
+PYGTK_REQUIRED         = get_m4_define('pygtk_required_version')
+
 MAJOR_VERSION = int(get_m4_define('pygtksourceview_major_version'))
 MINOR_VERSION = int(get_m4_define('pygtksourceview_minor_version'))
 MICRO_VERSION = int(get_m4_define('pygtksourceview_micro_version'))
 VERSION = '%d.%d.%d' % (MAJOR_VERSION, MINOR_VERSION, MICRO_VERSION)
-
-GTKSOURCEVIEW_REQUIRED = get_m4_define('gtksourceview_required_version')
-PYGOBJECT_REQUIRED     = get_m4_define('pygobject_required_version')
-PYGTK_REQUIRED         = get_m4_define('pygtk_required_version')
 
 GLOBAL_INC += ['.']
 GLOBAL_MACROS += [('PYGTKSOURCEVIEW_MAJOR_VERSION', MAJOR_VERSION),
@@ -70,6 +70,7 @@ GLOBAL_MACROS += [('PYGTKSOURCEVIEW_MAJOR_VERSION', MAJOR_VERSION),
                   ('PLATFORM_WIN32', 1),
                   ('HAVE_BIND_TEXTDOMAIN_CODESET', 1)]
 
+DEFS_DIR = os.path.join('share', 'pygtk', PYGTK_SUFFIX, 'defs')
 HTML_DIR = os.path.join('share', 'gtk-doc', 'html', 'pygtksourceview2')
 
 
@@ -91,6 +92,7 @@ class PyGtkSourceViewInstallData(InstallData):
         self.install_template('pygtksourceview-2.0.pc.in',
                               os.path.join(self.install_dir, 'lib', 'pkgconfig'))
 
+
 gtksourceview2 = TemplateExtension(name='gtksourceview2',
                                    pkc_name=('pygobject-%s' % PYGTK_SUFFIX,
                                              'pygtk-%s' % PYGTK_SUFFIX,
@@ -108,10 +110,10 @@ gtksourceview2 = TemplateExtension(name='gtksourceview2',
 
 if gtksourceview2.can_build():
     ext_modules.append(gtksourceview2)
-    #data_files.append((PYGTK_DEFS_DIR, ('gtksourceview2.defs',)))
+    data_files.append((DEFS_DIR, ('gtksourceview2.defs',)))
     data_files.append((HTML_DIR, glob.glob('docs/html/*.html')))
 else:
-    raise SystemExit
+    raise SystemExit('ERROR: Nothing to do, gtksourceview2 could not be built and is essential.')
 
 doclines = __doc__.split('\n')
 options = {'bdist_wininst': {'install_script': 'pygtksourceview_postinstall.py'}}
