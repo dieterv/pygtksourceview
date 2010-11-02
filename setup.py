@@ -78,6 +78,15 @@ data_files = []
 ext_modules = []
 
 
+class PyGtkSourceViewInstallLib(InstallLib):
+    def run(self):
+        # Modify the base installation dir
+        install_dir = os.path.join(self.install_dir, PYGTK_SUFFIX_LONG)
+        self.set_install_dir(install_dir)
+
+        InstallLib.run(self)
+
+
 class PyGtkSourceViewInstallData(InstallData):
     def run(self):
         self.add_template_option('VERSION', VERSION)
@@ -134,5 +143,6 @@ setup(name='pygtksourceview',
       data_files = data_files,
       scripts = ['pygtksourceview_postinstall.py'],
       options = options,
-      cmdclass = {'install_data': PyGtkSourceViewInstallData,
+      cmdclass = {'install_lib': PyGtkSourceViewInstallLib,
+                  'install_data': PyGtkSourceViewInstallData,
                   'build_ext': BuildExt,})
