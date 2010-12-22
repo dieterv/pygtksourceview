@@ -1034,14 +1034,14 @@
   )
 )
 
-(define-method get_visual_column
-  (of-object "GtkSourceView")
-  (c-name "gtk_source_view_get_visual_column")
-  (return-type "guint")
-  (parameters
-    '("const-GtkTextIter*" "iter")
-  )
-)
+;;(define-method get_visual_column
+;;  (of-object "GtkSourceView")
+;;  (c-name "gtk_source_view_get_visual_column")
+;;  (return-type "guint")
+;;  (parameters
+;;    '("const-GtkTextIter*" "iter")
+;;  )
+;;)
 
 (define-method set_mark_category_icon_from_pixbuf
   (of-object "GtkSourceView")
